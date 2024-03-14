@@ -67,7 +67,7 @@ export default function EmailCode() {
                             </div>
                         </div>
                     </form>
-                    <p className='footer-text3'>нет аккаунта ? <NavLink className="register3">зарегистрируйтесь</NavLink></p>
+                    <p className='footer-text3'>Есть аккаунт ? <NavLink to={'/'} className="register3">войдите</NavLink></p>
                 </div>
             </div>
         </div>
