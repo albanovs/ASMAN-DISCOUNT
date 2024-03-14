@@ -14,7 +14,7 @@ export default function SignIn() {
                     <div className='coin'>
                         <img src={coin} alt="" />
                     </div>
-                    <form onSubmit="">
+                    <form>
                         <div className='submit'>
                             <h1>Вход</h1>
                             <div className='inputs'>
@@ -30,7 +30,7 @@ export default function SignIn() {
                             </div>
                         </div>
                     </form>
-                    <p className='footer-text'>нет аккаунта ? <NavLink className="register">зарегистрируйтесь</NavLink></p>
+                    <p className='footer-text'>нет аккаунта ? <NavLink to={'/register'} className="register">зарегистрируйтесь</NavLink></p>
                 </div>
 
             </div>

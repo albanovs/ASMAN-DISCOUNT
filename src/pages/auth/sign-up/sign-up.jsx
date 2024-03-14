@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import './sign-up.css'
 import coin from '../covers/coin.png'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function SignUp() {
 
     const [visible, setVisible] = useState(false)
     const [visible2, setVisible2] = useState(false)
+    const navigate = useNavigate()
     return (
         <div>
             <div className='container2'>
@@ -15,7 +16,7 @@ export default function SignUp() {
                     <div className='coin2'>
                         <img src={coin} alt="" />
                     </div>
-                    <form onSubmit="" className='submit2'>
+                    <form className='submit2'>
                         <h1>Регистрация</h1>
                         <div className='inputs2'>
                             <input type="email" placeholder='email' />
@@ -31,13 +32,13 @@ export default function SignUp() {
                                 <span className="span-icon2" onClick={() => setVisible2(!visible2)}>
                                     {visible2 ? <FaEye /> : <FaEyeSlash />}
                                 </span>
-                                <p className='error-text2'>* пароли не совпадают</p> 
+                                <p className='error-text2'>* пароли не совпадают</p>
                             </div>
                             <NavLink className="link2">Забыли пароль ?</NavLink>
-                            <button className='sign-up2'>Далее</button>
+                            <button onClick={() => navigate('/send-code')} className='sign-up2'>Далее</button>
                         </div>
                     </form>
-                    <p className='footer-text2'>Есть аккаунт ? <NavLink className="register2">войдите</NavLink></p>
+                    <p className='footer-text2'>Есть аккаунт ? <NavLink to={'/'} className="register2">войдите</NavLink></p>
                 </div>
 
             </div>
