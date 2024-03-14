@@ -1,0 +1,85 @@
+.images3 {
+  background: url(../covers/top.png);
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  padding-top: 150px;
+}
+
+.coin3 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit3 h1 {
+  text-align: center;
+  font-weight: 800;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.inputs3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  margin-top: 20px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.inputs3 input {
+  width: 50px;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 16px;
+  background-color: #e5e5e5;
+  padding-left: 20px;
+  font-size: 18px;
+}
+
+.link3 {
+  text-decoration: none;
+  color: #535353;
+  align-self: flex-end;
+}
+
+.sign-in3 {
+  width: 320px;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 16px;
+  background-color: #e48a21;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.password3 {
+  position: relative;
+}
+
+.span-icon3 {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.footer-text3 {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.register3 {
+  color: #e48a21;
+}
+
+.inputs-1 {
+  display: flex;
+  gap: 5px;
+}

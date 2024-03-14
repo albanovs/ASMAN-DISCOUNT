@@ -1,0 +1,84 @@
+.images2 {
+  background: url(../covers/top.png);
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  padding-top: 60px;
+}
+
+.coin2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit2 h1 {
+  text-align: center;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.inputs2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  margin-top: 20px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.inputs2 input {
+  width: 320px;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 16px;
+  background-color: #e5e5e5;
+  padding-left: 20px;
+  font-size: 18px;
+}
+
+.link2 {
+  text-decoration: none;
+  color: #535353;
+  align-self: flex-end;
+}
+
+.sign-up2 {
+  width: 320px;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 16px;
+  background-color: #e48a21;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.password2 {
+  position: relative;
+}
+
+.span-icon2 {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.footer-text2 {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.register2 {
+  color: #e48a21;
+}
+
+.error-text2{
+    color: red;
+    position: absolute;
+}
