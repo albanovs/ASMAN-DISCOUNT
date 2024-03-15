@@ -7,7 +7,6 @@ export default function HomePage() {
         <div className='home-page'>
             <Header />
             <div className='section1'>
-
             </div>
         </div>
     )
