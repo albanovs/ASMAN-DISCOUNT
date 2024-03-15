@@ -24,7 +24,7 @@
 }
 
 .contain-button_item {
-  width: 350px;
+  width: 300px;
   height: 40px;
   border-radius: 10px;
   background-color: #181818;
@@ -37,7 +37,7 @@
 }
 
 .contain-button_item_child {
-  width: 175px;
+  width: 145px;
   height: 40px;
   border-radius: 10px;
   background-color: #181818;
@@ -50,7 +50,7 @@
 }
 
 .contain-child {
-    gap: 3px;
+    gap: 10px;
     display: flex;
     justify-content: space-between;
 }
