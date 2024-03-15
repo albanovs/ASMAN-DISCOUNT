@@ -9,6 +9,11 @@ export default function SignUp() {
     const [visible, setVisible] = useState(false)
     const [visible2, setVisible2] = useState(false)
     const navigate = useNavigate()
+
+    const handleNextButtonClick = (e) => {
+        e.preventDefault();
+        navigate('/send-code');
+    }
     return (
         <div>
             <div className='container2'>
@@ -35,7 +40,7 @@ export default function SignUp() {
                                 <p className='error-text2'>* пароли не совпадают</p>
                             </div>
                             <NavLink className="link2">Забыли пароль ?</NavLink>
-                            <button onClick={() => navigate('/send-code')} className='sign-up2'>Далее</button>
+                            <button onClick={(e) => handleNextButtonClick(e)} className='sign-up2'>Далее</button>
                         </div>
                     </form>
                     <p className='footer-text2'>Есть аккаунт ? <NavLink to={'/'} className="register2">войдите</NavLink></p>

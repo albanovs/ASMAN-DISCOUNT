@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     handleScroll();
   }, [location]);
-  
+
   return (
     <div className="App">
       <TransitionGroup>
