@@ -20,16 +20,12 @@ function App() {
 
   return (
     <div className="App">
-      <TransitionGroup>
-        <CSSTransition key={location.key} classNames="fade" timeout={300}>
           <Routes location={location}>
             <Route path="/register" element={<SignUp />} />
             <Route path="/login" element={<SignIn />} />
             <Route path="/send-code" element={<EmailCode />} />
             <Route path="/*" element={<LayOut />} />
           </Routes>
-        </CSSTransition>
-      </TransitionGroup>
     </div>
   );
 }

@@ -3,6 +3,8 @@ import './home-page.css'
 import Header from '../../containers/header/header'
 import Balance from './components/balance/balance'
 import { HiShoppingCart } from "react-icons/hi";
+import { IoQrCodeOutline } from "react-icons/io5";
+import { BiScan } from "react-icons/bi";
 
 export default function HomePage() {
     return (
@@ -35,8 +37,14 @@ export default function HomePage() {
                 <Balance />
                 <div className='payment-block'>
                     <div>
-                        <div className='contain-button_item_home'>Ввод</div>
-                        <div className='contain-button_item_home'>Вывод</div>
+                        <div className='child-button'>
+                            <div className='contain-button_item_home'>Ввод</div>
+                            <div className='contain-button_item_qr'>Мой QR <IoQrCodeOutline size={40} /></div>
+                        </div>
+                        <div className='child-button'>
+                            <div className='contain-button_item_home'>Вывод</div>
+                            <div className='contain-button_item_qr'>Сканнер <BiScan size={40} /></div>
+                        </div>
                     </div>
                     <div>
                         <div className='contain-button_item_buy'>

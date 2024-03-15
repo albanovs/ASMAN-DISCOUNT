@@ -2,7 +2,8 @@
   width: 370px;
   height: 100px;
   border-radius: 10px;
-  background: linear-gradient(to right, #c49113, #d5b483, #ffc342);
+  background: linear-gradient(to right, #e2a332, #eeca93, #ffc342);
+  /* background-color: #e2a332; */
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -23,7 +24,8 @@
   font-size: 12px;
 }
 
-
-.coin-img{
-    width: 100px;
+.coin-img {
+  width: 100px;
 }
+
+
