@@ -5,6 +5,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import './App.css'
 import { useEffect } from "react";
+import LayOut from "./containers/layout/lay-out";
 
 function App() {
   const location = useLocation();
@@ -23,8 +24,9 @@ function App() {
         <CSSTransition key={location.key} classNames="fade" timeout={300}>
           <Routes location={location}>
             <Route path="/register" element={<SignUp />} />
-            <Route path="/" element={<SignIn />} />
+            <Route path="/login" element={<SignIn />} />
             <Route path="/send-code" element={<EmailCode />} />
+            <Route path="/*" element={<LayOut />} />
           </Routes>
         </CSSTransition>
       </TransitionGroup>
