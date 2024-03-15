@@ -1,0 +1,22 @@
+.header {
+  background: #181a20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: white;
+}
+
+.profile-name {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  gap: 5px;
+}
+
+.profile-name h1{
+    font-weight: 300;
+}
