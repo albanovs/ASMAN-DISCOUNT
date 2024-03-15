@@ -1,0 +1,29 @@
+.balance-card {
+  width: 370px;
+  height: 100px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #c49113, #d5b483, #ffc342);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.balance-card > div > h2 {
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.coin-asman {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.curs-usdt h1 {
+  font-size: 12px;
+}
+
+
+.coin-img{
+    width: 100px;
+}
