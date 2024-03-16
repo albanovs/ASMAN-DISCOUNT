@@ -10,6 +10,7 @@ import MyQRcode from "./pages/home-page/components/QR code/my-qr";
 import { SkeletonTheme } from 'react-loading-skeleton'
 import QRScanner from "./pages/home-page/components/QR code/qr-scannder";
 import ScanPage from "./pages/home-page/components/scan-page";
+import QrDetails from "./pages/home-page/components/QR code/qr-details";
 
 function App() {
   const location = useLocation();
@@ -29,6 +30,7 @@ function App() {
           <Route path="/register" element={<SignUp />} />
           <Route path="/my-qr" element={<MyQRcode />} />
           <Route path="/qr-scanner" element={<QRScanner />} />
+          <Route path="/details-qr/:id" element={<QrDetails />} />
           <Route path="/login" element={<SignIn />} />
           <Route path="/send-code" element={<EmailCode />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
