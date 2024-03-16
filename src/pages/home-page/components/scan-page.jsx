@@ -1,5 +1,5 @@
 import React from 'react';
-import QRScanner from './QR code/qr-scannder';
+import QRScanner from './QR code/qr-scanner';
 
 const ScanPage = () => {
     return (

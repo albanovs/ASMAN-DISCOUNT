@@ -2,10 +2,10 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 
 export default function QrDetails() {
-    const { id } = useParams
+    const { link } = useParams
     return (
         <div>
-            <p>{id}</p>
+            <p>{link}</p>
         </div>
     )
 }
