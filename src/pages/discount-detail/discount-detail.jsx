@@ -23,7 +23,7 @@ const DiscountDetail = () => {
   return (
     <div className="discount_detail">
       <div className="head">
-        <img onClick={() => navigate(-1)} src={arrow} alt="" />{" "}
+        <img onClick={() => navigate(-1)} src={arrow} alt="" />
         <p>{data.title}</p>
       </div>
       <img className="image" src={data.img} alt="" />

@@ -3,7 +3,6 @@ import "./discount.css";
 import Header from "../../containers/header/header";
 import { api } from "../../Api";
 import { useNavigate } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
 
 export default function Discount() {
   const [data, setData] = useState([]);

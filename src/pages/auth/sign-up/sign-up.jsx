@@ -13,6 +13,7 @@ export default function SignUp() {
   const [inputData, setInputData] = useState({
     email: "",
     first_name: "",
+    last_name: "",
     password: "",
     confirm_password: "",
   });
@@ -82,6 +83,18 @@ export default function SignUp() {
                 }
                 type="text"
                 placeholder="ваше имя"
+                required
+              />
+              <input
+                value={inputData.last_name}
+                onChange={(e) =>
+                  setInputData({
+                    ...inputData,
+                    last_name: e.target.value,
+                  })
+                }
+                type="text"
+                placeholder="фамилия"
                 required
               />
               <div className="password2">
