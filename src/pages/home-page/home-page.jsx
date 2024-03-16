@@ -8,6 +8,11 @@ import { BiScan } from "react-icons/bi";
 import { BsArrowReturnRight } from "react-icons/bs";
 import { BsArrowReturnLeft } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom'
+import { BsArrowDownLeftCircleFill } from "react-icons/bs";
+import { BsArrowDownRightCircleFill } from "react-icons/bs";
+import { FaPlayCircle } from "react-icons/fa";
+import { FaProductHunt } from "react-icons/fa";
+
 
 export default function HomePage() {
 
@@ -40,7 +45,13 @@ export default function HomePage() {
                     </div>
                 </div>
                 <Balance />
-                <div className='payment-block'>
+                <div className='button-payment_home'>
+                    <button><BsArrowDownLeftCircleFill size={40} /><span>Ввод</span></button>
+                    <button><BsArrowDownRightCircleFill size={40} /><span>Вывод</span></button>
+                    <button><FaPlayCircle size={40} /><span>Перевод</span></button>
+                    <button><FaProductHunt size={40} /><span>Купить</span></button>
+                </div>
+                {/* <div className='payment-block'>
                     <div className='child-button'>
                         <button className='contain-button_item_home'>Ввод<BsArrowReturnRight /> </button>
                         <button className='contain-button_item_home'>Вывод<BsArrowReturnLeft /></button>
@@ -52,9 +63,8 @@ export default function HomePage() {
                         </div>
                         <HiShoppingCart size={30} />
                     </button>
-                </div>
+                </div> */}
                 <div>
-
                 </div>
                 <div className='child-button_qr'>
                     <button className='contain-button_item_qr' onClick={() => navigate('/my-qr')}>Мой QR <IoQrCodeOutline size={40} /></button>

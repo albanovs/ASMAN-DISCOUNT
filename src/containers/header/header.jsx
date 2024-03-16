@@ -1,7 +1,8 @@
 import React from 'react'
 import './header.css'
 import { MdAccountCircle } from "react-icons/md";
-import { IoNotificationsCircle } from "react-icons/io5";
+import { IoNotifications } from "react-icons/io5";
+import { BiDotsVerticalRounded } from "react-icons/bi";
 
 export default function Header() {
     return (
@@ -11,8 +12,9 @@ export default function Header() {
                     <MdAccountCircle size={40} />
                     <h1>Таласбек</h1>
                 </div>
-                <div>
-                    <IoNotificationsCircle size={40} color='#E2A332' />
+                <div style={{display: 'flex'}}>
+                    <IoNotifications size={25} color='#E2A332' />
+                    <BiDotsVerticalRounded size={25} color='white'/>
                 </div>
             </div>
         </div>

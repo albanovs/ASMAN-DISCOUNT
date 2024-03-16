@@ -124,3 +124,26 @@
   /* transition: 2s all ease; */
   color: #fdb602;
 }
+
+.button-payment_home{
+  width: 100%;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-payment_home button{
+  color: #fdb602;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 400;
+  gap: 5px;
+}
+
+.button-payment_home button>span{
+  color: white;
+}
