@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import './qr-scanner.css'
 
 const QRScanner = () => {
-
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [result, setResult] = useState("");
+
     const { ref, stop } = useZxing({
         constraints: {
             video: {
@@ -14,8 +14,9 @@ const QRScanner = () => {
             }
         },
         onDecodeResult(result) {
-            setResult(result.getText());
-            navigate(`/details-qr/${result}`)
+            const text = result.getText();
+            setResult(text);
+            navigate(`/details-qr/${text}`);
             stop();
         },
     });
