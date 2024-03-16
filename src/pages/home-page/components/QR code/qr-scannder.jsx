@@ -6,40 +6,45 @@ const QRScanner = () => {
     let codeReader;
 
     useEffect(() => {
-        // Создаем новый экземпляр сканера
-        codeReader = new BrowserBarcodeReader();
-        // Начинаем сканирование
-        startScanning();
+        const startCamera = async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                videoRef.current.srcObject = stream;
+                codeReader = new BrowserBarcodeReader();
+                startScanning();
+            } catch (error) {
+                console.error('Error accessing camera:', error);
+            }
+        };
 
-        // Останавливаем сканирование при размонтировании компонента
+        startCamera();
+
         return () => {
             stopScanning();
         };
     }, []);
 
     const startScanning = () => {
-        // Остановка предыдущего сканирования, если оно было
         stopScanning();
-        // Начинаем сканирование с использованием видео из рефа
-        codeReader.decodeFromVideoDevice(undefined, videoRef.current, (result) => {
+        codeReader.decodeFromVideoElement(videoRef.current, (result, err) => {
             if (result) {
                 console.log(result.getText());
                 // Делайте что-то с распознанным текстом QR-кода
+            } else if (err) {
+                console.error('Error decoding QR code:', err);
             }
         });
     };
 
     const stopScanning = () => {
         if (codeReader) {
-            // Остановка предыдущего сканирования, если оно было
             codeReader.reset();
         }
     };
 
     return (
         <div>
-            {/* Видеоэлемент, который будет использоваться для сканирования */}
-            <video ref={videoRef} />
+            <video ref={videoRef} autoPlay playsInline muted />
         </div>
     );
 };
