@@ -2,11 +2,11 @@ import React from 'react'
 import './home-page.css'
 import Header from '../../containers/header/header'
 import Balance from './components/balance/balance'
-import { HiShoppingCart } from "react-icons/hi";
+// import { HiShoppingCart } from "react-icons/hi";
 import { IoQrCodeOutline } from "react-icons/io5";
 import { BiScan } from "react-icons/bi";
-import { BsArrowReturnRight } from "react-icons/bs";
-import { BsArrowReturnLeft } from "react-icons/bs";
+// import { BsArrowReturnRight } from "react-icons/bs";
+// import { BsArrowReturnLeft } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom'
 import { BsArrowDownLeftCircleFill } from "react-icons/bs";
 import { BsArrowDownRightCircleFill } from "react-icons/bs";
@@ -68,7 +68,7 @@ export default function HomePage() {
                 </div>
                 <div className='child-button_qr'>
                     <button className='contain-button_item_qr' onClick={() => navigate('/my-qr')}>Мой QR <IoQrCodeOutline size={40} /></button>
-                    <button className='contain-button_item_qr'>Сканнер <BiScan size={40} /></button>
+                    <button className='contain-button_item_qr' onClick={() => navigate('/qr-scanner')}>Сканнер <BiScan size={40} /></button>
                 </div>
             </div>
         </div >
