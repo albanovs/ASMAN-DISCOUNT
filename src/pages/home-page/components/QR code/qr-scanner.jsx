@@ -23,8 +23,9 @@ const QRScanner = () => {
 
     return (
         <div className="scanner-container">
-            <div>
-                <video ref={ref} className="scan-video" />
+            <div className="video-container">
+                <video ref={ref} className="scan-video" controls={false} />
+                <div className="overlay"></div> {/* Прозрачная рамка */}
             </div>
         </div>
     );

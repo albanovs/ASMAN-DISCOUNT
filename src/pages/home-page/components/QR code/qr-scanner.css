@@ -8,9 +8,17 @@
   align-items: center;
 }
 
-.scan-video{
-    width: 100%;
-    height: 100vh;
-    border-radius: 10px;
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
+.overlay {
+  position: absolute;
+  top: 10%; /* Регулируйте положение рамки по вертикали */
+  left: 10%; /* Регулируйте положение рамки по горизонтали */
+  width: 80%; /* Регулируйте ширину рамки */
+  height: 80%; /* Регулируйте высоту рамки */
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Прозрачная рамка */
+}
