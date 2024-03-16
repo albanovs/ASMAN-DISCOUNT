@@ -58,7 +58,7 @@ const QRScanner = () => {
 
     return (
         <div>
-            {scanning && ( // Проверяем, нужно ли продолжать сканирование
+            {scanning && (
                 <Scanner
                     style={scannerStyle}
                     facingMode="environment"
