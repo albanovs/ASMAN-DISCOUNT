@@ -2,7 +2,6 @@ import React from 'react'
 import './home-page.css'
 import Header from '../../containers/header/header'
 import Balance from './components/balance/balance'
-// import { HiShoppingCart } from "react-icons/hi";
 import { IoQrCodeOutline } from "react-icons/io5";
 import { BiScan } from "react-icons/bi";
 // import { BsArrowReturnRight } from "react-icons/bs";
@@ -12,7 +11,6 @@ import { BsArrowDownLeftCircleFill } from "react-icons/bs";
 import { BsArrowDownRightCircleFill } from "react-icons/bs";
 import { FaPlayCircle } from "react-icons/fa";
 import { FaProductHunt } from "react-icons/fa";
-
 
 export default function HomePage() {
 
