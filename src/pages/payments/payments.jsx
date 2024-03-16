@@ -14,18 +14,18 @@ export default function Payments() {
                     история
                 </NavLink>
                 <div className='contain-button'>
-                    <div className='contain-button_item '>
+                    <button className='contain-button_item '>
                         <BsArrowDownUp />
                         Перевод
-                    </div>
+                    </button>
                     <div className='contain-child'>
-                        <div className='contain-button_item_child'>Ввод</div>
-                        <div className='contain-button_item_child'>Вывод</div>
+                        <button className='contain-button_item_child'>Ввод</button>
+                        <button className='contain-button_item_child'>Вывод</button>
                     </div>
-                    <div className='contain-button_item '>
+                    <button className='contain-button_item '>
                         Купить Асман
                         <TbShoppingCartDollar />
-                    </div>
+                    </button>
                 </div>
             </div>
         </div>

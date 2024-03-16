@@ -7,8 +7,11 @@ import { IoQrCodeOutline } from "react-icons/io5";
 import { BiScan } from "react-icons/bi";
 import { BsArrowReturnRight } from "react-icons/bs";
 import { BsArrowReturnLeft } from "react-icons/bs";
+import { useNavigate } from 'react-router-dom'
 
 export default function HomePage() {
+
+    const navigate = useNavigate()
     return (
         <div className='home-page'>
             <Header />
@@ -39,25 +42,25 @@ export default function HomePage() {
                 <Balance />
                 <div className='payment-block'>
                     <div className='child-button'>
-                        <div className='contain-button_item_home'>Ввод<BsArrowReturnRight /> </div>
-                        <div className='contain-button_item_home'>Вывод<BsArrowReturnLeft /></div>
+                        <button className='contain-button_item_home'>Ввод<BsArrowReturnRight /> </button>
+                        <button className='contain-button_item_home'>Вывод<BsArrowReturnLeft /></button>
                     </div>
-                    <div className='contain-button_item_buy'>
+                    <button className='contain-button_item_buy'>
                         <div>
                             <h1>Купить</h1>
                             <h2>ASMAN</h2>
                         </div>
                         <HiShoppingCart size={30} />
-                    </div>
+                    </button>
                 </div>
                 <div>
 
                 </div>
                 <div className='child-button_qr'>
-                    <div className='contain-button_item_qr'>Мой QR <IoQrCodeOutline size={40} /></div>
-                    <div className='contain-button_item_qr'>Сканнер <BiScan size={40} /></div>
+                    <button className='contain-button_item_qr' onClick={() => navigate('/my-qr')}>Мой QR <IoQrCodeOutline size={40} /></button>
+                    <button className='contain-button_item_qr'>Сканнер <BiScan size={40} /></button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

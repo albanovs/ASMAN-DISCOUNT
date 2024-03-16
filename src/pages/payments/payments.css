@@ -9,7 +9,7 @@
   color: #e2a332;
   padding: 10px 10px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   gap: 5px;
 }
