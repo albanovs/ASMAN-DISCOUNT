@@ -1,39 +1,45 @@
 import React, { useRef, useEffect } from 'react';
-import Quagga from 'quagga';
+import { BrowserBarcodeReader } from '@zxing/library';
 
 const QRScanner = () => {
-    const videoRef = useRef(null); // Создаем ссылку на элемент video
+    const videoRef = useRef(null);
+    let codeReader;
 
     useEffect(() => {
-        // Инициализация Quagga
-        Quagga.init({
-            inputStream: {
-                name: "Live",
-                type: "LiveStream",
-                target: videoRef.current, // Используем текущий элемент video в качестве цели для потока видео
-            },
-            decoder: {
-                readers: ["code_128_reader"] // Здесь можно указать типы считываемых кодов
-            }
-        }, function (err) {
-            if (err) {
-                console.error(err);
-                return;
-            }
-            // Запуск сканирования
-            Quagga.start();
-        });
+        // Создаем новый экземпляр сканера
+        codeReader = new BrowserBarcodeReader();
+        // Начинаем сканирование
+        startScanning();
 
-        // Остановка сканирования при размонтировании компонента
+        // Останавливаем сканирование при размонтировании компонента
         return () => {
-            Quagga.stop();
+            stopScanning();
         };
     }, []);
+
+    const startScanning = () => {
+        // Остановка предыдущего сканирования, если оно было
+        stopScanning();
+        // Начинаем сканирование с использованием видео из рефа
+        codeReader.decodeFromVideoDevice(undefined, videoRef.current, (result) => {
+            if (result) {
+                console.log(result.getText());
+                // Делайте что-то с распознанным текстом QR-кода
+            }
+        });
+    };
+
+    const stopScanning = () => {
+        if (codeReader) {
+            // Остановка предыдущего сканирования, если оно было
+            codeReader.reset();
+        }
+    };
 
     return (
         <div>
             {/* Видеоэлемент, который будет использоваться для сканирования */}
-            <video ref={videoRef} style={{ width: '100%', height: 'auto' }} /> {/* Устанавливаем стили для элемента video */}
+            <video ref={videoRef} />
         </div>
     );
 };
