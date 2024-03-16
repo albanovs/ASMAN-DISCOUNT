@@ -64,11 +64,9 @@
 }
 
 .contain-payblock input {
-  /* background-color: #010000; */
-  background: none;
-  border-bottom: 1px solid #626262;
+  background: inherit;
+  border-bottom: 0.5px solid #626262;
   padding: 5px;
-  /* border-radius: 10px; */
   font-size: 12px;
   width: 200px;
   color: #dddbdb;

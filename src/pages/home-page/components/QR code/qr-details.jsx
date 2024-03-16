@@ -20,7 +20,7 @@ export default function QrDetails() {
     return (
         <div className='contain-details-all'>
             <div>
-                <FiChevronLeft onClick={() => navigate(-1)} size={40} />
+                <FiChevronLeft onClick={() => navigate('/')} size={40} />
             </div>
             <div className='contain-details'>
                 <h1>Перевод</h1>
