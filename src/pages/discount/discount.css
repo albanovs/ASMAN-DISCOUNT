@@ -1,0 +1,188 @@
+.discount {
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+}
+
+.discount .container_2 {
+  padding: 0 20px;
+}
+
+.discount .discount_block {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+}
+
+.discount .discount_box {
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  position: relative;
+}
+
+.discount .discount_box img {
+  position: static;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+.discount .box_fixet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: rgb(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.discount .title {
+  margin-top: 30px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+}
+
+.discount h2 {
+  margin-top: 35px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.discount .text_discount {
+  position: absolute;
+  height: 32px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  margin: auto;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ff9f0e;
+  line-height: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  z-index: 1;
+}
+
+/* .discount_box_skeleton {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  background: linear-gradient(-45deg, #ffffff94 25%, #cecece 50%, #ffffff94 75%);
+  background-size: 400% 400%;
+  animation: gradientAnimation 1s ease infinite;
+}
+
+.discount_box_skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  opacity: 0.5;
+  animation: shadowAnimation 1.5s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+} */
+
+.block_h2,
+.discount_box_skeleton {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.block_h2::before,
+.discount_box_skeleton::before,
+.block_h2::after,
+.discount_box_skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.block_h2::before,
+.discount_box_skeleton::before {
+  background: linear-gradient(
+    45deg,
+    rgb(255, 255, 255, 0.7),
+    rgb(255, 255, 172, 0.7),
+    rgb(209, 180, 100, 0.7),
+    rgb(254, 219, 55, 0.7),
+    rgb(253, 185, 49, 0.7),
+    rgb(93, 74, 31, 0.7)
+  );
+  background-size: 300% 300%;
+  animation: skeletonGradient 2s ease infinite;
+  z-index: 1;
+}
+
+.block_h2::after,
+.discount_box_skeleton::after {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0)
+  );
+  animation: skeletonShadow 0.7s ease infinite;
+  z-index: 2;
+}
+
+@keyframes skeletonGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes skeletonShadow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.block_h2 {
+  width: 20% !important;
+  height: 18px !important;
+  border-radius: 5px !important;
+}

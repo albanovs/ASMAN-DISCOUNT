@@ -53,13 +53,13 @@ export default function EmailCode() {
     setLoading(true);
     try {
       const response = await api.post("/auth/verify-email/", {
-        code,
+        v_code: code.join(""),
         email: email,
       });
       if (response.data.response === true) {
         localStorage.setItem("email", email);
         localStorage.setItem("token", response.data.token);
-        navigate("/dashboard");
+        navigate("/");
       } else {
         alert(response.data.message, "error");
       }

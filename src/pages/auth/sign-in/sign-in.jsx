@@ -24,8 +24,7 @@ export default function SignIn() {
       if (response.data.response === true) {
         const { token } = response.data;
         localStorage.setItem("token", token);
-        navigate("/dashboard");
-        alert(response.data.message);
+        navigate("/");
       } else {
         if (response.data.message) {
           alert(response.data.message, "error");
