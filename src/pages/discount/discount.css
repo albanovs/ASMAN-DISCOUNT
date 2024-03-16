@@ -1,6 +1,6 @@
 .discount {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #000000;
 }
 
@@ -112,7 +112,7 @@
 
 .block_h2,
 .discount_box_skeleton {
-  width: 120px;
+  width: 100%;
   height: 120px;
   border-radius: 10px;
   position: relative;

@@ -17,7 +17,7 @@ export default function Discount() {
         setData(response.data);
         setTimeout(() => {
           setLoading(false);
-        }, 1000);
+        }, 700);
       })
       .catch((error) => {
         console.log(error);
@@ -34,9 +34,7 @@ export default function Discount() {
           <>
             <div>
               <h2>
-                <div className="block_h2">
-                  <Skeleton width="100%" height={18} borderRadius={10} />
-                </div>
+                <div className="block_h2"></div>
               </h2>
               <div className="discount_block">
                 {Array.from({ length: 3 }).map((_, index) => (
@@ -46,9 +44,7 @@ export default function Discount() {
             </div>
             <div>
               <h2>
-                <div className="block_h2">
-                  <Skeleton width="100%" height={18} borderRadius={10} />
-                </div>
+                <div className="block_h2"></div>
               </h2>
               <div className="discount_block">
                 {Array.from({ length: 3 }).map((_, index) => (
