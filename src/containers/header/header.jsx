@@ -5,7 +5,7 @@ import { IoNotificationsCircle } from "react-icons/io5";
 
 export default function Header() {
     return (
-        <div>
+        <div className='contain-header'>
             <div className="header">
                 <div className='profile-name'>
                     <MdAccountCircle size={40} />
