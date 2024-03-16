@@ -5,6 +5,8 @@ import Balance from './components/balance/balance'
 import { HiShoppingCart } from "react-icons/hi";
 import { IoQrCodeOutline } from "react-icons/io5";
 import { BiScan } from "react-icons/bi";
+import { BsArrowReturnRight } from "react-icons/bs";
+import { BsArrowReturnLeft } from "react-icons/bs";
 
 export default function HomePage() {
     return (
@@ -36,23 +38,24 @@ export default function HomePage() {
                 </div>
                 <Balance />
                 <div className='payment-block'>
-                    <div>
-                        <div className='child-button'>
-                            <div className='contain-button_item_home'>Ввод</div>
-                            <div className='contain-button_item_qr'>Мой QR <IoQrCodeOutline size={40} /></div>
-                        </div>
-                        <div className='child-button'>
-                            <div className='contain-button_item_home'>Вывод</div>
-                            <div className='contain-button_item_qr'>Сканнер <BiScan size={40} /></div>
-                        </div>
+                    <div className='child-button'>
+                        <div className='contain-button_item_home'>Ввод<BsArrowReturnRight /> </div>
+                        <div className='contain-button_item_home'>Вывод<BsArrowReturnLeft /></div>
                     </div>
-                    <div>
-                        <div className='contain-button_item_buy'>
+                    <div className='contain-button_item_buy'>
+                        <div>
                             <h1>Купить</h1>
                             <h2>ASMAN</h2>
-                            <HiShoppingCart size={30} />
                         </div>
+                        <HiShoppingCart size={30} />
                     </div>
+                </div>
+                <div>
+
+                </div>
+                <div className='child-button_qr'>
+                    <div className='contain-button_item_qr'>Мой QR <IoQrCodeOutline size={40} /></div>
+                    <div className='contain-button_item_qr'>Сканнер <BiScan size={40} /></div>
                 </div>
             </div>
         </div>

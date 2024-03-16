@@ -1,31 +1,36 @@
 .balance-card {
-  width: 370px;
-  height: 100px;
-  border-radius: 10px;
-  background: linear-gradient(to right, #e2a332, #eeca93, #ffc342);
-  /* background-color: #e2a332; */
-  padding: 10px;
+  width: 90%;
+  height: 155px;
+  border-radius: 15px;
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.balance-card h1 {
+  font-weight: 100;
+}
+
+.balance-card h2 {
+  font-size: 30px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-}
-
-.balance-card > div > h2 {
-  font-weight: 900;
-  font-size: 20px;
-}
-
-.coin-asman {
-  font-size: 16px;
-  font-weight: normal;
-}
-
-.curs-usdt h1 {
-  font-size: 12px;
+  gap: 2px;
+  font-weight: 500;
 }
 
 .coin-img {
-  width: 100px;
+  width: 45px;
 }
 
-
+.curs-usdt {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 10px;
+}

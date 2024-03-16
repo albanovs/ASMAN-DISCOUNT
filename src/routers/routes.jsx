@@ -8,27 +8,27 @@ const routes = [
     {
         path: '/',
         name: 'Главная',
-        icon: <IoHome size={20} />
+        icon: <IoHome size={25} />
     },
     {
         path: '/payments',
         name: 'Платежи',
-        icon: <BsArrowUpLeftCircle size={20} />
+        icon: <BsArrowUpLeftCircle size={25} />
     },
     {
         path: '/discount',
         name: 'Скидки',
-        icon: <BiSolidDiscount size={20} />
+        icon: <BiSolidDiscount size={25} />
     },
     {
         path: '/market',
         name: 'Маркет',
-        icon: <FiShoppingBag size={20} />
+        icon: <FiShoppingBag size={25} />
     },
     {
         path: '/profile',
         name: 'Профиль',
-        icon: <MdAccountCircle size={20} />
+        icon: <MdAccountCircle size={25} />
     },
 ]
 
