@@ -55,7 +55,6 @@ const QRScanner = () => {
                 <div className='contain-scan_cam'>
                     <h1>Наведите камеру на QR</h1>
                     <Scanner
-                        className="scanner-cam"
                         facingMode="environment"
                         facingModeExact
                         askPermission

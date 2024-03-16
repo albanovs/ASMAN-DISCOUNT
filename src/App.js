@@ -9,7 +9,6 @@ import ForgotPassword from "./pages/auth/forgot-password/forgot-password";
 import MyQRcode from "./pages/home-page/components/QR code/my-qr";
 import { SkeletonTheme } from "react-loading-skeleton";
 import QRScanner from "./pages/home-page/components/QR code/qr-scanner";
-import ScanPage from "./pages/home-page/components/scan-page";
 import QrDetails from "./pages/home-page/components/QR code/qr-details";
 import DiscountDetail from "./pages/discount-detail/discount-detail";
 
@@ -31,7 +30,8 @@ function App() {
           <Route path="/register" element={<SignUp />} />
           <Route path="/my-qr" element={<MyQRcode />} />
           <Route path="/qr-scanner" element={<QRScanner />} />
-          <Route path="/details-qr/:link" element={<QrDetails />} />
+          <Route path="/details-qr/:id" element={<QrDetails />} />
+          <Route path="/qr-details" element={<QrDetails />} />
           <Route path="/login" element={<SignIn />} />
           <Route path="/send-code" element={<EmailCode />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />

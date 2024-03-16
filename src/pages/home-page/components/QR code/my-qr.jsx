@@ -7,13 +7,9 @@ import { useNavigate } from 'react-router-dom'
 
 export default function MyQRcode() {
     const navigate = useNavigate();
-
-    const goBack = () => {
-        navigate(-1);
-    };
     return (
         <div className='container-qr'>
-            <div><FiChevronLeft onClick={goBack} size={40} /></div>
+            <div><FiChevronLeft onClick={() => navigate(-1)} size={40} /></div>
             <div className='container-qr-block'>
                 <h1>Мой QR код</h1>
                 <p>Получайте переводы с удобством и безопасностью прямо в приложении</p>

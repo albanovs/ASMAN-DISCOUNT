@@ -18,3 +18,8 @@
   height: 100vh;
   background-color: #000000;
 }
+
+.contain-scan_cam > h1 {
+  color: white;
+  font-weight: 700;
+}

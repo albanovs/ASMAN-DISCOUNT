@@ -46,10 +46,10 @@ export default function HomePage() {
                 </div>
                 <Balance />
                 <div className='button-payment_home'>
-                    <button><BsArrowDownLeftCircleFill size={40} /><span>Ввод</span></button>
-                    <button><BsArrowDownRightCircleFill size={40} /><span>Вывод</span></button>
-                    <button><FaPlayCircle size={40} /><span>Перевод</span></button>
-                    <button><FaProductHunt size={40} /><span>Купить</span></button>
+                    <button onClick={() => navigate('/')}><BsArrowDownLeftCircleFill size={40} /><span>Ввод</span></button>
+                    <button onClick={() => navigate('/')}><BsArrowDownRightCircleFill size={40} /><span>Вывод</span></button>
+                    <button onClick={() => navigate('/qr-details')}><FaPlayCircle size={40} /><span>Перевод</span></button>
+                    <button onClick={() => navigate('/')}><FaProductHunt size={40} /><span>Купить</span></button>
                 </div>
                 {/* <div className='payment-block'>
                     <div className='child-button'>
