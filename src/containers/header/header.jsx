@@ -12,7 +12,7 @@ export default function Header() {
                     <MdAccountCircle size={40} />
                     <h1>Таласбек</h1>
                 </div>
-                <div style={{display: 'flex'}}>
+                <div style={{display: 'flex', gap:'10px'}}>
                     <IoNotifications size={25} color='#E2A332' />
                     <BiDotsVerticalRounded size={25} color='white'/>
                 </div>
