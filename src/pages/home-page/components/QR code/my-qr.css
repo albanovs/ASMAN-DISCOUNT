@@ -42,9 +42,9 @@
   align-items: center;
 }
 
-.qr-block img{
-    width: 300px;
-    height: 300px;
+.qr-block img {
+  width: 300px;
+  height: 300px;
 }
 
 .share-button-qr {
@@ -56,5 +56,5 @@
   padding: 10px;
   background: #fdb602;
   border-radius: 5px;
- margin: 20px 0;
+  margin: 20px 0;
 }
