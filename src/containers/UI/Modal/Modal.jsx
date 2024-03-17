@@ -14,16 +14,16 @@ const Modal = ({ isModalOpen, setIsModalOpen, children }) => {
   const handleTouchStart = (e) => {
     setStartY(e.touches[0].clientY);
   };
-
+  
   const handleTouchMove = (e) => {
     if (!startY) return;
-
+  
     const deltaY = e.touches[0].clientY - startY;
-    setOffsetY(Math.min(0, deltaY));
+    setOffsetY(deltaY);
   };
-
+  
   const handleTouchEnd = () => {
-    if (offsetY < -100) {
+    if (offsetY > 100) { 
       closeModal();
     } else {
       setOffsetY(0);
