@@ -3,6 +3,7 @@ import "./email-code.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import coin from "../covers/coin.png";
 import { api } from "../../../Api";
+import LoadingAnimate from "../../../UI-kit/loading";
 
 export default function EmailCode() {
   const [email, setEmail] = useState("");
@@ -61,7 +62,8 @@ export default function EmailCode() {
         localStorage.setItem("token", response.data.token);
         navigate("/");
       } else {
-        alert(response.data.message, "error");
+        const errorMessage = response.data.message || "Произошла ошибка";
+        alert(errorMessage, "Ошибка");
       }
       setLoading(false);
     } catch (error) {
@@ -99,15 +101,14 @@ export default function EmailCode() {
                   ))}
                 </div>
                 <NavLink className="link3">Забыли пароль ?</NavLink>
-                <button onSubmit={handleSubmit} className="sign-in3">
-                  {" "}
-                  {loading ? "loading..." : "Войти"}{" "}
+                <button type="submit" className="sign-in3">
+                  {loading ? <LoadingAnimate color="#ccc" /> : "Войти"}
                 </button>
               </div>
             </div>
           </form>
           <p className="footer-text3">
-            Есть аккаунт ?{" "}
+            Есть аккаунт ?
             <NavLink to={"/"} className="register3">
               войдите
             </NavLink>

@@ -1,7 +1,7 @@
 import EmailCode from "./pages/auth/email-code/email-code";
 import SignIn from "./pages/auth/sign-in/sign-in";
 import SignUp from "./pages/auth/sign-up/sign-up";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import "./App.css";
 import { useEffect } from "react";
 import LayOut from "./containers/layout/lay-out";
@@ -23,20 +23,26 @@ function App() {
     handleScroll();
   }, [location]);
 
+  const PrivateRoute = ({ element }) => {
+    const token = localStorage.getItem("token");
+
+    return token ? element : <Navigate to="/login" replace />;
+  };
+
   return (
     <div className="App">
       <SkeletonTheme baseColor="#313131" highlightColor="#525252">
         <Routes location={location}>
-          <Route path="/register" element={<SignUp />} />
-          <Route path="/my-qr" element={<MyQRcode />} />
-          <Route path="/qr-scanner" element={<QRScanner />} />
-          <Route path="/details-qr/:id" element={<QrDetails />} />
-          <Route path="/qr-details" element={<QrDetails />} />
+          <Route path="/my-qr" element={<PrivateRoute element={<MyQRcode />} />} />
+          <Route path="/qr-scanner" element={<PrivateRoute element={<QRScanner />} />} />
+          <Route path="/details-qr/:id" element={<PrivateRoute element={<QrDetails />} />} />
+          <Route path="/qr-details" element={<PrivateRoute element={<QrDetails />} />} />
+          <Route path="/discount-detail/:id" element={<PrivateRoute element={<DiscountDetail />} />} />
+          <Route path="/*" element={<PrivateRoute element={<LayOut />} />} />
           <Route path="/login" element={<SignIn />} />
+          <Route path="/register" element={<SignUp />} />
           <Route path="/send-code" element={<EmailCode />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/discount-detail/:id" element={<DiscountDetail />} />
-          <Route path="/*" element={<LayOut />} />
         </Routes>
       </SkeletonTheme>
     </div>

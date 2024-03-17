@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './home-page.css'
 import Header from '../../containers/header/header'
 import Balance from './components/balance/balance'
 import { IoQrCodeOutline } from "react-icons/io5";
 import { BiScan } from "react-icons/bi";
-// import { BsArrowReturnRight } from "react-icons/bs";
-// import { BsArrowReturnLeft } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom'
 import { BsArrowDownLeftCircleFill } from "react-icons/bs";
 import { BsArrowDownRightCircleFill } from "react-icons/bs";
 import { FaPlayCircle } from "react-icons/fa";
 import { FaProductHunt } from "react-icons/fa";
+import LoadingAnimate from '../../UI-kit/loading';
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchUserData } from '../../App/slice/user-info';
 
 export default function HomePage() {
+
+    const userData = useSelector(state => state.user_info.user_info)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchUserData())
+    }, [dispatch])
+
+    console.log(userData);
 
     const navigate = useNavigate()
     return (
@@ -20,6 +30,7 @@ export default function HomePage() {
             <Header />
             <div className='section1'>
                 <h1>Ваш статус !</h1>
+                <LoadingAnimate color={'#ccc'} />
                 <div className='status'>
                     <div>
                         <h1>стандарт</h1>
@@ -42,26 +53,13 @@ export default function HomePage() {
                         <p>10 000</p>
                     </div>
                 </div>
-                <Balance />
+                <Balance balance={userData.balance} />
                 <div className='button-payment_home'>
                     <button onClick={() => navigate('/')}><BsArrowDownLeftCircleFill size={40} /><span>Ввод</span></button>
                     <button onClick={() => navigate('/')}><BsArrowDownRightCircleFill size={40} /><span>Вывод</span></button>
                     <button onClick={() => navigate('/qr-details')}><FaPlayCircle size={40} /><span>Перевод</span></button>
                     <button onClick={() => navigate('/')}><FaProductHunt size={40} /><span>Купить</span></button>
                 </div>
-                {/* <div className='payment-block'>
-                    <div className='child-button'>
-                        <button className='contain-button_item_home'>Ввод<BsArrowReturnRight /> </button>
-                        <button className='contain-button_item_home'>Вывод<BsArrowReturnLeft /></button>
-                    </div>
-                    <button className='contain-button_item_buy'>
-                        <div>
-                            <h1>Купить</h1>
-                            <h2>ASMAN</h2>
-                        </div>
-                        <HiShoppingCart size={30} />
-                    </button>
-                </div> */}
                 <div>
                 </div>
                 <div className='child-button_qr'>

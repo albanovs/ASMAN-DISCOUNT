@@ -32,25 +32,21 @@ export default function SignUp() {
       };
       try {
         const response = await api.post("/auth/register/", dataNew);
-        if (response.data.response === true) {
-          localStorage.setItem("email", inputData.email);
-          navigate("/send-code");
-        } else {
-          if (response.data.message) {
-            alert(response.data.message, "error");
-          }
-        }
+        localStorage.setItem("email", inputData.email);
         setLoading(false);
+        navigate("/send-code");
+        if (response.data.message) {
+          alert(response.data.message, "error");
+        }
       } catch (error) {
         console.log(error);
-        setLoading(false);
       }
-      setError(false);
     } else {
       setLoading(false);
       setError(true);
     }
   };
+
 
   return (
     <div>
@@ -144,7 +140,7 @@ export default function SignUp() {
               <NavLink to="/forgot-password" className="link2">
                 Забыли пароль ?
               </NavLink>
-              <button onSubmit={handleSubmit} className="sign-up2">
+              <button type="submit" className="sign-up2">
                 {loading ? "loading..." : "Далее"}
               </button>
             </div>
