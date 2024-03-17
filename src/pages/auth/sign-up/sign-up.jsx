@@ -26,6 +26,7 @@ export default function SignUp() {
       const dataNew = {
         email: inputData.email,
         first_name: inputData.first_name,
+        last_name: inputData.last_name,
         password: inputData.password,
         confirm_password: inputData.confirm_password,
       };
@@ -150,7 +151,7 @@ export default function SignUp() {
           </form>
           <p className="footer-text2">
             Есть аккаунт ?{" "}
-            <NavLink to={"/"} className="register2">
+            <NavLink to={"/login"} className="register2">
               войдите
             </NavLink>
           </p>

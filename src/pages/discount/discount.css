@@ -1,7 +1,7 @@
 .discount {
   width: 100%;
   min-height: 100vh;
-  background-color: #000000;
+  background-color: var(--black);
 }
 
 .discount .container_2 {
