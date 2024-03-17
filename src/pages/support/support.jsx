@@ -87,7 +87,7 @@ const Support = () => {
       {modal && (
         <Modal setIsModalOpen={setModal}>
           <div className="block">
-            <h2>Нарисать </h2>
+            <h2>Написать </h2>
             <a href="/">
               <div className="box">
                 <div className="flex">

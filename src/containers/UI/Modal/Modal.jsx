@@ -14,16 +14,16 @@ const Modal = ({ isModalOpen, setIsModalOpen, children }) => {
   const handleTouchStart = (e) => {
     setStartY(e.touches[0].clientY);
   };
-  
+
   const handleTouchMove = (e) => {
     if (!startY) return;
-  
+
     const deltaY = e.touches[0].clientY - startY;
     setOffsetY(deltaY);
   };
-  
+
   const handleTouchEnd = () => {
-    if (offsetY > 100) { 
+    if (offsetY > 100) {
       closeModal();
     } else {
       setOffsetY(0);
@@ -38,7 +38,10 @@ const Modal = ({ isModalOpen, setIsModalOpen, children }) => {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        style={{ transform: `translateY(${offsetY}px)` }}
+        style={{
+          transform: `translateY(${Math.min(offsetY, 0)}px)`,
+          transition: "transform 0.3s ease",
+        }}
       >
         <div onClick={closeModal} className="not_modal"></div>
         <div className="modal">
