@@ -20,7 +20,6 @@ export default function SignIn() {
         email,
         password,
       });
-      localStorage.setItem("email", email);
       if (response.data.response === true) {
         const { token } = response.data;
         localStorage.setItem("token", token);
@@ -29,7 +28,7 @@ export default function SignIn() {
         if (response.data.message) {
           alert(response.data.message, "error");
         }
-        if (response.data.isactivated == false) {
+        if (response.data.isactivated === false) {
           alert(response.data.message, "error");
           navigate("/send-code");
         }
