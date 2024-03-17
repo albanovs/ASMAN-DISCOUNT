@@ -6,7 +6,6 @@ import code from './qr-code.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserData } from '../../../../App/slice/user-info';
-import { baseURL } from '../../../../URL';
 export default function MyQRcode() {
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -22,8 +21,7 @@ export default function MyQRcode() {
                 <h1>Мой QR код</h1>
                 <p>Получайте переводы с удобством и безопасностью прямо в приложении</p>
                 <div className='qr-block'>
-                    {/* <img src={code} alt="" /> */}
-                    <div style={{ width: '300px', height: '300px', border: '1px solid red', background: `url(${baseURL}${user_qr.qr}) no-repeat` }}></div>
+                    <img src={user_qr.qr} alt="" />
                 </div>
                 <button className='share-button-qr'><CiShare2 />Поделиться</button>
             </div>
