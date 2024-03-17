@@ -16,11 +16,13 @@ export default function Discount() {
         setData(response.data);
         setTimeout(() => {
           setLoading(false);
-        }, 700);
+        }, 300);
       })
       .catch((error) => {
         console.log(error);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 300);
       });
   }, []);
 

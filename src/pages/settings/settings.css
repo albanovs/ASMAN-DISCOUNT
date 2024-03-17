@@ -1,0 +1,105 @@
+.settings {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--black);
+  padding: 0 20px;
+}
+
+.settings .head {
+  width: 100%;
+  padding: 30px 0;
+  display: grid;
+  grid-template-columns: 24px 1fr 24px;
+  align-items: center;
+}
+
+.settings .head img {
+  width: 24px;
+  height: 24px;
+}
+
+.settings .head h1 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.settings h2 {
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.settings .settings_block {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.settings .leng {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.settings .leng h2 {
+  margin-bottom: 10px;
+}
+
+.settings .box {
+  width: 100%;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ffffff68;
+  border-radius: 10px;
+  background: var(--black1);
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.settings .box.mer {
+  margin: 80px 0;
+}
+
+.settings .box .flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.settings .box .text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.settings .box .icon {
+  font-size: 24px;
+  color: #fff;
+}
+
+.settings .box span {
+  font-size: 16px;
+  font-weight: 300;
+  color: #b4b4b4;
+}
+
+.ant-switch.custom-switch.enabled {
+  background-color: #52c41a;
+}
+.ant-switch.custom-switch.enabled:hover {
+  background-color: #52c41a !important;
+}
+
+.ant-switch {
+  background-color: #686868;
+}
+
+.ant-switch:hover {
+  background-color: #686868 !important;
+}

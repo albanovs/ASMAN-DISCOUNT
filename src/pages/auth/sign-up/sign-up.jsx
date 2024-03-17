@@ -147,7 +147,7 @@ export default function SignUp() {
           </form>
           <p className="footer-text2">
             Есть аккаунт ?{" "}
-            <NavLink to={"/"} className="register2">
+            <NavLink to={"/login"} className="register2">
               войдите
             </NavLink>
           </p>
