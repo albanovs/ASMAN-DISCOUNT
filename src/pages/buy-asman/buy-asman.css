@@ -1,0 +1,112 @@
+.contain-buyasman-all {
+  width: 100%;
+  height: 10vh;
+  background-color: #000000;
+}
+
+.contain-buyasman-all > div:nth-child(1) {
+  color: #fdb602;
+  padding: 10px 5px;
+}
+.contain-buyasman {
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  color: white;
+  padding: 20px 20px;
+  position: relative;
+}
+
+.contain-buyasman > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contain-buyasman > h1 {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.contain-buyasman > p {
+  font-size: 8px;
+  color: #ccc;
+  text-align: center;
+  margin-bottom: 2px;
+}
+.buyasman-payblock {
+  width: 100%;
+  height: 100px;
+  background-color: #181818;
+  border-radius: 10px;
+  padding: 10px 10px;
+  position: relative;
+}
+
+.buyasman-payblock > div > img {
+  width: 40px;
+}
+
+.buyasman-payblock > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.coin-buyasman {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.coin-buyasman_img {
+  width: 100px;
+}
+
+.buyasman-payblock input {
+  background: inherit;
+  border-bottom: 0.5px solid #626262;
+  padding: 5px;
+  font-size: 12px;
+  width: 200px;
+  color: #dddbdb;
+}
+
+.balance-buyasman {
+  font-size: 10px;
+  color: #848383;
+  padding-bottom: 10px;
+}
+
+.button-send-buyasman {
+  width: 100%;
+  height: 50px;
+  background-color: #fdb602;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  gap: 5px;
+}
+
+.bottom-btn-buyasman {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.text-main-buyasman {
+  color: #ededed;
+  font-size: 14px;
+}
+
+.error-text-buyasman {
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}

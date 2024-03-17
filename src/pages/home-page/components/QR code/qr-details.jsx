@@ -5,11 +5,20 @@ import coin from '../../../../views/coins/coin.png'
 import { IoIosSend } from "react-icons/io";
 import { IoQrCode } from "react-icons/io5";
 import { FiChevronLeft } from "react-icons/fi";
+import { api } from '../../../../Api';
+import LoadingAnimate from '../../../../UI-kit/loading';
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchUserData } from '../../../../App/slice/user-info'
 
 export default function QrDetails() {
 
     const [isID, setIsID] = useState("")
+    const user_coin = useSelector(state => state.user_info.user_info)
+    const dispatch = useDispatch()
+    const [coin_count, setCoinCount] = useState(0)
+    const [loading, setLoading] = useState(false)
     const { id } = useParams()
+    const [isBalance, setIsBalance] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -17,6 +26,34 @@ export default function QrDetails() {
             setIsID(id)
         }
     }, [])
+
+    useEffect(() => {
+        dispatch(fetchUserData())
+    }, [dispatch])
+
+    useEffect(() => {
+        parseFloat(coin_count) > (user_coin.balance || 0)
+            ? setIsBalance(true) : setIsBalance(false)
+    }, [coin_count])
+
+    const transition = async () => {
+        setLoading(true)
+        try {
+            const token = localStorage.getItem('token')
+            await api.post('/payment/scanner/?type=1', {
+                recipient: isID,
+                amount: parseFloat(coin_count),
+            }, {
+                headers: {
+                    Authorization: `Token ${token}`
+                }
+            })
+            setLoading(false)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div className='contain-details-all'>
             <div>
@@ -39,18 +76,17 @@ export default function QrDetails() {
                         </div>
                     </div>
                     <div className='contain-payblock'>
-                        <h1 className='balance-perevod'>ваш текущий баланс: 5000</h1>
+                        <h1 className='balance-perevod'>ваш текущий баланс: {user_coin.balance || 0}</h1>
                         <div>
                             <h1 className='text-main-perevod'>Сумма:</h1>
-                            <input type="number" />
+                            <input type="number" onChange={(e) => setCoinCount(e.target.value)} />
                         </div>
-                        <span className='error-text-perevod'>недостаточно средств</span>
+                        {isBalance ? <span className='error-text-perevod'>недостаточно средств</span> : ""}
                     </div>
                     <div className='bottom-btn-perevod'>
                         <button onClick={() => navigate('/qr-scanner')}><IoQrCode size={40} /></button>
-                        <button className='button-send-perevod'>
-                            <IoIosSend />
-                            Отправить
+                        <button style={{ background: loading ? '#bba97a' : "#fdb602" }} disabled={loading} onClick={() => transition()} className='button-send-perevod'>
+                            {loading ? <LoadingAnimate /> : <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}> <IoIosSend /> Отправить</div>}
                         </button>
                     </div>
                 </div>

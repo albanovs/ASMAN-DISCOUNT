@@ -12,8 +12,14 @@ const QRScanner = () => {
             }
         },
         onDecodeResult(result) {
-            const text = result.getText();
-            navigate(`/details-qr/${text}`);
+            let text = result.getText();
+            if (text.endsWith("?type=1")) {
+                text = text.replace("?type=1", "");
+                navigate(`/details-qr/${text}`);
+            } else if (text.endsWith("?type=2")) {
+                text = text.replace("?type=2", "");
+                navigate(`/discount-detail/${text}`);
+            }
             stop();
         },
     });
@@ -26,6 +32,7 @@ const QRScanner = () => {
         </div>
     );
 };
+
 
 export default QRScanner;
 

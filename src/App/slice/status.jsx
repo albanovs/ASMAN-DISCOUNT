@@ -1,32 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { api } from '../../Api'
 
-const user_info = createSlice({
-    name: 'user-info',
+const status = createSlice({
+    name: 'status',
     initialState: {
-        user_info: []
+        status: []
     },
     reducers: {
-        userInfo: (state, action) => {
-            state.user_info = action.payload
+        getStatus: (state, action) => {
+            state.status = action.payload
         }
     }
 })
 
-export const { userInfo } = user_info.actions
-export default user_info.reducer
+export const { getStatus } = status.actions
+export default status.reducer
 
 
-export const fetchUserData = () => {
+export const fetchStatusData = () => {
     return async (dispatch) => {
         try {
             const token = localStorage.getItem('token')
-            const response = await api.get("/auth/user-info", {
+            const response = await api.get("/payment/asman-rate", {
                 headers: {
                     Authorization: `Token ${token}`,
                 },
             });
-            dispatch(userInfo(response.data))
+            dispatch(getStatus(response.data))
         } catch (error) {
             console.log(error);
         }

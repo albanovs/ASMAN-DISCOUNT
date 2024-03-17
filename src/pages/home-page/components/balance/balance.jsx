@@ -2,7 +2,7 @@ import React from 'react'
 import './balance.css'
 import coin from '../../../../views/coins/coin.png'
 
-export default function Balance({ balance }) {
+export default function Balance({ balance, curs }) {
     return (
         <div className='balance-card'>
             <div>
@@ -10,8 +10,8 @@ export default function Balance({ balance }) {
                 <h2><img className='coin-img' src={coin} alt="" />{balance || 0}</h2>
                 <h1>курс</h1>
                 <div className='curs-usdt'>
-                    <h3>1 = 0,1 $</h3>
-                    <h3> 5074,192 = 507,419 usdt</h3>
+                    <h3>{`1 = ${curs} $` || ""}</h3>
+                    <h3>{`${balance} = ${balance * curs} usdt`}</h3>
                 </div>
             </div>
             <div>

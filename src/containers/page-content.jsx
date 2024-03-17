@@ -5,7 +5,6 @@ import Payments from "../pages/payments/payments";
 import Discount from "../pages/discount/discount";
 import Market from "../pages/market/market";
 import Profile from "../pages/profile/profile";
-import QrDetails from "../pages/home-page/components/QR code/qr-details";
 import Settings from "../pages/settings/settings";
 import Support from "../pages/support/support";
 import ChangePassword from "../pages/change-password/change-password";
@@ -26,7 +25,6 @@ export default function PageContent() {
           path="/change-password"
           element={<ChangePassword />}
         />
-        {/* <Route exact={true} path="/qr-details" element={<QrDetails />} /> */}
       </Routes>
     </div>
   );
