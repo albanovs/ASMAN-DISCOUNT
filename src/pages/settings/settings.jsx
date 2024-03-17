@@ -68,7 +68,7 @@ const Settings = () => {
               <IoIosArrowForward className="icon" />
             </div>
           </div>
-          <div className="box">
+          <div onClick={handleToggle} className="box">
             <p className="text">Вход по биометрии</p>
             <div>
               <Switch
