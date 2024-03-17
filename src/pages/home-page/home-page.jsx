@@ -22,8 +22,6 @@ export default function HomePage() {
         dispatch(fetchUserData())
     }, [dispatch])
 
-    console.log(userData);
-
     const navigate = useNavigate()
     return (
         <div className='home-page'>

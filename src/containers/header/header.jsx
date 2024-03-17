@@ -5,7 +5,6 @@ import { IoNotifications } from "react-icons/io5";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserData } from '../../App/slice/user-info';
-import { baseURL } from '../../URL';
 
 export default function Header() {
 
@@ -14,17 +13,17 @@ export default function Header() {
     useEffect(() => {
         dispatch(fetchUserData())
     }, [dispatch])
+    console.log(names);
 
     return (
         <div className='contain-header'>
             <div className="header">
                 <div className='profile-name'>
                     {names.profile_photo ?
-                        <div
+                        <img
                             className='profile-photo-header'
-                            style={{ backgroundImage: `url(${baseURL}${names.profile_photo})` }}>
-
-                        </div> : <MdAccountCircle size={40} />}
+                            src={names.profile_photo}
+                        /> : <MdAccountCircle size={40} />}
                     <h1>{names.first_name || "пользователь"}</h1>
                 </div>
                 <div style={{ display: 'flex', gap: '10px' }}>
