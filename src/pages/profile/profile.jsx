@@ -9,15 +9,18 @@ import logoutImage from "../../views/profile/logout.svg";
 import settings from "../../views/profile/settings.svg";
 import Modal from "../../containers/UI/Modal/Modal";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserData } from "../../App/slice/user-info";
 
 export default function Profile() {
-  const [data, setData] = useState([]);
   const [modal, setModal] = useState(false);
   const [photo, setPhoto] = useState(false);
   const [local, setLocal] = useState("");
   const [loading, setLoading] = useState(true);
   const [loadingPhoto, setLoadingPhoto] = useState(false);
+  const names = useSelector((state) => state.user_info.user_info);
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -30,30 +33,12 @@ export default function Profile() {
     Authorization: `Token ${local}`,
   };
 
-  function personalData() {
-    api("/auth/user-info/", { headers })
-      .then((response) => {
-        setData(response.data);
-        setTimeout(() => {
-          setLoading(false);
-        }, 300);
-        setTimeout(() => {
-          setLoadingPhoto(false);
-        }, 500);
-      })
-      .then((error) => {
-        setTimeout(() => {
-          setLoading(false);
-        }, 300);
-        console.log(error);
-      });
-  }
-
   useEffect(() => {
-    if (local) {
-      personalData();
+    if (names) {
+      setLoading(false);
+      setLoadingPhoto(false)
     }
-  }, [local]);
+  }, [names]);
 
   const handleImageChange = (event) => {
     const imageFile = event.target.files && event.target.files[0];
@@ -65,7 +50,7 @@ export default function Profile() {
         .post("/auth/update-photo/", formData, { headers })
         .then((response) => {
           if (response.data) {
-            personalData();
+            dispatch(fetchUserData())
           }
         })
         .catch((error) => {
@@ -85,7 +70,7 @@ export default function Profile() {
     <div className="profile">
       {photo && (
         <div onClick={() => setPhoto(false)} className="photo_big">
-          <img src={data?.profile_photo} alt="" />
+          <img src={names?.profile_photo} alt="" />
         </div>
       )}
       <div>
@@ -108,13 +93,13 @@ export default function Profile() {
               <img
                 onClick={() => setPhoto(true)}
                 className="profile_image"
-                src={data?.profile_photo}
+                src={names?.profile_photo}
                 alt=""
               />
             )}
 
             <p className="name">
-              {data?.last_name} {data?.first_name}{" "}
+              {names?.last_name} {names?.first_name}{" "}
             </p>
             <form onSubmit={handleImageChange}>
               <label>
@@ -133,7 +118,7 @@ export default function Profile() {
                 <div className="box top1">
                   <div>
                     <p className="label">Номер телефона</p>
-                    <p className="text">{data?.phone}</p>
+                    <p className="text">{names?.phone}</p>
                   </div>
                   <IoIosArrowForward className="icon" />
                 </div>
@@ -141,7 +126,7 @@ export default function Profile() {
                 <div className="box down">
                   <div>
                     <p className="label">E-mail</p>
-                    <p className="text">{data?.email}</p>
+                    <p className="text">{names?.email}</p>
                   </div>
                   <IoIosArrowForward className="icon" />
                 </div>

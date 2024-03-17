@@ -4,16 +4,16 @@ import { MdAccountCircle } from "react-icons/md";
 import { IoNotifications } from "react-icons/io5";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserData } from '../../App/slice/user-info';
+// import { fetchUserData } from '../../App/slice/user-info';
 import { baseURL } from '../../URL';
 
 export default function Header() {
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const names = useSelector(state => state.user_info.user_info)
-    useEffect(() => {
-        dispatch(fetchUserData())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(fetchUserData())
+    // }, [dispatch])
 
     return (
         <div className='contain-header'>
