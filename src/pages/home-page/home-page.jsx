@@ -11,6 +11,7 @@ import { BsArrowDownLeftCircleFill } from "react-icons/bs";
 import { BsArrowDownRightCircleFill } from "react-icons/bs";
 import { FaPlayCircle } from "react-icons/fa";
 import { FaProductHunt } from "react-icons/fa";
+import LoadingAnimate from '../../UI-kit/loading';
 
 export default function HomePage() {
 
@@ -20,6 +21,7 @@ export default function HomePage() {
             <Header />
             <div className='section1'>
                 <h1>Ваш статус !</h1>
+                <LoadingAnimate color={'#ccc'} />
                 <div className='status'>
                     <div>
                         <h1>стандарт</h1>
