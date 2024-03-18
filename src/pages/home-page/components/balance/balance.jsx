@@ -11,7 +11,7 @@ export default function Balance({ balance, curs }) {
                 <h1>курс</h1>
                 <div className='curs-usdt'>
                     <h3>{`1 = ${curs} $` || ""}</h3>
-                    <h3>{`${balance} = ${balance * curs} usdt`}</h3>
+                    <h3>{`${balance} = ${(balance * curs).toFixed(2)} usdt`}</h3>
                 </div>
             </div>
             <div>
