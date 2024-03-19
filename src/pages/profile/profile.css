@@ -247,3 +247,8 @@
   height: 135px;
   border-radius: 50%;
 }
+
+.container{
+  max-width: 990px;
+  width: 90%;
+}
