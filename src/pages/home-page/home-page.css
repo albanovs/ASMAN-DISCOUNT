@@ -67,39 +67,6 @@
   width: 100%;
 }
 
-.contain-button_item_buy {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  background: radial-gradient(
-      ellipse farthest-corner at right bottom,
-      #fedb37 0%,
-      #fdb931 8%,
-      #9f7928 30%,
-      #8a6e2f 40%,
-      transparent 80%
-    ),
-    radial-gradient(
-      ellipse farthest-corner at left top,
-      #ffffff 0%,
-      #ffffac 8%,
-      #d1b464 25%,
-      #5d4a1f 62.5%,
-      #5d4a1f 100%
-    );
-
-  /* background: rgb(238, 174, 202);
-  background: radial-gradient(
-    circle,
-    rgba(238, 174, 202, 1) 0%,
-    rgba(148, 187, 233, 1) 100%
-  ); */
-  border-radius: 5px;
-  width: 40%;
-  padding: 10px;
-}
-
 .child-button_qr {
   display: flex;
   justify-content: space-between;
@@ -118,10 +85,12 @@
   gap: 5px;
   border-radius: 5px;
   background: #181818;
+  border: 0.1px solid #575757;
 }
 
 .child-button_qr button:active,
-.contain-button_item_home:active {
+.contain-button_item_home:active,
+.referal-contain > div:active {
   /* transition: 2s all ease; */
   color: #fdb602;
 }
@@ -152,3 +121,26 @@
 .status-user {
   padding: 10px 0;
 }
+
+.referal-contain {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  padding: 0 20px;
+  font-weight: 400;
+}
+
+.referal-contain > div {
+  width: 100%;
+  height: 50px;
+  background-color: #181818;
+  border: 0.1px solid #575757;
+  border-radius: 5px;
+  padding: 0 20px;
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+

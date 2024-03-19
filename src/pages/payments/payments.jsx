@@ -14,18 +14,18 @@ export default function Payments() {
                     история
                 </NavLink>
                 <div className='contain-button'>
-                    <button className='contain-button_item '>
+                    <NavLink to="/qr-details" className='contain-button_item '>
                         <BsArrowDownUp />
                         Перевод
-                    </button>
+                    </NavLink>
                     <div className='contain-child'>
-                        <button className='contain-button_item_child'>Ввод</button>
-                        <button className='contain-button_item_child'>Вывод</button>
+                        <NavLink className='contain-button_item_child'>Ввод</NavLink>
+                        <NavLink className='contain-button_item_child'>Вывод</NavLink>
                     </div>
-                    <button className='contain-button_item '>
+                    <NavLink to="/buy-asman" className='contain-button_item '>
                         Купить Асман
                         <TbShoppingCartDollar />
-                    </button>
+                    </NavLink>
                 </div>
             </div>
         </div>

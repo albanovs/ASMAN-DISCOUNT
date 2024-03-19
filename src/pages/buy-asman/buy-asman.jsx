@@ -58,7 +58,7 @@ export default function BuyAsman() {
                         </div>
                     </div>
                     <div className='bottom-btn-buyasman'>
-                        <button onClick={buyAsmanSend} className='button-send-perevod'>
+                        <button  onClick={buyAsmanSend} className='button-send-perevod'>
                             <IoIosSend />
                             Купить
                         </button>

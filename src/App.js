@@ -12,6 +12,7 @@ import QRScanner from "./pages/home-page/components/QR code/qr-scanner";
 import QrDetails from "./pages/home-page/components/QR code/qr-details";
 import DiscountDetail from "./pages/discount-detail/discount-detail";
 import BuyAsman from "./pages/buy-asman/buy-asman";
+import WaitingProcess from "./pages/payments/components/waiting/waitng-process";
 
 function App() {
   const location = useLocation();
@@ -40,6 +41,7 @@ function App() {
           <Route path="/qr-details" element={<PrivateRoute element={<QrDetails />} />} />
           <Route path="/discount-detail/:id" element={<PrivateRoute element={<DiscountDetail />} />} />
           <Route path="/buy-asman" element={<PrivateRoute element={<BuyAsman />} />} />
+          <Route path="/waiting" element={<PrivateRoute element={<WaitingProcess />} />} />
           <Route path="/*" element={<PrivateRoute element={<LayOut />} />} />
           <Route path="/login" element={<SignIn />} />
           <Route path="/register" element={<SignUp />} />

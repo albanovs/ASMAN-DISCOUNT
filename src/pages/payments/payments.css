@@ -26,9 +26,9 @@
 .contain-button_item {
   width: 340px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #181818;
-  border: 0.5px solid #ccc;
+  border: 0.1px solid #787878;
   color: white;
   display: flex;
   justify-content: center;
@@ -39,9 +39,9 @@
 .contain-button_item_child {
   width: 165px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #181818;
-  border: 0.5px solid #ccc;
+  border: 0.1px solid #787878;
   color: white;
   display: flex;
   justify-content: center;
@@ -50,7 +50,12 @@
 }
 
 .contain-child {
-    gap: 10px;
-    display: flex;
-    justify-content: space-between;
+  gap: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contain-button_item:active,
+.contain-button_item_child:active {
+  color: #e2a332;
 }

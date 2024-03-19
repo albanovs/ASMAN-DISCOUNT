@@ -65,17 +65,24 @@ export default function HomePage() {
                     </div>
                 </div>
                 <Balance balance={userData.balance} curs={getStatus.rate} />
-                <div className='button-payment_home'>
-                    <button onClick={() => navigate('/')}><BsArrowDownLeftCircleFill size={40} /><span>Ввод</span></button>
-                    <button onClick={() => navigate('/')}><BsArrowDownRightCircleFill size={40} /><span>Вывод</span></button>
-                    <button onClick={() => navigate('/qr-details')}><FaPlayCircle size={40} /><span>Перевод</span></button>
-                    <button onClick={() => navigate('/buy-asman')}><FaProductHunt size={40} /><span>Купить</span></button>
+                <div className='button-payment_contain'>
+                    <div className='button-payment_home'>
+                        <button onClick={() => navigate('/')}><BsArrowDownLeftCircleFill size={40} /><span>Ввод</span></button>
+                        <button onClick={() => navigate('/')}><BsArrowDownRightCircleFill size={40} /><span>Вывод</span></button>
+                        <button onClick={() => navigate('/qr-details')}><FaPlayCircle size={40} /><span>Перевод</span></button>
+                        <button onClick={() => navigate('/buy-asman')}><FaProductHunt size={40} /><span>Купить</span></button>
+                    </div>
                 </div>
                 <div>
                 </div>
                 <div className='child-button_qr'>
                     <button className='contain-button_item_qr' onClick={() => navigate('/my-qr')}>Мой QR <IoQrCodeOutline size={40} /></button>
                     <button className='contain-button_item_qr' onClick={() => navigate('/qr-scanner')}>Сканнер <BiScan size={40} /></button>
+                </div>
+                <div className='referal-contain'>
+                    <div>
+                        <h1>Реферальная программа</h1>
+                    </div>
                 </div>
             </div>
         </div >
