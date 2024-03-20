@@ -75,7 +75,7 @@ export default function SignIn() {
                 <NavLink to="/forgot-password" className="link">
                   Забыли пароль ?
                 </NavLink>
-                <button style={{ background: loading ? '#bba97a' : "#fdb602" }} disabled={loading} onSubmit={handleSubmit} className="sign-in">
+                <button style={{ background: loading ? '#bba97a' : "#fdb602", display: 'flex', justifyContent: 'center', alignItems: 'center' }} disabled={loading} onSubmit={handleSubmit} className="sign-in">
                   {loading ? <LoadingAnimate /> : "Войти"}
                 </button>
               </div>
