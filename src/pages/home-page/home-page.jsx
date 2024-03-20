@@ -17,6 +17,7 @@ import bronze from '../../views/status/bronze.png'
 import silver from '../../views/status/silver.png'
 import gold from '../../views/status/gold.png'
 import vip from '../../views/status/vip.png'
+import Storis from '../../containers/stories/stories';
 
 export default function HomePage() {
 
@@ -34,6 +35,7 @@ export default function HomePage() {
     return (
         <div className='home-page'>
             <Header />
+            <Storis />
             <div className='section1'>
                 <h1>Ваш статус !</h1>
                 <h2 className='status-user'>{userData.status || "загрузка"}</h2>
