@@ -66,6 +66,7 @@ export default function HomePage() {
                         <p>{getStatus.vip || 10000}</p>
                     </div>
                 </div>
+                
                 <Balance balance={userData.balance} curs={getStatus.rate} />
                 <div className='button-payment_contain'>
                     <div className='button-payment_home'>

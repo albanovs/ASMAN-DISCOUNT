@@ -4,6 +4,7 @@ import coin from "../covers/coin.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { api } from "../../../Api";
+import LoadingAnimate from "../../../UI-kit/loading";
 
 export default function SignIn() {
   const [loading, setLoading] = useState(false);
@@ -42,15 +43,15 @@ export default function SignIn() {
 
   return (
     <div>
-      <div className="container">
-        <div className="images">
-          <div className="coin">
+      <div className="container-sign-in">
+        <div className="images-sign-in">
+          <div className="coin-sign-in">
             <img src={coin} alt="" />
           </div>
           <form onSubmit={handleSubmit}>
-            <div className="submit">
+            <div className="submit-sign-in">
               <h1>Вход</h1>
-              <div className="inputs">
+              <div className="inputs-sign-in">
                 <input
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -58,7 +59,7 @@ export default function SignIn() {
                   placeholder="email"
                   required
                 />
-                <div className="password">
+                <div className="password-sign-in">
                   <input
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -74,8 +75,8 @@ export default function SignIn() {
                 <NavLink to="/forgot-password" className="link">
                   Забыли пароль ?
                 </NavLink>
-                <button onSubmit={handleSubmit} className="sign-in">
-                  {loading ? "loading..." : "Войти"}
+                <button style={{ background: loading ? '#bba97a' : "#fdb602" }} disabled={loading} onSubmit={handleSubmit} className="sign-in">
+                  {loading ? <LoadingAnimate /> : "Войти"}
                 </button>
               </div>
             </div>

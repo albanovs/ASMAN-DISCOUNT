@@ -3,6 +3,7 @@ import "./forgot-password.css";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../../Api";
 import coin from "../covers/coin.png";
+import LoadingAnimate from "../../../UI-kit/loading";
 
 const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
@@ -58,11 +59,12 @@ const ForgotPassword = () => {
               />
               {error.email && <p className="red">{error.email}</p>}
               <button
-                style={{ marginBottom: 28 }}
+                disabled={loading}
+                style={{ marginBottom: 28, background: loading ? '#bba97a' : "#fdb602" }}
                 onSubmit={handleSubmit}
                 className="forgot-password"
               >
-                {loading ? "loading..." : "Получить код"}
+                {loading ? <LoadingAnimate /> : "Получить код"}
               </button>
             </div>
           </div>

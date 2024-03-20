@@ -101,7 +101,7 @@ export default function EmailCode() {
                   ))}
                 </div>
                 <NavLink className="link3">Забыли пароль ?</NavLink>
-                <button type="submit" className="sign-in3">
+                <button style={{ background: loading ? '#bba97a' : "#fdb602" }} type="submit" className="sign-in3">
                   {loading ? <LoadingAnimate color="#ccc" /> : "Войти"}
                 </button>
               </div>

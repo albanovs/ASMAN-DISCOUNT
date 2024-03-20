@@ -1,4 +1,4 @@
-.images {
+.images-sign-in {
   background: url(../covers/top.png);
   width: 100%;
   height: 100vh;
@@ -6,24 +6,24 @@
   padding-top: 60px;
 }
 
-.coin {
+.coin-sign-in {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.coin img {
+.coin-sign-in img {
   width: 180px;
 }
 
-.submit h1 {
+.submit-sign-in h1 {
   text-align: center;
   font-weight: 800;
   margin-bottom: 20px;
 }
 
-.inputs {
+.inputs-sign-in {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,7 +33,7 @@
   margin: 0 auto;
 }
 
-.inputs input {
+.inputs-sign-in input {
   width: 320px;
   height: 50px;
   border: none;
@@ -62,7 +62,7 @@
   cursor: pointer;
 }
 
-.password {
+.password-sign-in {
   position: relative;
 }
 
