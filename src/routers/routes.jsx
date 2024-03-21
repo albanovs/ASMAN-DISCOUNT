@@ -1,5 +1,5 @@
 import { IoHome } from "react-icons/io5";
-import { FaHistory } from "react-icons/fa";
+import { LuHistory } from "react-icons/lu";
 import { BiSolidDiscount } from "react-icons/bi";
 import { FiShoppingBag } from "react-icons/fi";
 import { MdAccountCircle } from "react-icons/md";
@@ -13,7 +13,7 @@ const routes = [
     {
         path: '/payments',
         name: 'История',
-        icon: <FaHistory size={25} />
+        icon: <LuHistory size={25} />
     },
     {
         path: '/discount',
