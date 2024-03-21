@@ -36,18 +36,24 @@ export default function Payments() {
 
                         return (
                             <div key={index} className='section-payments_items'>
-                                <h1>сегодня</h1>
-                                <div>
-                                    <h1>{data.info}</h1>
-                                    <p
-                                        className='detail_count_status'
-                                        style={data.status === 0 ?
-                                            { color: 'red' }
-                                            : data.status === 1
-                                                ? { color: '#00FF7F' }
-                                                : { color: 'var(--orange)' }}
-                                    >{data.total} <span>{data.status === 0 ? <MdCancel /> : data.status === 1 ? <IoCheckmarkDoneCircleSharp /> : <MdOutlineHistory />}</span></p>
-                                </div>
+                                <h1>{data.date}</h1>
+                                {
+                                    data.list.map((data, index) => {
+                                        return (
+                                            <div key={index}>
+                                                <h1>{data.info}</h1>
+                                                <p
+                                                    className='detail_count_status'
+                                                    style={data.status === 0 ?
+                                                        { color: 'red' }
+                                                        : data.status === 1
+                                                            ? { color: '#00FF7F' }
+                                                            : { color: 'var(--orange)' }}
+                                                >{data.total} <span>{data.status === 0 ? <MdCancel /> : data.status === 1 ? <IoCheckmarkDoneCircleSharp /> : <MdOutlineHistory />}</span></p>
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
                         )
                     })

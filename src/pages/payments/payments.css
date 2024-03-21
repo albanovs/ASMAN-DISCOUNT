@@ -23,11 +23,13 @@
   align-items: center;
   border-top: 1px solid var(--black1);
   padding: 10px 0;
+  width: 100%;
 }
 
 .section-payments_items > h1 {
-  font-size: 15px;
+  font-size: 11px;
   color: #999999;
+  padding: 10px;
 }
 
 .detail_count_status {
