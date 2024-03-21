@@ -10,10 +10,10 @@ import SuccessAlert from "../../UI-kit/success";
 
 const DiscountDetail = () => {
   const { id } = useParams();
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const notify = () => toast.success('Вы успешно проибрели скидку!', {
+  const notify = () => toast.success('Вы успешно приобрели скидку!', {
     position: "top-center",
     autoClose: 5000,
     hideProgressBar: false,
@@ -39,13 +39,14 @@ const DiscountDetail = () => {
     setLoading(true)
     try {
       const token = localStorage.getItem('token')
-      await api.post('/payment/scanner/?type=2', {
+      const response = await api.post('/payment/scanner/?type=2', {
         partner: id
       }, {
         headers: {
           Authorization: `Token ${token}`
         }
       })
+
       notify()
       setLoading(false)
     } catch (error) {
@@ -62,7 +63,12 @@ const DiscountDetail = () => {
       <img className="image" src={data.img} alt="" />
       <p className="text_discount">{data.description}</p>
       <SuccessAlert theme="colored" />
-      <button disabled={loading} style={{ background: loading ? '#bba97a' : "#fdb602" }} onClick={() => setCoin()} className="btn">
+      <button
+        disabled={loading}
+        style={{ background: loading ? '#bba97a' : "#fdb602" }}
+        onClick={() => setCoin()}
+        className="btn"
+      >
         {loading ? <LoadingAnimate /> : 'Использовать коин'}
       </button>
     </div>

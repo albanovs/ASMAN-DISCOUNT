@@ -1,12 +1,12 @@
 import React from 'react'
-import './waiting-process.css'
-import { BsClockFill } from "react-icons/bs";
+import './success-payments.css'
+import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import asman from '../../../../views/coins/asmancoin.png'
 import { FiChevronLeft } from 'react-icons/fi';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 
-export default function WaitingProcess() {
+export default function SuccessPayments() {
 
     const process_count = useSelector(state => state.process)
 
@@ -14,9 +14,8 @@ export default function WaitingProcess() {
     return (
         <div className='waiting-contain'>
             <div><FiChevronLeft onClick={() => navigate('/')} size={40} /></div>
-            <BsClockFill size={50} color='#fdb602' />
-            <h1>Платеж в обработке</h1>
-            <h2>Проверка реквизитов займет <br /> от 1 минуты до 24 часа</h2>
+            <IoCheckmarkDoneCircle size={50} color='#73ff37' />
+            <h1>Перевод успешно произведен</h1>
             <p>{process_count.process || 0} <img src={asman} alt="" /></p>
             <NavLink to="/history" className="nav_history">История платежей</NavLink>
         </div>

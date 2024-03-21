@@ -85,3 +85,7 @@
   color: #686868;
   z-index: 99999999;
 }
+
+.storis ::-webkit-scrollbar {
+  display: none;
+}

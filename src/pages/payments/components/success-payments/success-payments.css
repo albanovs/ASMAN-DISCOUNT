@@ -1,0 +1,47 @@
+.waiting-contain {
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.waiting-contain > p > img {
+  width: 30px;
+}
+
+.waiting-contain > p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.waiting-contain > .nav_history {
+  padding: 5px 20px;
+  border: 0.1px solid #575757;
+  background-color: #181818;
+  border-radius: 5px;
+  color: white;
+}
+
+.waiting-contain > .nav_history:active {
+  color: #fdb602;
+}
+
+.waiting-contain > h2 {
+  font-size: 10px;
+  text-align: center;
+  color: #9f9f9f;
+}
+
+.waiting-contain div:nth-child(1) {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fdb602;
+}

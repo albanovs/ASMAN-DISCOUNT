@@ -9,13 +9,15 @@ import { api } from '../../../../Api';
 import LoadingAnimate from '../../../../UI-kit/loading';
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchUserData } from '../../../../App/slice/user-info'
+import { getProcess } from '../../../../App/slice/process'
 
 export default function QrDetails() {
 
     const [isID, setIsID] = useState("")
     const user_coin = useSelector(state => state.user_info.user_info)
     const dispatch = useDispatch()
-    const [coin_count, setCoinCount] = useState(0)
+    const [coin_count, setCoinCount] = useState("")
+    const [isUser, setIsUser] = useState(false)
     const [loading, setLoading] = useState(false)
     const { id } = useParams()
     const [isBalance, setIsBalance] = useState(false)
@@ -40,7 +42,7 @@ export default function QrDetails() {
         setLoading(true)
         try {
             const token = localStorage.getItem('token')
-            await api.post('/payment/scanner/?type=1', {
+            const response = await api.post('/payment/scanner/?type=1', {
                 recipient: isID,
                 amount: parseFloat(coin_count),
             }, {
@@ -48,7 +50,18 @@ export default function QrDetails() {
                     Authorization: `Token ${token}`
                 }
             })
-            setLoading(false)
+            if (!response.data.response) {
+                setIsUser(true)
+                setLoading(false)
+                return
+            } else {
+                setLoading(false)
+                setCoinCount("")
+                setIsID("")
+                navigate('/success-payments')
+                dispatch(getProcess(coin_count))
+            }
+
         } catch (error) {
             console.log(error);
         }
@@ -70,6 +83,7 @@ export default function QrDetails() {
                         <h1 className='balance-perevod'>Введите ID или отсканируйте QR</h1>
                         <div>
                             <h1 className='text-main-perevod'>ID получателя:</h1>
+                            {isUser ? <span className='error-text-user'>неправильный ID пользователя</span> : ""}
                             <div>
                                 <input value={isID} onChange={(e) => setIsID(e.target.value)} type="text" />
                             </div>
@@ -79,7 +93,7 @@ export default function QrDetails() {
                         <h1 className='balance-perevod'>ваш текущий баланс: {user_coin.balance || 0}</h1>
                         <div>
                             <h1 className='text-main-perevod'>Сумма:</h1>
-                            <input type="number" onChange={(e) => setCoinCount(e.target.value)} />
+                            <input type="number" value={coin_count} onChange={(e) => setCoinCount(e.target.value)} />
                         </div>
                         {isBalance ? <span className='error-text-perevod'>недостаточно средств</span> : ""}
                     </div>
