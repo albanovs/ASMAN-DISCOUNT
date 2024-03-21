@@ -12,6 +12,7 @@ import LoadingAnimate from '../../UI-kit/loading';
 export default function BuyAsman() {
     const [scrin, setscrin] = useState(null);
     const [loading, setLoading] = useState(false)
+    const [load_scrin, setLoadScrin] = useState(false)
     const navigate = useNavigate();
     const dispatch = useDispatch()
 
@@ -32,10 +33,13 @@ export default function BuyAsman() {
                     Authorization: `Token ${token}`
                 }
             });
-            if (response.status === 201) {
+            if (response.data.response) {
                 dispatch(getProcess('Ожидание'))
                 navigate('/waiting')
                 setLoading(false)
+            } else {
+                setLoading(false)
+                setLoadScrin(true)
             }
         } catch (error) {
             console.log(error);
@@ -59,6 +63,7 @@ export default function BuyAsman() {
                     </div>
                     <div className='buyasman-payblock'>
                         <h1 className='balance-buyasman'>Прикрепите скриншот вашей транзакции</h1>
+                        {load_scrin ? <span className='error-text-buyasman'>скриншот не приклеплен</span> : ""}
                         <div>
                             <input
                                 className="input_form_buyasman"

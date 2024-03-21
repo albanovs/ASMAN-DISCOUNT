@@ -50,7 +50,7 @@ export default function WithDrawal() {
                     Authorization: `Token ${token}`
                 }
             })
-            if (!response.status === 201) {
+            if (!response.data.response) {
                 setIsUser(true)
                 setLoading(false)
                 return
@@ -61,6 +61,8 @@ export default function WithDrawal() {
                 navigate('/waiting')
                 dispatch(getProcess(coin_count))
             }
+
+            console.log(response);
 
         } catch (error) {
             console.log(error);
