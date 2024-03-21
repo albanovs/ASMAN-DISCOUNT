@@ -50,7 +50,7 @@ export default function BuyAsman() {
                         <h1 className='balance-buyasman'>Прикрепите скриншот вашей транзакции</h1>
                         <div>
                             <input
-                                className="input_form"
+                                className="input_form_buyasman"
                                 type="file"
                                 accept="image/*"
                                 onChange={sendImage}
