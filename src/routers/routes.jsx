@@ -1,5 +1,5 @@
 import { IoHome } from "react-icons/io5";
-import { BsArrowUpLeftCircle } from "react-icons/bs";
+import { FaHistory } from "react-icons/fa";
 import { BiSolidDiscount } from "react-icons/bi";
 import { FiShoppingBag } from "react-icons/fi";
 import { MdAccountCircle } from "react-icons/md";
@@ -12,8 +12,8 @@ const routes = [
     },
     {
         path: '/payments',
-        name: 'Платежи',
-        icon: <BsArrowUpLeftCircle size={25} />
+        name: 'История',
+        icon: <FaHistory size={25} />
     },
     {
         path: '/discount',
