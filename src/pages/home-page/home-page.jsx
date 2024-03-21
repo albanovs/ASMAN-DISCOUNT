@@ -40,33 +40,33 @@ export default function HomePage() {
                 <h1>Ваш статус !</h1>
                 <h2 className='status-user'>{userData.status || "загрузка"}</h2>
                 <div className='status'>
-                    <div>
+                    <div className={userData.status == 'Стандарт' ? "active_status" : ""}>
                         <h1>стандарт</h1>
                         <img src={standart} alt="" />
                         <p>{getStatus.standard || 0}</p>
                     </div>
-                    <div>
+                    <div className={userData.status == 'Бронза' ? "active_status" : ""}>
                         <h1>бронза</h1>
                         <img src={bronze} alt="" />
                         <p>{getStatus.bronze || 0}</p>
                     </div>
-                    <div>
+                    <div className={userData.status == 'Серебро' ? "active_status" : ""}>
                         <h1>серебро</h1>
                         <img src={silver} alt="" />
                         <p>{getStatus.silver || 0}</p>
                     </div>
-                    <div>
+                    <div className={userData.status == 'Золото' ? "active_status" : ""}>
                         <h1>золото</h1>
                         <img src={gold} alt="" />
                         <p>{getStatus.gold || 0}</p>
                     </div>
-                    <div>
+                    <div className={userData.status == 'vip' ? "active_status" : ""}>
                         <h1>VIP</h1>
                         <img src={vip} alt="" />
                         <p>{getStatus.vip || 10000}</p>
                     </div>
                 </div>
-                
+
                 <Balance balance={userData.balance} curs={getStatus.rate} />
                 <div className='button-payment_contain'>
                     <div className='button-payment_home'>

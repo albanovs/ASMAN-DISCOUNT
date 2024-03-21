@@ -30,7 +30,16 @@
   align-items: center;
   gap: 2px;
   font-weight: 300;
-  /* margin: 0 20px; */
+}
+
+.status > .active_status {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  font-weight: 500;
+  color: var(--orange);
 }
 
 .status > div > h1 {
@@ -142,5 +151,3 @@
   justify-content: center;
   align-items: center;
 }
-
-
