@@ -1,0 +1,67 @@
+.contain-with-drawal-page {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background-color: var(--black);
+  color: white;
+  padding: 10px 20px;
+}
+
+.coin-with-drawal_img {
+  width: 100px;
+}
+
+.contain-with-drawal-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contain-with-drawal > div input {
+  background: none;
+  border-bottom: 1px solid #4b4b4b;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.contain-with-drawal {
+  width: 100%;
+  height: 120px;
+  background-color: #181818;
+  border-radius: 10px;
+  padding: 20px 20px;
+  position: relative;
+  margin: 10px 0;
+}
+
+.balance-with-drawal {
+  font-size: 10px;
+  color: #8b8b8b;
+}
+
+.error-text-with-drawal {
+  font-size: 10px;
+  color: red;
+}
+
+.text-main-with-drawal {
+  font-size: 10px;
+}
+
+.bottom-btn-with-drawal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.bottom-btn-with-drawal button:nth-child(2) {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -5,10 +5,15 @@ import coin from '../../views/coins/coin.png';
 import { IoIosSend } from "react-icons/io";
 import { FiChevronLeft } from "react-icons/fi";
 import { api } from '../../Api';
+import { useDispatch } from 'react-redux'
+import { getProcess } from '../../App/slice/process'
+import LoadingAnimate from '../../UI-kit/loading';
 
 export default function BuyAsman() {
     const [scrin, setscrin] = useState(null);
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
+    const dispatch = useDispatch()
 
     const sendImage = (event) => {
         const imageFile = event.target.files && event.target.files[0];
@@ -16,16 +21,22 @@ export default function BuyAsman() {
     };
 
     const buyAsmanSend = async () => {
+        setLoading(true)
         try {
             const token = localStorage.getItem('token');
             const formatData = new FormData();
             formatData.append('img', scrin);
 
-            await api.post('/payment/buy-asman/', formatData, {
+            const response = await api.post('/payment/buy-asman/', formatData, {
                 headers: {
                     Authorization: `Token ${token}`
                 }
             });
+            if (response.status === 201) {
+                dispatch(getProcess('Ожидание'))
+                navigate('/waiting')
+                setLoading(false)
+            }
         } catch (error) {
             console.log(error);
         }
@@ -58,9 +69,8 @@ export default function BuyAsman() {
                         </div>
                     </div>
                     <div className='bottom-btn-buyasman'>
-                        <button  onClick={buyAsmanSend} className='button-send-perevod'>
-                            <IoIosSend />
-                            Купить
+                        <button style={{ background: loading ? '#bba97a' : "#fdb602" }} disabled={loading} onClick={buyAsmanSend} className='button-send-perevod'>
+                            {loading ? <LoadingAnimate /> : <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}> <IoIosSend /> Купить</div>}
                         </button>
                     </div>
                 </div>

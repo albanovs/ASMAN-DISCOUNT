@@ -19,6 +19,8 @@ const QRScanner = () => {
             } else if (text.endsWith("?type=2")) {
                 text = text.replace("?type=2", "");
                 navigate(`/discount-detail/${text}`);
+            } else {
+                navigate(`/with-drawal/${text}`)
             }
             stop();
         },

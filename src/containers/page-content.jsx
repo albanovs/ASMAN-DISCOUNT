@@ -8,6 +8,7 @@ import Profile from "../pages/profile/profile";
 import Settings from "../pages/settings/settings";
 import Support from "../pages/support/support";
 import ChangePassword from "../pages/change-password/change-password";
+import WithDrawal from '../pages/with-drawal/with-drawal'
 
 export default function PageContent() {
   return (
@@ -15,6 +16,8 @@ export default function PageContent() {
       <Routes>
         <Route exact={true} path="/" element={<HomePage />} />
         <Route exact={true} path="/payments" element={<Payments />} />
+        <Route exact={true} path="/with-drawal/:id" element={<WithDrawal />} />
+        <Route exact={true} path="/drawal-with" element={<WithDrawal />} />
         <Route exact={true} path="/discount" element={<Discount />} />
         <Route exact={true} path="/market" element={<Market />} />
         <Route exact={true} path="/profile" element={<Profile />} />

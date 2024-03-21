@@ -71,7 +71,7 @@ export default function HomePage() {
                 <div className='button-payment_contain'>
                     <div className='button-payment_home'>
                         <button onClick={() => navigate('/')}><BsArrowDownLeftCircleFill size={40} /><span>Ввод</span></button>
-                        <button onClick={() => navigate('/')}><BsArrowDownRightCircleFill size={40} /><span>Вывод</span></button>
+                        <button onClick={() => navigate('/drawal-with')}><BsArrowDownRightCircleFill size={40} /><span>Вывод</span></button>
                         <button onClick={() => navigate('/qr-details')}><FaPlayCircle size={40} /><span>Перевод</span></button>
                         <button onClick={() => navigate('/buy-asman')}><FaProductHunt size={40} /><span>Купить</span></button>
                     </div>

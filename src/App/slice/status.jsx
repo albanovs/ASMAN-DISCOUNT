@@ -21,7 +21,7 @@ export const fetchStatusData = () => {
     return async (dispatch) => {
         try {
             const token = localStorage.getItem('token')
-            const response = await api.get("/payment/asman-rate", {
+            const response = await api.get("/asman-detail/", {
                 headers: {
                     Authorization: `Token ${token}`,
                 },

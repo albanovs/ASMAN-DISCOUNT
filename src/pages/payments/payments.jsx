@@ -8,25 +8,23 @@ export default function Payments() {
 
     const [history, setHistory] = useState([])
 
-    const fetchDataHistory = async () => {
-        try {
-            const token = localStorage.getItem('token')
-            const response = await api.get('/payment/history/', {
-                headers: {
-                    Authorization: `Token ${token}`
-                }
-            })
-            setHistory(response.data)
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
     useEffect(() => {
+        const fetchDataHistory = async () => {
+            try {
+                const token = localStorage.getItem('token')
+                const response = await api.get('/payment/history/', {
+                    headers: {
+                        Authorization: `Token ${token}`
+                    }
+                })
+                setHistory(response.data)
+            } catch (error) {
+                console.log(error);
+            }
+        }
         fetchDataHistory()
     }, [])
 
-    console.log(history);
 
     return (
         <div>
