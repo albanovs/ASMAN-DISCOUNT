@@ -4,6 +4,7 @@ import { api } from '../../Api'
 import { MdOutlineHistory } from "react-icons/md";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import { MdCancel } from "react-icons/md";
+import { MdOutlineNavigateNext } from "react-icons/md";
 export default function Payments() {
 
     const [history, setHistory] = useState([])
@@ -29,6 +30,7 @@ export default function Payments() {
     return (
         <div>
             <div className='section-payments'>
+                <div className='button_period'>Выбрать период <MdOutlineNavigateNext /> </div>
                 {
                     history.map((data, index) => {
 

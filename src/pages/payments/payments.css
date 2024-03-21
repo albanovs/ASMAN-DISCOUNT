@@ -38,3 +38,19 @@
   align-items: center;
   gap: 5px;
 }
+
+.button_period {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #474747;
+  background-color: var(--black1);
+}
+
+.button_period:active {
+  color: var(--orange);
+}
