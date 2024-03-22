@@ -28,8 +28,7 @@ export default function HomePage() {
     useEffect(() => {
         dispatch(fetchUserData())
         dispatch(fetchStatusData())
-    }, [dispatch])
-
+    }, [dispatch]) 
 
     const navigate = useNavigate()
     return (

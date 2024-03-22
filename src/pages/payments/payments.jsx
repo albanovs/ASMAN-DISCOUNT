@@ -6,27 +6,58 @@ import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import { MdCancel } from "react-icons/md";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import Modal from '../../containers/UI/Modal/Modal';
+import { CiSearch } from "react-icons/ci";
+
 export default function Payments() {
 
     const [history, setHistory] = useState([])
     const [modal, setModal] = useState(false)
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+
+    const fetchDataHistory = async () => {
+        try {
+            const token = localStorage.getItem('token')
+            const response = await api.get(`/payment/history/?datefrom=${startDate}&dateto=${endDate}`, {
+                headers: {
+                    Authorization: `Token ${token}`
+                }
+            })
+            setHistory(response.data)
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     useEffect(() => {
-        const fetchDataHistory = async () => {
-            try {
-                const token = localStorage.getItem('token')
-                const response = await api.get('/payment/history/', {
-                    headers: {
-                        Authorization: `Token ${token}`
-                    }
-                })
-                setHistory(response.data)
-            } catch (error) {
-                console.log(error);
-            }
-        }
         fetchDataHistory()
     }, [])
+
+    const handleSelectPeriod = (period) => {
+        const today = new Date();
+        switch (period) {
+            case 'week':
+                const weekAgo = new Date(today);
+                weekAgo.setDate(weekAgo.getDate() - 7);
+                setStartDate(weekAgo.toISOString().split('T')[0]);
+                setEndDate(today.toISOString().split('T')[0]);
+                break;
+            case 'currentMonth':
+                const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+                const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+                setStartDate(firstDayOfMonth.toISOString().split('T')[0]);
+                setEndDate(lastDayOfMonth.toISOString().split('T')[0]);
+                break;
+            case 'lastMonth':
+                const firstDayOfLastMonth = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+                const lastDayOfLastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+                setStartDate(firstDayOfLastMonth.toISOString().split('T')[0]);
+                setEndDate(lastDayOfLastMonth.toISOString().split('T')[0]);
+                break;
+            default:
+                break;
+        }
+    }
 
     return (
         <div>
@@ -34,7 +65,32 @@ export default function Payments() {
                 <div className='button_period' onClick={() => setModal(!modal)}>Выбрать период <MdOutlineNavigateNext /> </div>
                 {modal && (
                     <Modal setIsModalOpen={setModal}>
-
+                        <h1 className='text-modal-date'>Выберите дату:</h1>
+                        <div className='contain-date-block'>
+                            <div>
+                                <span>от:</span>
+                                <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                            </div>
+                            <div>
+                                <span>до:</span>
+                                <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+                            </div>
+                        </div>
+                        <div className='contain-date-block2'>
+                            <button onClick={() => handleSelectPeriod('week')}>Неделя</button>
+                            <button onClick={() => handleSelectPeriod('currentMonth')}>За текущий месяц</button>
+                            <button onClick={() => handleSelectPeriod('lastMonth')}>За прошлый месяц</button>
+                            <button style={{
+                                background: 'var(--orange)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: '10px'
+                            }} onClick={() => {
+                                fetchDataHistory()
+                                setModal(false)
+                            }}><CiSearch />Поиск</button>
+                        </div>
                     </Modal>
                 )}
                 {
