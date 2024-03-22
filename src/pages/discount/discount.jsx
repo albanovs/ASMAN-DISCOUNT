@@ -127,13 +127,15 @@ export default function Discount() {
               <h2>{el.name}:</h2>
               <div className="discount_block">
                 {el.partners.map((item) => (
-                  <div
-                    onClick={() => navigate(`/discount-detail/${item.id}`)}
-                    className="discount_box"
-                  >
-                    <img src={item.img} alt="" />
+                  <div>
+                    <div
+                      onClick={() => navigate(`/discount-detail/${item.id}`)}
+                      className="discount_box"
+                    >
+                      <img src={item.img} alt="" />
+                    </div>
                     <p className="text_discount">{item.title}</p>
-                    <div className="box_fixet"></div>
+                    <p className="absolute"> Скидка на {item.discount}%</p>
                   </div>
                 ))}
               </div>

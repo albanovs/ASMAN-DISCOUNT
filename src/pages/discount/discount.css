@@ -12,7 +12,7 @@
 .discount .discount_block {
   margin-top: 10px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: 50% 50%;
   gap: 12px;
 }
 
@@ -34,7 +34,7 @@
   border-radius: 10px;
 }
 
-.discount .box_fixet {
+/* .discount .box_fixet {
   position: absolute;
   top: 0;
   left: 0;
@@ -42,7 +42,7 @@
   height: 120px;
   background: rgb(0, 0, 0, 0.3);
   border-radius: 10px;
-}
+} */
 
 .discount .title {
   margin-top: 30px;
@@ -60,12 +60,13 @@
 }
 
 .discount .text_discount {
-  position: absolute;
-  height: 32px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  margin: auto;
+  /* position: absolute; */
+  /* height: 32px; */
+  /* left: 10px; */
+  /* right: 10px; */
+  /* bottom: 10px; */
+  /* margin: auto; */
+  margin-top: 4px;
   font-size: 14px;
   font-weight: 400;
   color: #ff9f0e;
@@ -215,4 +216,12 @@
   padding: 5px;
   border-radius: 5px;
   border: 1px solid var(--orange);
+}
+
+.discount .absolute {
+  /* position: absolute; */
+  /* top: 5px; */
+  /* right: 10px; */
+  font-size: 14px;
+  color: rgb(0, 255, 0);
 }
