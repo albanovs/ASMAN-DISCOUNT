@@ -3,8 +3,8 @@ import "./discount-detail.css";
 import arrow from "../../views/coins/arrow-left.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../Api";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import LoadingAnimate from "../../UI-kit/loading";
 import SuccessAlert from "../../UI-kit/success";
 
@@ -13,16 +13,17 @@ const DiscountDetail = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const notify = () => toast.success('Вы успешно приобрели скидку!', {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-  });
+  const notify = () =>
+    toast.success("Вы успешно приобрели скидку!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
 
   useEffect(() => {
     api
@@ -36,23 +37,27 @@ const DiscountDetail = () => {
   }, []);
 
   const setCoin = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
-      const token = localStorage.getItem('token')
-      const response = await api.post('/payment/scanner/?type=2', {
-        partner: id
-      }, {
-        headers: {
-          Authorization: `Token ${token}`
+      const token = localStorage.getItem("token");
+      const response = await api.post(
+        "/payment/scanner/?type=2",
+        {
+          partner: id,
+        },
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
         }
-      })
+      );
 
-      notify()
-      setLoading(false)
+      notify();
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <div className="discount_detail">
@@ -61,15 +66,21 @@ const DiscountDetail = () => {
         <p>{data.title}</p>
       </div>
       <img className="image" src={data.img} alt="" />
-      <p className="text_discount">{data.description}</p>
+      <p className="text_discount">
+        {React.createElement("p", {
+          dangerouslySetInnerHTML: {
+            __html: data.description,
+          },
+        })}
+      </p>
       <SuccessAlert theme="colored" />
       <button
         disabled={loading}
-        style={{ background: loading ? '#bba97a' : "#fdb602" }}
+        style={{ background: loading ? "#bba97a" : "#fdb602" }}
         onClick={() => setCoin()}
         className="btn"
       >
-        {loading ? <LoadingAnimate /> : 'Использовать коин'}
+        {loading ? <LoadingAnimate /> : "Использовать коин"}
       </button>
     </div>
   );
