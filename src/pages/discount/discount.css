@@ -53,7 +53,7 @@
 }
 
 .discount h2 {
-  margin-top: 35px;
+  margin-top: 20px;
   font-size: 18px;
   font-weight: 400;
   color: #fff;
@@ -186,4 +186,33 @@
   width: 20% !important;
   height: 18px !important;
   border-radius: 5px !important;
+}
+
+.discount .text_dis {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 400;
+  color: #949494;
+}
+
+.discount .cateing {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.discount .cateing .cate {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ffffff68;
+}
+
+.discount .cateing .cate.active {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid var(--orange);
 }
