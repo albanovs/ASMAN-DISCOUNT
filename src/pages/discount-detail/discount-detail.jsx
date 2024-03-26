@@ -26,8 +26,13 @@ const DiscountDetail = () => {
     });
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
     api
-      .get(`/discount/detail/${id}`)
+      .get(`/discount/detail/${id}`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      })
       .then((response) => {
         setData(response.data);
       })

@@ -15,7 +15,6 @@ export default function Discount() {
   const [loading, setLoading] = useState(true);
   const names = useSelector((state) => state.user_info.user_info);
   const [cate, setCate] = useState("");
-  const [list, setList] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,24 +24,10 @@ export default function Discount() {
   }, [names]);
 
   useEffect(() => {
-    if (cate) {
-      if (list) {
-        function searchArray(list, keyword) {
-          return list
-            .filter((item) => item.status.includes(keyword))
-            .map((item) => item);
-        }
-        const arrayData = searchArray(list, cate);
-        setData(arrayData[0]?.categories);
-      }
-    }
-  }, [list, cate]);
-
-  useEffect(() => {
     api
       .get("/discount/list/")
       .then((response) => {
-        setList(response.data);
+        setData(response.data);
         setTimeout(() => {
           setLoading(false);
         }, 300);
@@ -53,7 +38,7 @@ export default function Discount() {
           setLoading(false);
         }, 300);
       });
-  }, [cate]);
+  }, []);
 
   return (
     <div className="discount">
@@ -135,7 +120,34 @@ export default function Discount() {
                       <img src={item.img} alt="" />
                     </div>
                     <p className="text_discount">{item.title}</p>
-                    <p className="absolute"> Скидка на {item.discount}%</p>
+                    {cate === "Стандарт" ? (
+                      <p className="absolute">
+                        {" "}
+                        Скидка на {item.d_standard} %{" "}
+                      </p>
+                    ) : (
+                      ""
+                    )}
+                    {cate === "Бронза" ? (
+                      <p className="absolute"> Скидка на {item.d_bronze} % </p>
+                    ) : (
+                      ""
+                    )}
+                    {cate === "Серебро" ? (
+                      <p className="absolute"> Скидка на {item.d_silver} % </p>
+                    ) : (
+                      ""
+                    )}
+                    {cate === "Золото" ? (
+                      <p className="absolute"> Скидка на {item.d_gold} % </p>
+                    ) : (
+                      ""
+                    )}
+                    {cate === "VIP" ? (
+                      <p className="absolute"> Скидка на {item.d_vip} % </p>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 ))}
               </div>
