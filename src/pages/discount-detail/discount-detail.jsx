@@ -64,6 +64,24 @@ const DiscountDetail = () => {
     }
   };
 
+  const notCoin = (param) => {
+    toast.warning(
+      `Приходите через ${
+        param.lendth > 1 ? param + " дней" : param + " день"
+      } `,
+      {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      }
+    );
+  };
+
   return (
     <div className="discount_detail">
       <div className="head">
@@ -78,11 +96,21 @@ const DiscountDetail = () => {
           },
         })}
       </p>
+      <p
+        style={{
+          margin: "20px 0",
+          textAlign: "center",
+          fontSize: 16,
+          color: "rgb(0, 255, 0)",
+        }}
+      >
+        Скидка на {data.discount} %
+      </p>
       <SuccessAlert theme="colored" />
       <button
         disabled={loading}
         style={{ background: loading ? "#bba97a" : "#fdb602" }}
-        onClick={() => setCoin()}
+        onClick={() => (data.days === true ? setCoin() : notCoin(data.days))}
         className="btn"
       >
         {loading ? <LoadingAnimate /> : "Использовать коин"}
