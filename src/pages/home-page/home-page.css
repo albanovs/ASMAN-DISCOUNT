@@ -18,10 +18,10 @@
 .status {
   display: flex;
   justify-content: center;
-  /* padding: 0 20px; */
   gap: 30px;
   align-items: center;
   width: 100%;
+  text-align: center;
 }
 
 .status > div {
@@ -101,7 +101,6 @@
 .child-button_qr button:active,
 .contain-button_item_home:active,
 .referal-contain > div:active {
-  /* transition: 2s all ease; */
   color: #fdb602;
 }
 
@@ -130,6 +129,7 @@
 
 .status-user {
   padding: 10px 0;
+  color: var(--orange);
 }
 
 .referal-contain {
@@ -151,4 +151,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.skeleton-status {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+  width: 100%;
+}
+
+.skeleton-status div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  font-weight: 300;
 }

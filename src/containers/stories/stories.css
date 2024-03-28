@@ -17,9 +17,14 @@
   gap: 10px;
 }
 
+.skeleton-stories {
+  display: flex;
+}
+
 .storis .storis_content {
   width: 90px;
   height: 90px;
+  border-radius: 20px;
 }
 
 .storis .storis_content img {
@@ -31,7 +36,7 @@
 }
 
 .storis .storis_content:first-child {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .storis .storis_content:last-child {
@@ -88,4 +93,11 @@
 
 .storis ::-webkit-scrollbar {
   display: none;
+}
+
+.avatar-skeleton {
+  width: 100px; /* Установите ширину скелетона */
+  height: 100px; /* Установите высоту скелетона */
+  border-radius: 50%; /* Для создания круглого скелетона */
+  background-color: #ccc; /* Цвет фона скелетона */
 }

@@ -5,6 +5,7 @@ import { IoNotifications } from "react-icons/io5";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserData } from "../../App/slice/user-info";
+import Skeleton from 'react-loading-skeleton';
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -21,9 +22,9 @@ export default function Header() {
           {names.profile_photo ? (
             <img className="profile-photo-header" src={names.profile_photo} alt="" />
           ) : (
-            <MdAccountCircle size={40} />
+            <Skeleton width={50} height={50} circle />
           )}
-          <h1>{names.first_name || "пользователь"}</h1>
+          <h1>{names.first_name || <Skeleton width={70} height={10} />}</h1>
         </div>
         <div style={{ display: "flex", gap: "10px" }}>
           <IoNotifications size={25} color="#E2A332" />

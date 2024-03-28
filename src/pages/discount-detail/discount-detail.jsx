@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingAnimate from "../../UI-kit/loading";
 import SuccessAlert from "../../UI-kit/success";
+import Skeleton from 'react-loading-skeleton';
 
 const DiscountDetail = () => {
   const { id } = useParams();
@@ -66,8 +67,7 @@ const DiscountDetail = () => {
 
   const notCoin = (param) => {
     toast.warning(
-      `Приходите через ${
-        param.lendth > 1 ? param + " дней" : param + " день"
+      `Приходите через ${param.lendth > 1 ? param + " дней" : param + " день"
       } `,
       {
         position: "top-center",
@@ -88,13 +88,15 @@ const DiscountDetail = () => {
         <img onClick={() => navigate(-1)} src={arrow} alt="" />
         <p>{data.title}</p>
       </div>
-      <img className="image" src={data.img} alt="" />
+      {data.img ? <img className="image" src={data.img} alt="" /> : <Skeleton className="image"/>}
       <p className="text_discount">
-        {React.createElement("p", {
+        {data.title ? React.createElement("p", {
           dangerouslySetInnerHTML: {
             __html: data.description,
           },
-        })}
+        }) : <div>
+          <Skeleton width={400} height={5} count={8} />
+        </div>}
       </p>
       <p
         style={{

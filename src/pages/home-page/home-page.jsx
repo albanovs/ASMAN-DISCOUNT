@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './home-page.css'
 import Header from '../../containers/header/header'
 import Balance from './components/balance/balance'
@@ -12,12 +12,13 @@ import { FaProductHunt } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchUserData } from '../../App/slice/user-info';
 import { fetchStatusData } from '../../App/slice/status';
-import standart from '../../views/status/standart.png'
-import bronze from '../../views/status/bronze.png'
-import silver from '../../views/status/silver.png'
-import gold from '../../views/status/gold.png'
-import vip from '../../views/status/vip.png'
+import standart from '../../views/disc/one.svg'
+import bronze from '../../views/disc/two.svg'
+import silver from '../../views/disc/three.svg'
+import gold from '../../views/disc/four.svg'
+import vip from '../../views/disc/five.svg'
 import Storis from '../../containers/stories/stories';
+import Skeleton from 'react-loading-skeleton';
 
 export default function HomePage() {
 
@@ -28,7 +29,23 @@ export default function HomePage() {
     useEffect(() => {
         dispatch(fetchUserData())
         dispatch(fetchStatusData())
-    }, [dispatch]) 
+    }, [dispatch])
+
+    const statuses = [
+        { name: 'Стандарт', image: standart, value: getStatus.standard || 0 },
+        { name: 'Бронза', image: bronze, value: getStatus.bronze || 0 },
+        { name: 'Серебро', image: silver, value: getStatus.silver || 0 },
+        { name: 'Золото', image: gold, value: getStatus.gold || 0 },
+        { name: 'VIP', image: vip, value: getStatus.vip || 0 }
+    ];
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (userData && Object.keys(userData).length > 0 && getStatus && Object.keys(getStatus).length > 0) {
+            setLoading(false);
+        }
+    }, [userData, getStatus]);
 
     const navigate = useNavigate()
     return (
@@ -39,31 +56,27 @@ export default function HomePage() {
                 <h1>Ваш статус !</h1>
                 <h2 className='status-user'>{userData.status || "загрузка"}</h2>
                 <div className='status'>
-                    <div className={userData.status == 'Стандарт' ? "active_status" : ""}>
-                        <h1>стандарт</h1>
-                        <img src={standart} alt="" />
-                        <p>{getStatus.standard || 0}</p>
-                    </div>
-                    <div className={userData.status == 'Бронза' ? "active_status" : ""}>
-                        <h1>бронза</h1>
-                        <img src={bronze} alt="" />
-                        <p>{getStatus.bronze || 0}</p>
-                    </div>
-                    <div className={userData.status == 'Серебро' ? "active_status" : ""}>
-                        <h1>серебро</h1>
-                        <img src={silver} alt="" />
-                        <p>{getStatus.silver || 0}</p>
-                    </div>
-                    <div className={userData.status == 'Золото' ? "active_status" : ""}>
-                        <h1>золото</h1>
-                        <img src={gold} alt="" />
-                        <p>{getStatus.gold || 0}</p>
-                    </div>
-                    <div className={userData.status == 'vip' ? "active_status" : ""}>
-                        <h1>VIP</h1>
-                        <img src={vip} alt="" />
-                        <p>{getStatus.vip || 10000}</p>
-                    </div>
+                    {loading ? (
+                        <ul className='skeleton-status'>
+                            {[...Array(5)].map((_, index) => (
+                                <div key={index}>
+                                    <Skeleton width={20} height={5} />
+                                    <Skeleton width={30} height={30} />
+                                    <Skeleton width={20} height={5} />
+                                </div>
+                            ))}
+                        </ul>
+                    ) : (
+                        statuses.map((status, index) => (
+                            <div key={index} className={userData.status === status.name ? "active_status" : ""}>
+                                <h1>
+                                    <span>{status.name}</span>
+                                    <img src={status.image} alt="" />
+                                </h1>
+                                <p>{status.value}</p>
+                            </div>
+                        ))
+                    )}
                 </div>
 
                 <Balance balance={userData.balance} curs={getStatus.rate} />

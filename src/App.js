@@ -14,6 +14,7 @@ import DiscountDetail from "./pages/discount-detail/discount-detail";
 import BuyAsman from "./pages/buy-asman/buy-asman";
 import WaitingProcess from "./pages/payments/components/waiting/waitng-process";
 import SuccessPayments from "./pages/payments/components/success-payments/success-payments";
+import 'react-loading-skeleton/dist/skeleton.css';
 
 function App() {
   const location = useLocation();

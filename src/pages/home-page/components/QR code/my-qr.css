@@ -41,6 +41,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.qr-block h1{
+  color: black;
 }
 
 .qr-block img {

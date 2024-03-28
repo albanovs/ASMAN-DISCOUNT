@@ -7,31 +7,34 @@ import { MdCancel } from "react-icons/md";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import Modal from '../../containers/UI/Modal/Modal';
 import { CiSearch } from "react-icons/ci";
+import Skeleton from 'react-loading-skeleton';
 
 export default function Payments() {
-
-    const [history, setHistory] = useState([])
-    const [modal, setModal] = useState(false)
+    const [history, setHistory] = useState([]);
+    const [modal, setModal] = useState(false);
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const fetchDataHistory = async () => {
         try {
-            const token = localStorage.getItem('token')
+            const token = localStorage.getItem('token');
             const response = await api.get(`/payment/history/?datefrom=${startDate}&dateto=${endDate}`, {
                 headers: {
                     Authorization: `Token ${token}`
                 }
-            })
-            setHistory(response.data)
+            });
+            setHistory(response.data);
+            setLoading(true)
         } catch (error) {
             console.log(error);
+            setLoading(false)
         }
     }
 
     useEffect(() => {
-        fetchDataHistory()
-    }, [])
+        fetchDataHistory();
+    }, []);
 
     const handleSelectPeriod = (period) => {
         const today = new Date();
@@ -59,10 +62,23 @@ export default function Payments() {
         }
     }
 
+    const renderStatus = (data) => {
+        const statusColor = data.status === 0 ? 'red' : data.status === 1 ? '#00FF7F' : 'var(--orange)';
+        const statusIcon = data.status === 0 ? <MdCancel /> : data.status === 1 ? <IoCheckmarkDoneCircleSharp /> : <MdOutlineHistory />;
+        const statusText = data.info === "Покупка Asman" && data.status === 2 ? "В обработке" : data.info === "Покупка Asman" && data.status === 0 ? "Отклонено" : data.type === 1 ? `+${data.total}` : `-${data.total}`;
+
+        return (
+            <p className='detail_count_status' style={{ color: statusColor }}>
+                {statusText}
+                <span>{statusIcon}</span>
+            </p>
+        );
+    };
+
     return (
         <div>
             <div className='section-payments'>
-                <div className='button_period' onClick={() => setModal(!modal)}>Выбрать период <MdOutlineNavigateNext /> </div>
+                <div className='button_period' onClick={() => setModal(!modal)}>Выбрать период <MdOutlineNavigateNext /></div>
                 {modal && (
                     <Modal setIsModalOpen={setModal}>
                         <h1 className='text-modal-date'>Выберите дату:</h1>
@@ -80,50 +96,32 @@ export default function Payments() {
                             <button onClick={() => handleSelectPeriod('week')}>Неделя</button>
                             <button onClick={() => handleSelectPeriod('currentMonth')}>За текущий месяц</button>
                             <button onClick={() => handleSelectPeriod('lastMonth')}>За прошлый месяц</button>
-                            <button style={{
-                                background: 'var(--orange)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                gap: '10px'
-                            }} onClick={() => {
-                                fetchDataHistory()
-                                setModal(false)
-                            }}><CiSearch />Поиск</button>
+                            <button style={{ background: 'var(--orange)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }} onClick={() => { fetchDataHistory(); setModal(false) }}><CiSearch />Поиск</button>
                         </div>
                     </Modal>
                 )}
-                {
-                    history.map((data, index) => {
-
-                        return (
-                            <div key={index} className='section-payments_items'>
-                                <h1>{data.date}</h1>
-                                {
-                                    data.list.map((data, index) => {
-                                        return (
-                                            <div key={index}>
-                                                <h1>{data.info}</h1>
-                                                <p
-                                                    className='detail_count_status'
-                                                    style={data.status === 0 ?
-                                                        { color: 'red' }
-                                                        : data.status === 1
-                                                            ? { color: '#00FF7F' }
-                                                            : { color: 'var(--orange)' }}
-                                                > {data.info === "Покупка Asman" && data.status === 2 ?
-                                                    <span style={{ fontSize: "12px" }}>В обработке</span>
-                                                    : data.info === "Покупка Asman" && data.status === 0 ? <span style={{ fontSize: "12px" }}>Отклонено</span> : data.type === 1 ? `+${data.total}` : `-${data.total}`}
-                                                    <span>{data.status === 0 ? <MdCancel /> : data.status === 1 ? <IoCheckmarkDoneCircleSharp /> : <MdOutlineHistory />}</span></p>
-                                            </div>
-                                        )
-                                    })
-                                }
+                {loading ? history.map((data, index) => (
+                    <div key={index} className='section-payments_items'>
+                        <h1>{data.date}</h1>
+                        {data.list.map((data, index) => (
+                            <div key={index}>
+                                <h1>{data.info}</h1>
+                                {renderStatus(data)}
                             </div>
-                        )
-                    })
-                }
+                        ))}
+                    </div>
+                )) : <div className='section-payments_items'>
+                    {[...Array(10)].map((_, index) => (
+                        <div key={index}>
+                            <h1><Skeleton width={80} height={10} /></h1>
+                            <p className='detail_count_status'>
+                                <Skeleton width={80} height={10} />
+                                <span><Skeleton width={80} height={10} /></span>
+                            </p>
+                        </div>
+                    ))}
+                </div>}
             </div>
-        </div >
-    )
+        </div>
+    );
 }
