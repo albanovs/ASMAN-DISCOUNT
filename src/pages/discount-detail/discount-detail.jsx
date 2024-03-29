@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingAnimate from "../../UI-kit/loading";
 import SuccessAlert from "../../UI-kit/success";
-import Skeleton from 'react-loading-skeleton';
+import Skeleton from "react-loading-skeleton";
 
 const DiscountDetail = () => {
   const { id } = useParams();
@@ -40,7 +40,7 @@ const DiscountDetail = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [loading]);
 
   const setCoin = async () => {
     setLoading(true);
@@ -67,7 +67,8 @@ const DiscountDetail = () => {
 
   const notCoin = (param) => {
     toast.warning(
-      `Приходите через ${param.lendth > 1 ? param + " дней" : param + " день"
+      `Приходите через ${
+        param.lendth > 1 ? param + " дней" : param + " день"
       } `,
       {
         position: "top-center",
@@ -88,15 +89,23 @@ const DiscountDetail = () => {
         <img onClick={() => navigate(-1)} src={arrow} alt="" />
         <p>{data.title}</p>
       </div>
-      {data.img ? <img className="image" src={data.img} alt="" /> : <Skeleton className="image"/>}
+      {data.img ? (
+        <img className="image" src={data.img} alt="" />
+      ) : (
+        <Skeleton className="image" />
+      )}
       <p className="text_discount">
-        {data.title ? React.createElement("p", {
-          dangerouslySetInnerHTML: {
-            __html: data.description,
-          },
-        }) : <div>
-          <Skeleton width={400} height={5} count={8} />
-        </div>}
+        {data.title ? (
+          React.createElement("p", {
+            dangerouslySetInnerHTML: {
+              __html: data.description,
+            },
+          })
+        ) : (
+          <div>
+            <Skeleton width={"100%"} height={5} count={8} />
+          </div>
+        )}
       </p>
       <p
         style={{
@@ -112,7 +121,10 @@ const DiscountDetail = () => {
       <button
         disabled={loading}
         style={{ background: loading ? "#bba97a" : "#fdb602" }}
-        onClick={() => (data.days === true ? setCoin() : notCoin(data.days))}
+        onClick={() => {
+          console.log(data.days);
+          data.days === true ? setCoin() : notCoin(data.days);
+        }}
         className="btn"
       >
         {loading ? <LoadingAnimate /> : "Использовать коин"}
