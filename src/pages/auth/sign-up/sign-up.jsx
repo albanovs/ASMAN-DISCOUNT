@@ -141,13 +141,13 @@ export default function SignUp() {
               <NavLink to="/forgot-password" className="link2">
                 Забыли пароль ?
               </NavLink>
-              <button  style={{ background: loading ? '#bba97a' : "#fdb602" }} disable={loading} type="submit" className="sign-up2">
+              <button style={{ background: loading ? '#bba97a' : "#fdb602" }} disable={loading} type="submit" className="sign-up2">
                 {loading ? <LoadingAnimate /> : "Далее"}
               </button>
             </div>
           </form>
           <p className="footer-text2">
-            Есть аккаунт ?{" "}
+            Есть аккаунт ?
             <NavLink to={"/login"} className="register2">
               войдите
             </NavLink>

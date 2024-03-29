@@ -61,9 +61,6 @@ export default function WithDrawal() {
                 navigate('/waiting')
                 dispatch(getProcess(coin_count))
             }
-
-            console.log(response);
-
         } catch (error) {
             console.log(error);
         }
@@ -87,7 +84,7 @@ export default function WithDrawal() {
                             <div>
                                 <input value={isID} onChange={(e) => setIsID(e.target.value)} type="text" />
                             </div>
-                            {isUser ? <span className='error-text-with-drawal'>неправильный скрин реквизита</span> : ""}
+                            {isUser ? <span className='error-text-with-drawal'>некорректный адресс кошелька</span> : ""}
                         </div>
                     </div>
                     <div className='contain-with-drawal'>
@@ -96,6 +93,7 @@ export default function WithDrawal() {
                             <h1 className='text-main-with-drawal'>Сумма вывода:</h1>
                             <input type="number" value={coin_count} onChange={(e) => setCoinCount(e.target.value)} />
                         </div>
+                        <span className='balance-with-drawal'>комиссия 3%</span>
                         {isBalance ? <span className='error-text-with-drawal'>недостаточно средств</span> : ""}
                     </div>
                     <div className='bottom-btn-with-drawal'>

@@ -109,4 +109,5 @@
   height: 30px;
   background-color: rgba(36, 69, 27, 0.726);
   border-bottom-right-radius: 20px;
+  border-top-left-radius: 10px;
 }

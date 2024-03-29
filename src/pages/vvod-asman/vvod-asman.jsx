@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './buy-asman.css';
+import './vvod-asman.css';
 import coin from '../../views/coins/coin.png';
 import { IoIosSend } from "react-icons/io";
 import { FiChevronLeft } from "react-icons/fi";
@@ -12,7 +12,7 @@ import { fetchStatusData } from '../../App/slice/status';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { TbClipboardCopy } from 'react-icons/tb';
 
-export default function BuyAsman() {
+export default function VvodAsman() {
     const [scrin, setscrin] = useState(null);
     const [loading, setLoading] = useState(false)
     const [load_scrin, setLoadScrin] = useState(false)
@@ -69,8 +69,8 @@ export default function BuyAsman() {
                 <FiChevronLeft onClick={() => navigate('/')} size={40} />
             </div>
             <div className='contain-buyasman'>
-                <h1>Купить ASMAN</h1>
-                <p>Покупка ASMAN производится через USDT</p>
+                <h1>Ввод ASMAN</h1>
+                <p>Ввод ASMAN через валюту ASMAN</p>
                 <div className='coin-buyasman' >
                     <img src={coin} alt="" className='coin-buyasman_img' />
                 </div>
@@ -84,8 +84,8 @@ export default function BuyAsman() {
                             left: '150px',
                             fontSize: '12px'
                         }}>Скопирован</p>}
-                        <h1 className='balance-perevod'>Адресс кошелька USDT:</h1>
-                        <h2 className='payment-usdt-block'>{getStatus.usdt}</h2>
+                        <h1 className='balance-perevod'>Адресс кошелька ASMAN:</h1>
+                        <h2 className='payment-usdt-block'>{getStatus.asman}</h2>
                         <div style={{
                             display: 'flex',
                             justifyContent: 'center',

@@ -88,7 +88,7 @@ const DiscountDetail = () => {
         <img onClick={() => navigate(-1)} src={arrow} alt="" />
         <p>{data.title}</p>
       </div>
-      {data.img ? <img className="image" src={data.img} alt="" /> : <Skeleton className="image"/>}
+      {data.img ? <img className="image" src={data.img} alt="" /> : <Skeleton className="image" />}
       <p className="text_discount">
         {data.title ? React.createElement("p", {
           dangerouslySetInnerHTML: {
@@ -113,7 +113,6 @@ const DiscountDetail = () => {
         disabled={loading}
         style={{ background: loading ? "#bba97a" : "#fdb602" }}
         onClick={() => {
-          console.log(data.days);
           data.days === true ? setCoin() : notCoin(data.days);
         }}
         className="btn"

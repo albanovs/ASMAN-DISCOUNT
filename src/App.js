@@ -15,6 +15,7 @@ import BuyAsman from "./pages/buy-asman/buy-asman";
 import WaitingProcess from "./pages/payments/components/waiting/waitng-process";
 import SuccessPayments from "./pages/payments/components/success-payments/success-payments";
 import 'react-loading-skeleton/dist/skeleton.css';
+import VvodAsman from "./pages/vvod-asman/vvod-asman";
 
 function App() {
   const location = useLocation();
@@ -43,6 +44,7 @@ function App() {
           <Route path="/qr-details" element={<PrivateRoute element={<QrDetails />} />} />
           <Route path="/discount-detail/:id" element={<PrivateRoute element={<DiscountDetail />} />} />
           <Route path="/buy-asman" element={<PrivateRoute element={<BuyAsman />} />} />
+          <Route path="/vvod-asman" element={<PrivateRoute element={<VvodAsman />} />} />
           <Route path="/waiting" element={<PrivateRoute element={<WaitingProcess />} />} />
           <Route path="/success-payments" element={<PrivateRoute element={<SuccessPayments />} />} />
           <Route path="/*" element={<PrivateRoute element={<LayOut />} />} />
