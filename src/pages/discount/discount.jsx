@@ -9,7 +9,6 @@ import cate2 from "../../views/disc/two.svg";
 import cate3 from "../../views/disc/three.svg";
 import cate4 from "../../views/disc/four.svg";
 import cate5 from "../../views/disc/five.svg";
-import Skeleton from 'react-loading-skeleton';
 import SkeletonDiscount from "./Skeleton";
 
 const categoryImages = [cate1, cate2, cate3, cate4, cate5];

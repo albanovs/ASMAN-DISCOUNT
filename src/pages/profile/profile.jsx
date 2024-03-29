@@ -11,7 +11,6 @@ import Modal from "../../containers/UI/Modal/Modal";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserData } from "../../App/slice/user-info";
-import Storis from "../../containers/stories/stories";
 
 export default function Profile() {
   const [modal, setModal] = useState(false);
