@@ -146,7 +146,7 @@ export default function Profile() {
                     <IoIosArrowForward className="icon" />
                   </div>
                 </div>
-                <div onClick={() => navigate("/login")} className="box">
+                <div className="box">
                   <div className="flex">
                     <img src={marketing} alt="" />
                     <p className="text">Рефералы</p>
