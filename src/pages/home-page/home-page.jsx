@@ -10,7 +10,7 @@ import { BsArrowDownRightCircleFill } from "react-icons/bs";
 import { FaPlayCircle } from "react-icons/fa";
 import { FaProductHunt } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchUserData } from '../../App/slice/user-info';
+import userInfo, { fetchUserData } from '../../App/slice/user-info';
 import { fetchStatusData } from '../../App/slice/status';
 import standart from '../../views/disc/one.svg'
 import bronze from '../../views/disc/two.svg'
@@ -19,6 +19,11 @@ import gold from '../../views/disc/four.svg'
 import vip from '../../views/disc/five.svg'
 import Storis from '../../containers/stories/stories';
 import Skeleton from 'react-loading-skeleton';
+import { GiLaurelsTrophy } from "react-icons/gi";
+import Modal from '../../containers/UI/Modal/Modal';
+import coin from '../../views/coins/coin.png'
+import { TbClipboardCopy } from "react-icons/tb";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 export default function HomePage() {
 
@@ -40,6 +45,26 @@ export default function HomePage() {
     ];
 
     const [loading, setLoading] = useState(true);
+    const [modal, setModal] = useState(false)
+    const [copied, setCopied] = useState(false);
+
+    const handleCopy = () => {
+        setCopied(true);
+        setTimeout(() => {
+            setCopied(false);
+        }, 2000);
+    };
+
+    const handleShareLink = async () => {
+        try {
+            await navigator.share({
+                title: 'Приглашение в платформу ASMAN DISCOUNT',
+                url: `https://orozmat.mirzabekov.fvds.ru/api/auth/register/${userData.id}`
+            });
+        } catch (error) {
+            console.error('Ошибка обмена:', error.message);
+        }
+    };
 
     useEffect(() => {
         if (userData && Object.keys(userData).length > 0 && getStatus && Object.keys(getStatus).length > 0) {
@@ -54,7 +79,7 @@ export default function HomePage() {
             <Storis />
             <div className='section1'>
                 <h1>Ваш статус !</h1>
-                <h2 className='status-user'>{userData.status || "загрузка"}</h2>
+                <h2 className='status-user'>{userData.status || "загрузка"} <GiLaurelsTrophy /> </h2>
                 <div className='status'>
                     {loading ? (
                         <ul className='skeleton-status'>
@@ -95,9 +120,27 @@ export default function HomePage() {
                     <button className='contain-button_item_qr' onClick={() => navigate('/qr-scanner')}>Сканнер <BiScan size={40} /></button>
                 </div>
                 <div className='referal-contain'>
-                    <div>
+                    <div onClick={() => setModal(!modal)}>
                         <h1>Реферальная программа</h1>
                     </div>
+                    {modal &&
+                        <Modal setIsModalOpen={setModal} color="white">
+                            <h1 className='text-referal-home_page_main'>Приглашай друзей <br /> в ASMAN DISCOUNT</h1>
+                            <p className='text-referal-home_page'>За каждую покупку Asman Coin, совершенную приглашенным другом, вам будет начисляться 15%</p>
+                            <div className='asman-coin-contain'>
+                                <img src={coin} alt="" className='asman-coin-referal' />
+                                <div>
+                                    <h1>ваша персональная ссылка</h1>
+                                    <p>{`https://orozmat.mirzabekov.fvds.ru/api/auth/register/${userData.id}`}</p>
+                                    <CopyToClipboard text={`https://orozmat.mirzabekov.fvds.ru/api/auth/register/${userData.id}`} onCopy={handleCopy}>
+                                        <TbClipboardCopy className='button-referal-home_page' size={30} />
+                                    </CopyToClipboard>
+                                    {copied && <p className='copyed-referal'>Скопирован</p>}
+                                </div>
+                                <button onClick={handleShareLink}>Пригласить</button>
+                            </div>
+                        </Modal>
+                    }
                 </div>
             </div>
         </div >

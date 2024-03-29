@@ -59,6 +59,12 @@
   gap: 10px;
 }
 
+.status-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .contain-button_item_home {
   width: 100%;
   padding: 4px;
@@ -168,4 +174,68 @@
   align-items: center;
   gap: 2px;
   font-weight: 300;
+}
+
+.text-referal-home_page_main {
+  color: #000000;
+  font-weight: 800;
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+.text-referal-home_page {
+  color: #000000;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.asman-coin-contain {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #000000;
+  gap: 10px;
+}
+
+.asman-coin-referal {
+  width: 200px;
+}
+
+.asman-coin-contain div {
+  width: 100%;
+  height: 140px;
+  border-radius: 10px;
+  background-color: #cfcfcf;
+  padding: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+
+.asman-coin-contain div p {
+  font-size: 10px;
+}
+
+.asman-coin-contain button {
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  background-color: var(--orange);
+  color: white;
+}
+
+.button-referal-home_page {
+  cursor: pointer;
+}
+
+.copyed-referal {
+  color: green;
+  position: absolute;
+  top: 5px;
 }

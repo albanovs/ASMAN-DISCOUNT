@@ -67,7 +67,7 @@ const DiscountDetail = () => {
 
   const notCoin = (param) => {
     toast.warning(
-      `Приходите через ${param.lendth > 1 ? param + " дней" : param + " день"
+      `Приходите через ${param.length > 1 ? param + " дней" : param + " день"
       } `,
       {
         position: "top-center",
@@ -88,14 +88,14 @@ const DiscountDetail = () => {
         <img onClick={() => navigate(-1)} src={arrow} alt="" />
         <p>{data.title}</p>
       </div>
-      {data.img ? <img className="image" src={data.img} alt="" /> : <Skeleton className="image"/>}
+      {data.img ? <img className="image" src={data.img} alt="" /> : <Skeleton className="image" />}
       <p className="text_discount">
         {data.title ? React.createElement("p", {
           dangerouslySetInnerHTML: {
             __html: data.description,
           },
         }) : <div>
-          <Skeleton width={400} height={5} count={8} />
+          <Skeleton width={300} height={5} count={8} />
         </div>}
       </p>
       <p

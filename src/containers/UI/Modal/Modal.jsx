@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Modal.css";
 import { MdClose } from "react-icons/md";
 
-const Modal = ({ isModalOpen, setIsModalOpen, children }) => {
+const Modal = ({ isModalOpen, setIsModalOpen, children, color }) => {
   const [startY, setStartY] = useState(null);
   const [offsetY, setOffsetY] = useState(0);
 
@@ -44,7 +44,7 @@ const Modal = ({ isModalOpen, setIsModalOpen, children }) => {
         }}
       >
         <div onClick={closeModal} className="not_modal"></div>
-        <div className="modal">
+        <div style={{ background: color }} className="modal">
           <span className="close" onClick={closeModal}>
             <MdClose className="icon" />
           </span>

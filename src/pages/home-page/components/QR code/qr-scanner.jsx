@@ -53,10 +53,10 @@ const QRScanner = () => {
         let succes_text = text
         if (text.endsWith("?type=1")) {
             succes_text = text.replace("?type=1", "");
-            navigate(`/details-qr/${text}`);
+            navigate(`/details-qr/${succes_text}`);
         } else if (text.endsWith("?type=2")) {
             succes_text = text.replace("?type=2", "");
-            navigate(`/discount-detail/${text}`);
+            navigate(`/discount-detail/${succes_text}`);
         } else {
             navigate(`/with-drawal/${text}`)
         }
