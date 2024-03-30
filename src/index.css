@@ -21,8 +21,12 @@ input {
 }
 
 :root {
+  --white: #fff;
   --black1: #181a20;
   --black: #000;
   --orange: #e48a21;
   --gray: #d1d1d2;
+  --border: #dadada;
+  --gray-color: #868790;
+  --yellow: #ff9f0e;
 }

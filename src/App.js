@@ -14,8 +14,10 @@ import DiscountDetail from "./pages/discount-detail/discount-detail";
 import BuyAsman from "./pages/buy-asman/buy-asman";
 import WaitingProcess from "./pages/payments/components/waiting/waitng-process";
 import SuccessPayments from "./pages/payments/components/success-payments/success-payments";
-import 'react-loading-skeleton/dist/skeleton.css';
+import "react-loading-skeleton/dist/skeleton.css";
 import VvodAsman from "./pages/vvod-asman/vvod-asman";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   const location = useLocation();
@@ -38,15 +40,42 @@ function App() {
     <div className="App">
       <SkeletonTheme baseColor="#313131" highlightColor="#525252">
         <Routes location={location}>
-          <Route path="/my-qr" element={<PrivateRoute element={<MyQRcode />} />} />
-          <Route path="/qr-scanner" element={<PrivateRoute element={<QRScanner />} />} />
-          <Route path="/details-qr/:id" element={<PrivateRoute element={<QrDetails />} />} />
-          <Route path="/qr-details" element={<PrivateRoute element={<QrDetails />} />} />
-          <Route path="/discount-detail/:id" element={<PrivateRoute element={<DiscountDetail />} />} />
-          <Route path="/buy-asman" element={<PrivateRoute element={<BuyAsman />} />} />
-          <Route path="/vvod-asman" element={<PrivateRoute element={<VvodAsman />} />} />
-          <Route path="/waiting" element={<PrivateRoute element={<WaitingProcess />} />} />
-          <Route path="/success-payments" element={<PrivateRoute element={<SuccessPayments />} />} />
+          <Route
+            path="/my-qr"
+            element={<PrivateRoute element={<MyQRcode />} />}
+          />
+          <Route
+            path="/qr-scanner"
+            element={<PrivateRoute element={<QRScanner />} />}
+          />
+          <Route
+            path="/details-qr/:id"
+            element={<PrivateRoute element={<QrDetails />} />}
+          />
+          <Route
+            path="/qr-details"
+            element={<PrivateRoute element={<QrDetails />} />}
+          />
+          <Route
+            path="/discount-detail/:id"
+            element={<PrivateRoute element={<DiscountDetail />} />}
+          />
+          <Route
+            path="/buy-asman"
+            element={<PrivateRoute element={<BuyAsman />} />}
+          />
+          <Route
+            path="/vvod-asman"
+            element={<PrivateRoute element={<VvodAsman />} />}
+          />
+          <Route
+            path="/waiting"
+            element={<PrivateRoute element={<WaitingProcess />} />}
+          />
+          <Route
+            path="/success-payments"
+            element={<PrivateRoute element={<SuccessPayments />} />}
+          />
           <Route path="/*" element={<PrivateRoute element={<LayOut />} />} />
           <Route path="/login" element={<SignIn />} />
           <Route path="/register/:id" element={<SignUp />} />
