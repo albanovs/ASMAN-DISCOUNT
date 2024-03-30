@@ -89,7 +89,7 @@ const DiscountDetail = () => {
         <p>{data.title}</p>
       </div>
       {data.img ? <img className="image" src={data.img} alt="" /> : <Skeleton className="image" />}
-      <p className="text_discount">
+      <div className="text_discount">
         {data.title ? React.createElement("p", {
           dangerouslySetInnerHTML: {
             __html: data.description,
@@ -97,7 +97,7 @@ const DiscountDetail = () => {
         }) : <div>
           <Skeleton width={400} height={5} count={8} />
         </div>}
-      </p>
+      </div>
       <p
         style={{
           margin: "20px 0",

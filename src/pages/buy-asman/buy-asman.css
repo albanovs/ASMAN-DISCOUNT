@@ -116,3 +116,8 @@
   right: 10px;
   bottom: 10px;
 }
+
+.payment-usdt-block{
+  width: 300px;
+  font-size: 15px;
+}

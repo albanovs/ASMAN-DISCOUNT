@@ -85,7 +85,10 @@ export default function BuyAsman() {
                             fontSize: '12px'
                         }}>Скопирован</p>}
                         <h1 className='balance-perevod'>Адресс кошелька USDT:</h1>
-                        <h2 className='payment-usdt-block'>{getStatus.usdt}</h2>
+                        <h2 style={{
+                            width: '100px',
+                            fontSize: '12px '
+                        }}>{getStatus.usdt}</h2>
                         <div style={{
                             display: 'flex',
                             justifyContent: 'center',
