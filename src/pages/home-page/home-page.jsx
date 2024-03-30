@@ -132,8 +132,8 @@ export default function HomePage() {
                                 <img src={coin} alt="" className='asman-coin-referal' />
                                 <div>
                                     <h1>ваша персональная ссылка</h1>
-                                    <p>{`https://orozmat.mirzabekov.fvds.ru/api/auth/register/${userData.id}`}</p>
-                                    <CopyToClipboard text={`https://orozmat.mirzabekov.fvds.ru/api/auth/register/${userData.id}`} onCopy={handleCopy}>
+                                    <p>{`https://orozmat.mirzabekov.fvds.ru/#/register/${userData.id}`}</p>
+                                    <CopyToClipboard text={`https://orozmat.mirzabekov.fvds.ru/#/register/${userData.id}`} onCopy={handleCopy}>
                                         <TbClipboardCopy className='button-referal-home_page' size={30} />
                                     </CopyToClipboard>
                                     {copied && <p className='copyed-referal'>Скопирован</p>}

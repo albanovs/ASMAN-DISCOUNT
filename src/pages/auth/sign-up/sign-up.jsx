@@ -32,7 +32,7 @@ export default function SignUp() {
         last_name: inputData.last_name,
         password: inputData.password,
         confirm_password: inputData.confirm_password,
-        referred_by: 'fc5a51ea-20ff-4b17-a7c0-23cfdfb1b1b7'
+        referred_by: id
       };
       try {
         const response = await api.post("/auth/register/", dataNew);
