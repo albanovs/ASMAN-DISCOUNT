@@ -50,6 +50,7 @@ function App() {
           <Route path="/*" element={<PrivateRoute element={<LayOut />} />} />
           <Route path="/login" element={<SignIn />} />
           <Route path="/register/:id" element={<SignUp />} />
+          <Route path="/register" element={<SignUp />} />
           <Route path="/send-code" element={<EmailCode />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
