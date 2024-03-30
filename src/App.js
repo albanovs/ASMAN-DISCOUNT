@@ -49,7 +49,7 @@ function App() {
           <Route path="/success-payments" element={<PrivateRoute element={<SuccessPayments />} />} />
           <Route path="/*" element={<PrivateRoute element={<LayOut />} />} />
           <Route path="/login" element={<SignIn />} />
-          <Route path="/register" element={<SignUp />} />
+          <Route path="/register/:id" element={<SignUp />} />
           <Route path="/send-code" element={<EmailCode />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>

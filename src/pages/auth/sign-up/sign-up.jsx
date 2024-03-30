@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./sign-up.css";
 import coin from "../covers/coin.png";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { api } from "../../../Api";
 import LoadingAnimate from "../../../UI-kit/loading";
 
 export default function SignUp() {
+
+  const { id } = useParams()
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -30,6 +32,7 @@ export default function SignUp() {
         last_name: inputData.last_name,
         password: inputData.password,
         confirm_password: inputData.confirm_password,
+        referred_by: 'fc5a51ea-20ff-4b17-a7c0-23cfdfb1b1b7'
       };
       try {
         const response = await api.post("/auth/register/", dataNew);
