@@ -10,11 +10,9 @@ export default function MyQRcode() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const user_qr = useSelector((state) => state.user_info.user_info);
-    const [qrImage, setQrImage] = useState('');
-    
+
     useEffect(() => {
         dispatch(fetchUserData());
-        fetchQrImage();
     }, [dispatch]);
 
     const handleShare = async () => {
@@ -22,26 +20,14 @@ export default function MyQRcode() {
             await navigator.share({
                 title: 'Поделиться моим QR-кодом',
                 text: 'Сканируйте мой QR-код в приложении ASMAN DISCOUNT',
-                files: [qrImage],
+                url: user_qr.qr,
             });
-            console.log('QR-код успешно поделен');
         } catch (error) {
             console.error('Ошибка обмена:', error.message);
         }
     };
 
-    const fetchQrImage = () => {
-        try {
-            const response = user_qr.qr;
-            const imageUrl = URL.createObjectURL(response);
-            setQrImage(imageUrl);
-        } catch (error) {
-            console.error('Ошибка загрузки QR-кода:', error.message);
-        }
-    };
-
     const handleFallbackShare = () => {
-        // Логика обмена для браузеров, не поддерживающих API обмена
         console.log('Вызван альтернативный метод обмена QR-кодом');
     };
 
