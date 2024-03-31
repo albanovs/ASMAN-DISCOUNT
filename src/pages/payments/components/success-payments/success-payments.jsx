@@ -13,7 +13,7 @@ export default function SuccessPayments() {
     const navigate = useNavigate()
     return (
         <div className='waiting-contain'>
-            <div><FiChevronLeft onClick={() => navigate('/')} size={40} /></div>
+            <div><FiChevronLeft onClick={() => navigate('/payments')} size={40} /></div>
             <IoCheckmarkDoneCircle size={50} color='#73ff37' />
             <h1>Перевод успешно произведен</h1>
             <p>{process_count.process || 0} <img src={asman} alt="" /></p>
