@@ -3,10 +3,7 @@ import "./discount-detail.css";
 import arrow from "../../views/coins/arrow-left.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../Api";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import LoadingAnimate from "../../UI-kit/loading";
-import SuccessAlert from "../../UI-kit/success";
 import Skeleton from "react-loading-skeleton";
 
 const DiscountDetail = () => {
@@ -14,17 +11,6 @@ const DiscountDetail = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const notify = () =>
-    toast.success("Вы успешно приобрели скидку!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    });
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -41,46 +27,6 @@ const DiscountDetail = () => {
         console.log(error);
       });
   }, [loading]);
-
-  const setCoin = async () => {
-    setLoading(true);
-    try {
-      const token = localStorage.getItem("token");
-      const response = await api.post(
-        "/payment/scanner/?type=2",
-        {
-          partner: id,
-        },
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        }
-      );
-
-      notify();
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const notCoin = (param) => {
-    toast.warning(
-      `Приходите через ${param.lendth > 1 ? param + " дней" : param + " день"
-      } `,
-      {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      }
-    );
-  };
 
   return (
     <div className="discount_detail">
@@ -108,16 +54,11 @@ const DiscountDetail = () => {
       >
         Скидка на {data.discount} %
       </p>
-      <SuccessAlert theme="colored" />
       <button
-        disabled={loading}
-        style={{ background: loading ? "#bba97a" : "#fdb602" }}
-        onClick={() => {
-          data.days === true ? setCoin() : notCoin(data.days);
-        }}
+        onClick={() => navigate('/qr-scanner')}
         className="btn"
       >
-        {loading ? <LoadingAnimate /> : "Использовать коин"}
+        Отсканировать QR
       </button>
     </div>
   );

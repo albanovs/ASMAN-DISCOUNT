@@ -56,7 +56,7 @@ const QRScanner = () => {
             navigate(`/details-qr/${succes_text}`);
         } else if (text.endsWith("?type=2")) {
             succes_text = text.replace("?type=2", "");
-            navigate(`/discount-detail/${succes_text}`);
+            navigate(`/discount-detail-forsale/${succes_text}`);
         } else {
             navigate(`/with-drawal/${text}`)
         }

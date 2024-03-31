@@ -4,14 +4,16 @@ import { IoNotifications } from "react-icons/io5";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import Skeleton from "react-loading-skeleton";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const names = useSelector((state) => state.user_info.user_info);
+  const navigate = useNavigate()
 
   return (
     <div className="contain-header">
       <div className="header">
-        <div className="profile-name">
+        <div className="profile-name" onClick={() => navigate('/profile')}>
           {names.profile_photo ? (
             <img
               className="profile-photo-header"
