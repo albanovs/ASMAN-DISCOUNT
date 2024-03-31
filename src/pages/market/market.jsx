@@ -229,15 +229,6 @@ export default function Market() {
                   {SearchFilterPage.map((el, index) => (
                     <Card el={el} index={index} />
                   ))}
-                  {SearchFilterPage.map((el, index) => (
-                    <Card el={el} index={index} />
-                  ))}
-                  {SearchFilterPage.map((el, index) => (
-                    <Card el={el} index={index} />
-                  ))}
-                  {SearchFilterPage.map((el, index) => (
-                    <Card el={el} index={index} />
-                  ))}
                 </div>
               </div>
               <div style={{ width: "100%", height: 100 }}></div>
