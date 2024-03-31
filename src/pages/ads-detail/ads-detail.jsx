@@ -83,18 +83,6 @@ const AdsDetail = () => {
         {data?.similar_ads?.map((el, index) => (
           <Card el={el} index={index} />
         ))}
-        {data?.similar_ads?.map((el, index) => (
-          <Card el={el} index={index} />
-        ))}
-        {data?.similar_ads?.map((el, index) => (
-          <Card el={el} index={index} />
-        ))}
-        {data?.similar_ads?.map((el, index) => (
-          <Card el={el} index={index} />
-        ))}
-        {data?.similar_ads?.map((el, index) => (
-          <Card el={el} index={index} />
-        ))}
       </div>
       <div className="contants">
         <p
