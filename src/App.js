@@ -18,6 +18,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import VvodAsman from "./pages/vvod-asman/vvod-asman";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import AdsDetail from "./pages/ads-detail/ads-detail";
 
 function App() {
   const location = useLocation();
@@ -59,6 +60,10 @@ function App() {
           <Route
             path="/discount-detail/:id"
             element={<PrivateRoute element={<DiscountDetail />} />}
+          />
+          <Route
+            path="/market-detail/:id"
+            element={<PrivateRoute element={<AdsDetail />} />}
           />
           <Route
             path="/buy-asman"

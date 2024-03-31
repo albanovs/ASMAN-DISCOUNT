@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import "./ads-post/ads-post.css";
+import "./card.css";
 import Slider from "react-slick";
 import { FiShoppingCart } from "react-icons/fi";
 import heart from "../../../views/market/heart.svg";
 import heart_red from "../../../views/market/heart_red.svg";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ index, el }) => {
   const [love, setLove] = useState(false);
+  const navigate = useNavigate();
 
   const settings = {
     dots: false,
@@ -16,11 +18,19 @@ const Card = ({ index, el }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
   return (
-    <div key={index} className="box">
+    <div
+      onClick={() => navigate(`/market-detail/${el.id}`)}
+      key={index}
+      className="box"
+    >
       <img
         className="love"
-        onClick={() => setLove(!love)}
+        onClick={(e) => {
+          e.stopPropagation(); 
+          setLove(!love);
+        }}
         src={love ? heart_red : heart}
         alt=""
       />

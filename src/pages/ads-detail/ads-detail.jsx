@@ -1,10 +1,109 @@
-import React from 'react'
-import "./ads-detail.css"
+import React, { useEffect, useState } from "react";
+import "./ads-detail.css";
+import { api } from "../../Api";
+import { useNavigate, useParams } from "react-router-dom";
+import { IoMdArrowBack } from "react-icons/io";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import { LuShare2 } from "react-icons/lu";
+import Slider from "react-slick";
+import heart from "../../views/market/heart.svg";
+import heart_red from "../../views/market/heart_red.svg";
+import Card from "../market/components/card";
 
 const AdsDetail = () => {
-  return (
-    <div>AdsDetail</div>
-  )
-}
+  const { id } = useParams();
+  const [data, setData] = useState([]);
+  const [love, setLove] = useState(false);
+  const navigate = useNavigate();
 
-export default AdsDetail
+  useEffect(() => {
+    api
+      .get(`/market/ad-detail/${id}`)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.log("/market/ad-detail/:", error);
+      });
+  }, []);
+
+  const settings = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  return (
+    <div className="ads_detail">
+      <div className="head_detail">
+        <div className="between">
+          <IoMdArrowBack onClick={() => navigate(-1)} size={24} />
+          <div className="flex">
+            <AiOutlineInfoCircle size={24} />
+            <LuShare2 size={24} />
+          </div>
+        </div>
+      </div>
+
+      <Slider {...settings} className="box_slide">
+        {data.images?.map((elem, id) => (
+          <div key={id}>
+            <img src={elem.img} alt="" />
+          </div>
+        ))}
+      </Slider>
+      <div className="contants">
+        <div className="between">
+          <p className="id">102184541037</p>
+          <img
+            className="loves"
+            onClick={() => setLove(!love)}
+            src={love ? heart_red : heart}
+            alt=""
+          />
+        </div>
+        <p className="title">{data.title}</p>
+        <p className="prices">{data.price} c</p>
+        <div className="user">
+          <img src={data.avatar} alt="" />
+          <div>
+            <p className="user_title">
+              {data.first_name} {data.last_name}
+            </p>
+          </div>
+        </div>
+        <div className="line_boxs">
+          <h2>Похожие товары</h2>
+        </div>
+      </div>
+      <div className="ovar_boxs">
+        {data?.similar_ads?.map((el, index) => (
+          <Card el={el} index={index} />
+        ))}
+        {data?.similar_ads?.map((el, index) => (
+          <Card el={el} index={index} />
+        ))}
+        {data?.similar_ads?.map((el, index) => (
+          <Card el={el} index={index} />
+        ))}
+        {data?.similar_ads?.map((el, index) => (
+          <Card el={el} index={index} />
+        ))}
+        {data?.similar_ads?.map((el, index) => (
+          <Card el={el} index={index} />
+        ))}
+      </div>
+      <div className="contants">
+        <p
+          className="description"
+          dangerouslySetInnerHTML={{ __html: data.description }}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default AdsDetail;

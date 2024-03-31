@@ -7,6 +7,7 @@ import AdsPost from "./components/ads-post/ads-post";
 import { BiCategory } from "react-icons/bi";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import Card from "./components/card";
+import { IoMdArrowBack } from "react-icons/io";
 
 export default function Market() {
   const [tab, setTab] = useState({
@@ -19,6 +20,11 @@ export default function Market() {
     category: [],
   });
   const [value, setValue] = useState("");
+  const [valuePage, setValuePage] = useState("");
+  const [page, setPage] = useState({
+    pages: false,
+    data: [],
+  });
 
   useEffect(() => {
     api
@@ -57,6 +63,15 @@ export default function Market() {
       return [];
     }
   }, [cate?.data, value]);
+
+  const SearchFilterPage = useMemo(() => {
+    if (page?.data?.ads) {
+      return page.data.ads.filter((obj) => {
+        const fullName = obj.title.toLowerCase();
+        return fullName.includes(valuePage.toLowerCase());
+      });
+    }
+  }, [page.data.ads, valuePage]);
 
   useEffect(() => {
     if (cate.data.length > 0) {
@@ -129,7 +144,11 @@ export default function Market() {
         <div className="market_list">
           {cate?.category.name ? (
             <div className="line_boxs">
-              <h2>
+              <h2
+                onClick={() =>
+                  setPage({ ...page, data: cate.category, pages: true })
+                }
+              >
                 {cate?.category.name}{" "}
                 <MdOutlineArrowForwardIos className="icone" />{" "}
               </h2>
@@ -142,21 +161,71 @@ export default function Market() {
           ) : (
             SearchFilter.map((item, index) => (
               <div key={index} className="line_boxs">
-                <h2>
+                <h2
+                  onClick={() => setPage({ ...page, data: item, pages: true })}
+                >
                   {item.name} <MdOutlineArrowForwardIos className="icone" />
                 </h2>
                 <div className="ovar_boxs">
-                  {item.ads.map((el, index) => (
-                    <Card el={el} index={index} />
-                  ))}
+                  {item.ads
+                    .filter((obj) => {
+                      const fullName = obj.title.toLowerCase();
+                      return fullName.includes(value.toLowerCase());
+                    })
+                    .map((el, index) => (
+                      <Card el={el} index={index} />
+                    ))}
                 </div>
               </div>
             ))
           )}
         </div>
       )}
+
       {tab.tab2 && <AdsPost />}
-      <div style={{ width: "100%", height: 200 }}></div>
+
+      <div style={{ width: "100%", height: 100 }}></div>
+
+      {page.pages && <div className="page_fixet_not"></div>}
+
+      {page.pages && (
+        <div className="page_fixet">
+          <div className="head_market">
+            <div className="head_page">
+              <IoMdArrowBack
+                onClick={() => setPage({ ...page, data: [], pages: false })}
+                size={24}
+              />
+              <h4>{page.data.name}</h4>
+            </div>
+          </div>
+          <div className="market">
+            <div className="search_block">
+              <div className="relative_input">
+                <input
+                  value={valuePage}
+                  onChange={(e) => setValuePage(e.target.value)}
+                  className="search"
+                  type="text"
+                  placeholder="Search..."
+                />
+                <img className="icon absolute" src={search} alt="" />
+              </div>
+              <div className="filter">
+                <img className="icon" src={filter} alt="" />
+              </div>
+            </div>
+            <div className="market_list">
+              <div className="grid_col">
+                {SearchFilterPage.map((el, index) => (
+                  <Card el={el} index={index} />
+                ))}
+              </div>
+            </div>
+            <div style={{ width: "100%", height: 100 }}></div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

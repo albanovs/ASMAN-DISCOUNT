@@ -1,0 +1,97 @@
+.box {
+  padding-top: 8px;
+  width: 150px;
+  height: 200px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.box:first-child {
+  margin-left: 20px;
+}
+
+.box:last-child {
+  margin-right: 20px;
+}
+
+.box .max {
+  width: 150px;
+  height: 100%;
+}
+
+.box .box_slide {
+  width: 150px;
+  outline: none;
+}
+
+.box .box_slide div {
+  outline: none;
+}
+
+.box img {
+  border-radius: 8px 8px 0 0;
+  width: 150px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.box .contant {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.box .contant h3 {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--black1);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  max-height: 2.4em;
+  line-height: 1.2em;
+}
+
+.box .contant .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box .price {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--yellow);
+}
+
+.box .cart {
+  padding: 2px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box .cart .icond {
+  font-size: 18px;
+  color: var(--yellow);
+}
+
+.box .love {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 24px !important;
+  height: 24px !important;
+  z-index: 3;
+}
