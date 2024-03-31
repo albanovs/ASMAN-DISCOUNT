@@ -10,7 +10,6 @@ import { BsArrowDownRightCircleFill } from "react-icons/bs";
 import { FaPlayCircle } from "react-icons/fa";
 import { FaProductHunt } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux'
-import userInfo, { fetchUserData } from '../../App/slice/user-info';
 import { fetchStatusData } from '../../App/slice/status';
 import standart from '../../views/disc/one.svg'
 import bronze from '../../views/disc/two.svg'
@@ -32,7 +31,6 @@ export default function HomePage() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchUserData())
         dispatch(fetchStatusData())
     }, [dispatch])
 

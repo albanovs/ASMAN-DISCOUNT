@@ -19,9 +19,16 @@ import VvodAsman from "./pages/vvod-asman/vvod-asman";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import AdsDetail from "./pages/ads-detail/ads-detail";
+import { useDispatch } from "react-redux";
+import { fetchUserData } from "./App/slice/user-info";
 
 function App() {
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUserData());
+  }, [dispatch]);
 
   const handleScroll = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
