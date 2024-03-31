@@ -9,6 +9,7 @@ import Settings from "../pages/settings/settings";
 import Support from "../pages/support/support";
 import ChangePassword from "../pages/change-password/change-password";
 import WithDrawal from '../pages/with-drawal/with-drawal'
+import ReferalPage from "../pages/referal-page/referal-page";
 
 export default function PageContent() {
   return (
@@ -23,6 +24,7 @@ export default function PageContent() {
         <Route exact={true} path="/profile" element={<Profile />} />
         <Route exact={true} path="/settings" element={<Settings />} />
         <Route exact={true} path="/support" element={<Support />} />
+        <Route exact={true} path="/referal" element={<ReferalPage />} />
         <Route
           exact={true}
           path="/change-password"
