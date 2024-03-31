@@ -89,3 +89,9 @@
   position: relative;
   z-index: 1;
 }
+
+.ads_detail .user_title {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--black1);
+}

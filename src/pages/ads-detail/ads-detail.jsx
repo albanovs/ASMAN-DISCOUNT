@@ -9,11 +9,13 @@ import Slider from "react-slick";
 import heart from "../../views/market/heart.svg";
 import heart_red from "../../views/market/heart_red.svg";
 import Card from "../market/components/card";
+import LoadingAnimate from "../../UI-kit/loading";
 
 const AdsDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [love, setLove] = useState(false);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,9 +23,11 @@ const AdsDetail = () => {
       .get(`/market/ad-detail/${id}`)
       .then((response) => {
         setData(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log("/market/ad-detail/:", error);
+        setLoading(false);
       });
   }, []);
 
@@ -36,7 +40,11 @@ const AdsDetail = () => {
     slidesToScroll: 1,
   };
 
-  return (
+  return loading ? (
+    <div className="loading_div">
+      <LoadingAnimate />
+    </div>
+  ) : (
     <div className="ads_detail">
       <div className="head_detail">
         <div className="between">

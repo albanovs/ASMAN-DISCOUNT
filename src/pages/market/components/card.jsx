@@ -23,7 +23,7 @@ const Card = ({ index, el }) => {
     <div
       onClick={() => navigate(`/market-detail/${el.id}`)}
       key={index}
-      className="box"
+      className="card_box"
     >
       <img
         className="love"

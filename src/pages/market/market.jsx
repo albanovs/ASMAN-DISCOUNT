@@ -8,6 +8,7 @@ import { BiCategory } from "react-icons/bi";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import Card from "./components/card";
 import { IoMdArrowBack } from "react-icons/io";
+import LoadingAnimate from "../../UI-kit/loading";
 
 export default function Market() {
   const [tab, setTab] = useState({
@@ -25,6 +26,7 @@ export default function Market() {
     pages: false,
     data: [],
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     api
@@ -34,9 +36,11 @@ export default function Market() {
           ...cate,
           data: response.data,
         });
+        setLoading(false);
       })
       .catch((error) => {
         console.log("/market/cat-list/:", error);
+        setLoading(false);
       });
   }, []);
 
@@ -82,7 +86,11 @@ export default function Market() {
     }
   }, [cate.data]);
 
-  return (
+  return loading ? (
+    <div className="loading_div">
+      <LoadingAnimate />
+    </div>
+  ) : (
     <>
       <div className="market">
         <div className="search_block">

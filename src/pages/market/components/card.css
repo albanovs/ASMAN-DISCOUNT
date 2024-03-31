@@ -1,4 +1,4 @@
-.box {
+.card_box {
   padding-top: 8px;
   width: 150px;
   height: 200px;
@@ -10,29 +10,29 @@
   z-index: 2;
 }
 
-.box:first-child {
+.card_box:first-child {
   margin-left: 20px;
 }
 
-.box:last-child {
+.card_box:last-child {
   margin-right: 20px;
 }
 
-.box .max {
+.card_box .max {
   width: 150px;
   height: 100%;
 }
 
-.box .box_slide {
+.card_box .box_slide {
   width: 150px;
   outline: none;
 }
 
-.box .box_slide div {
+.card_box .box_slide div {
   outline: none;
 }
 
-.box img {
+.card_box img {
   border-radius: 8px 8px 0 0;
   width: 150px;
   height: 100%;
@@ -40,14 +40,14 @@
   object-position: center;
 }
 
-.box .contant {
+.card_box .contant {
   padding: 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.box .contant h3 {
+.card_box .contant h3 {
   font-size: 12px;
   font-weight: 400;
   color: var(--black1);
@@ -59,19 +59,19 @@
   line-height: 1.2em;
 }
 
-.box .contant .flex {
+.card_box .contant .flex {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.box .price {
+.card_box .price {
   font-size: 14px;
   font-weight: 500;
   color: var(--yellow);
 }
 
-.box .cart {
+.card_box .cart {
   padding: 2px;
   border-radius: 3px;
   border: 1px solid var(--border);
@@ -82,12 +82,12 @@
   justify-content: center;
 }
 
-.box .cart .icond {
+.card_box .cart .icond {
   font-size: 18px;
   color: var(--yellow);
 }
 
-.box .love {
+.card_box .love {
   position: absolute;
   top: 3px;
   right: 3px;
