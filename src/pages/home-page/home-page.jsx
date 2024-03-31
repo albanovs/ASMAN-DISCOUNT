@@ -60,7 +60,7 @@ export default function HomePage() {
             await navigator.share({
                 title: 'Приглашение в платформу ASMAN DISCOUNT',
                 text: `Вас пригласил ${userData.first_name} в платформу ASMAN DISCOUNT. Перейдите по ссылке и зарегистрируйтесь:`,
-                url: `https://orozmat.mirzabekov.fvds.ru/api/auth/register/${userData.id}`
+                url: `https://orozmat.mirzabekov.fvds.ru/#/register/${userData.id}`
             });
         } catch (error) {
             console.error('Ошибка обмена:', error.message);

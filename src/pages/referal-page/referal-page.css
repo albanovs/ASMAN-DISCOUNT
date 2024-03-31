@@ -1,0 +1,110 @@
+.referal_container {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background-color: var(--black);
+  color: white;
+  padding: 10px 20px;
+}
+
+.button-referal-home_page {
+  cursor: pointer;
+}
+
+.copyed-referal {
+  color: green;
+  position: absolute;
+  top: 5px;
+}
+
+.text-referal-home_page_main {
+  color: #000000;
+  font-weight: 800;
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+.text-referal-home_page {
+  color: #000000;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.asman-coin-contain {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.asman-coin-referal {
+  width: 200px;
+}
+
+.referal_container > div:nth-child(1) {
+  width: 100%;
+  height: 140px;
+  border-radius: 10px;
+  background-color: #656565;
+  padding: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  margin-top: 50px;
+}
+
+.referal_container div p {
+  font-size: 10px;
+}
+
+.referal_container button {
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  background-color: var(--orange);
+  color: white;
+  margin-top: 10px;
+}
+
+.referal_list > h1 {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.referal_list_contain {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #666666;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.referal_list_contain p {
+  color: #949494;
+}
+
+.referal_list_contain div h2 {
+  font-size: 13px;
+  text-align: center;
+}
+
+.item_referal_user {
+  width: 100%;
+  padding: 5px;
+  background-color: #40782671;
+}
+
+.contain_referal_bonus h1 {
+  color: #979797;
+  font-size: 13px;
+}
+
+.contain_referal_bonus h1 span {
+  color: #62b53b;
+}
