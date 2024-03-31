@@ -1,0 +1,268 @@
+.market {
+  max-width: 990px;
+  width: 100%;
+  padding: 0 20px;
+  padding-top: 12px;
+}
+
+.market.not {
+  padding-top: 0;
+}
+
+.market .search_block {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.market .relative_input {
+  width: 100%;
+  position: relative;
+}
+
+.market .search {
+  width: 100%;
+  height: 50px;
+  border-radius: 15px;
+  outline: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--black1);
+  border: 1px solid var(--border);
+  padding-left: 50px;
+}
+
+.market .search::placeholder {
+  color: var(--gray-color);
+}
+
+.market .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.market .absolute {
+  position: absolute;
+  top: 0;
+  left: 15px;
+  bottom: 0;
+  margin: auto;
+}
+
+.market .filter {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+
+.market .tabs {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.market .tabs .tab {
+  width: 100%;
+  height: 35px;
+  display: flex;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--black1);
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+
+.market .tabs .tab.first {
+  border-radius: 8px 0 0 8px;
+}
+
+.market .tabs .tab.end {
+  border-radius: 0 8px 8px 0;
+}
+
+.market .tabs .tab.active {
+  background: var(--yellow);
+  color: var(--white);
+  border: 1px solid var(--yellow);
+}
+
+.market_over .category {
+  padding: 12px 0;
+  display: flex;
+  overflow-y: hidden;
+  background: transparent;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.market_over .cate {
+  padding: 8px;
+  border-radius: 5px;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.12);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.market_over .cate .img {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.market_over .cate p {
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.market_over .cate:first-child {
+  margin-left: 20px;
+}
+
+.market_over .cate:last-child {
+  margin-right: 20px;
+}
+
+.market_over .cate.active {
+  color: var(--white);
+  background: var(--yellow);
+}
+
+.market_list h2 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black1);
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.market_list h2 .icone {
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 15px;
+}
+
+.market_list .ovar_boxs {
+  padding: 15px 0;
+  display: flex;
+  overflow-y: hidden;
+  background: transparent;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.market_list .box {
+  padding-top: 8px;
+  width: 130px;
+  height: 200px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.market_list .max {
+  width: 130px;
+  height: 100%;
+}
+
+.market_list .box:first-child {
+  margin-left: 20px;
+}
+
+.market_list .box:last-child {
+  margin-right: 20px;
+}
+
+.market_list .box .box_slide {
+  width: 130px;
+  outline: none;
+}
+
+.market_list .box .box_slide div {
+  outline: none;
+}
+
+.market_list .box img {
+  border-radius: 8px 8px 0 0;
+  width: 130px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.market_list .box .contant {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.market_list .box .contant h3 {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--black1);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  max-height: 2.4em;
+  line-height: 1.2em;
+}
+
+.market_list .box .contant .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.market_list .price {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--yellow);
+}
+
+.market_list .cart {
+  padding: 2px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.market_list .cart .icond {
+  font-size: 18px;
+  color: var(--yellow);
+}
+
+.market_list .love {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 24px !important;
+  height: 24px !important;
+  z-index: 3;
+}
