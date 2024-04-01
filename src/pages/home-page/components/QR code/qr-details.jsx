@@ -19,6 +19,7 @@ export default function QrDetails() {
     const [coin_count, setCoinCount] = useState("")
     const [isUser, setIsUser] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [massageResponse, setMassageResponse] = useState("")
     const { id } = useParams()
     const [isBalance, setIsBalance] = useState(false)
     const navigate = useNavigate()
@@ -53,6 +54,7 @@ export default function QrDetails() {
             if (!response.data.response) {
                 setIsUser(true)
                 setLoading(false)
+                setMassageResponse(response.data.message)
                 return
             } else {
                 setLoading(false)
@@ -83,9 +85,9 @@ export default function QrDetails() {
                         <h1 className='balance-perevod'>Введите ID или отсканируйте QR</h1>
                         <div>
                             <h1 className='text-main-perevod'>ID получателя:</h1>
-                            {isUser ? <span className='error-text-user'>неправильный ID пользователя</span> : ""}
+                            {isUser && <span className='error-text-user'>{massageResponse}</span>}
                             <div>
-                                <input value={isID} onChange={(e) => setIsID(e.target.value)} type="text" />
+                                <input required value={isID} onChange={(e) => setIsID(e.target.value)} type="text" />
                             </div>
                         </div>
                     </div>
@@ -93,7 +95,7 @@ export default function QrDetails() {
                         <h1 className='balance-perevod'>ваш текущий баланс: {user_coin.balance || 0}</h1>
                         <div>
                             <h1 className='text-main-perevod'>Сумма:</h1>
-                            <input type="number" value={coin_count} onChange={(e) => setCoinCount(e.target.value)} />
+                            <input required type="number" value={coin_count} onChange={(e) => setCoinCount(e.target.value)} />
                         </div>
                         {isBalance ? <span className='error-text-perevod'>недостаточно средств</span> : ""}
                     </div>
