@@ -21,6 +21,7 @@ import "slick-carousel/slick/slick-theme.css";
 import AdsDetail from "./pages/ads-detail/ads-detail";
 import { useDispatch } from "react-redux";
 import { fetchUserData } from "./App/slice/user-info";
+import DiscountBuy from "./pages/discount-detail/discount-buy";
 
 function App() {
   const location = useLocation();
@@ -67,6 +68,10 @@ function App() {
           <Route
             path="/discount-detail/:id"
             element={<PrivateRoute element={<DiscountDetail />} />}
+          />
+          <Route
+            path="/discount-detail-forsale/:id"
+            element={<PrivateRoute element={<DiscountBuy />} />}
           />
           <Route
             path="/market-detail/:id"
