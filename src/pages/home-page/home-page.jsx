@@ -108,7 +108,7 @@ export default function HomePage() {
                     <button onClick={() => navigate('/vvod-asman')}><BsArrowDownLeftCircleFill size={40} /><span>Ввод</span></button>
                     <button onClick={() => navigate('/drawal-with')}><BsArrowDownRightCircleFill size={40} /><span>Вывод</span></button>
                     <button onClick={() => navigate('/qr-details')}><FaPlayCircle size={40} /><span>Перевод</span></button>
-                    <button onClick={() => navigate('/buy-asman')}><img src={asmanLogo} /><span>Купить</span></button>
+                    <button className='asman_coin_button' onClick={() => navigate('/buy-asman')}><div><img src={asmanLogo} /></div><span>Купить</span></button>
                 </div>
                 <div>
                 </div>

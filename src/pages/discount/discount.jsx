@@ -61,6 +61,7 @@ export default function Discount() {
               className={`cate ${cate === category && "active"}`}
             >
               <img src={categoryImages[index]} alt="" />
+              <h1>{category}</h1>
             </div>
           ))}
         </div>

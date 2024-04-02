@@ -137,6 +137,20 @@
   gap: 5px;
 }
 
+.asman_coin_button img {
+  width: 40px;
+}
+
+.asman_coin_button div {
+  border-radius: 50%;
+  border: 2px solid #e2af40;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .button-payment_home button > span {
   color: white;
 }

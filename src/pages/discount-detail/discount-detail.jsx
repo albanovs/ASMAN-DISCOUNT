@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../Api";
 import "react-toastify/dist/ReactToastify.css";
 import Skeleton from "react-loading-skeleton";
+import { CountdownTimer } from "./timer";
 
 const DiscountDetail = () => {
   const { id } = useParams();
@@ -27,6 +28,7 @@ const DiscountDetail = () => {
         console.log(error);
       });
   }, [loading]);
+
 
   return (
     <div className="discount_detail">
@@ -56,9 +58,10 @@ const DiscountDetail = () => {
       </p>
       <button
         onClick={() => navigate('/qr-scanner')}
-        className="btn"
-      >
-        Отсканировать QR
+        className='btn'
+        style={{ background: typeof data.minutes !== 'number' ? "#fdb602" : '#bba97a' }}
+        disabled={typeof data.minutes === 'number'}>
+        {typeof data.minutes !== 'number' ? "Отсканировать QR" : <CountdownTimer minutes={data.minutes} />}
       </button>
     </div>
   );

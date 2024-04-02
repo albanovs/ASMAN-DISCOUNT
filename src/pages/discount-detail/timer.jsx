@@ -1,0 +1,32 @@
+import React, { useState, useEffect } from 'react';
+
+export function CountdownTimer({ minutes }) {
+    const [timeLeft, setTimeLeft] = useState(minutes * 60);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setTimeLeft(prevTimeLeft => {
+                if (prevTimeLeft === 0) {
+                    clearInterval(intervalId);
+                    return 0;
+                }
+                return prevTimeLeft - 1;
+            });
+        }, 1000);
+
+        return () => clearInterval(intervalId);
+    }, [minutes]);
+
+    const formatTime = (time) => {
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+        const seconds = time % 60;
+        return `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    };
+
+    return (
+        <div>
+            Приходите через: {formatTime(timeLeft)}
+        </div>
+    );
+}

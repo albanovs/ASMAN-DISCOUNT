@@ -79,11 +79,18 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  color: white;
 }
 
 .discount .cateing .cate {
   padding: 5px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  font-size: 12px;
   border: 1px solid #ffffff68;
 }
 
