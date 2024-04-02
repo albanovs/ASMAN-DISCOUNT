@@ -9,9 +9,6 @@
   font-family: "Rubik", sans-serif;
 }
 
-.body {
-}
-
 button {
   outline: none;
 }
@@ -22,8 +19,8 @@ input {
 
 :root {
   --white: #fff;
-  --black1: #181a20;
-  --black: #000;
+  --black1: #1c1b1e;
+  --black: #050506;
   --orange: #e48a21;
   --gray: #d1d1d2;
   --border: #dadada;
