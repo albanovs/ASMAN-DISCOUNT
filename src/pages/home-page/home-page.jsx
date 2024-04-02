@@ -23,6 +23,7 @@ import Modal from '../../containers/UI/Modal/Modal';
 import coin from '../../views/coins/coin.png'
 import { TbClipboardCopy } from "react-icons/tb";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import asmanLogo from '../../views/coins/asmancoin.png'
 
 export default function HomePage() {
 
@@ -107,7 +108,7 @@ export default function HomePage() {
                     <button onClick={() => navigate('/vvod-asman')}><BsArrowDownLeftCircleFill size={40} /><span>Ввод</span></button>
                     <button onClick={() => navigate('/drawal-with')}><BsArrowDownRightCircleFill size={40} /><span>Вывод</span></button>
                     <button onClick={() => navigate('/qr-details')}><FaPlayCircle size={40} /><span>Перевод</span></button>
-                    <button onClick={() => navigate('/buy-asman')}><FaProductHunt size={40} /><span>Купить</span></button>
+                    <button onClick={() => navigate('/buy-asman')}><img src={asmanLogo} /><span>Купить</span></button>
                 </div>
                 <div>
                 </div>
