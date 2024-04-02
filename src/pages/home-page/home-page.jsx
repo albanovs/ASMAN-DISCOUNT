@@ -102,15 +102,12 @@ export default function HomePage() {
                         ))
                     )}
                 </div>
-
                 <Balance balance={userData.balance} curs={getStatus.rate} />
-                <div className='button-payment_contain'>
-                    <div className='button-payment_home'>
-                        <button onClick={() => navigate('/vvod-asman')}><BsArrowDownLeftCircleFill size={40} /><span>Ввод</span></button>
-                        <button onClick={() => navigate('/drawal-with')}><BsArrowDownRightCircleFill size={40} /><span>Вывод</span></button>
-                        <button onClick={() => navigate('/qr-details')}><FaPlayCircle size={40} /><span>Перевод</span></button>
-                        <button onClick={() => navigate('/buy-asman')}><FaProductHunt size={40} /><span>Купить</span></button>
-                    </div>
+                <div className='button-payment_home'>
+                    <button onClick={() => navigate('/vvod-asman')}><BsArrowDownLeftCircleFill size={40} /><span>Ввод</span></button>
+                    <button onClick={() => navigate('/drawal-with')}><BsArrowDownRightCircleFill size={40} /><span>Вывод</span></button>
+                    <button onClick={() => navigate('/qr-details')}><FaPlayCircle size={40} /><span>Перевод</span></button>
+                    <button onClick={() => navigate('/buy-asman')}><FaProductHunt size={40} /><span>Купить</span></button>
                 </div>
                 <div>
                 </div>

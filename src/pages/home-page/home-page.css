@@ -19,12 +19,12 @@
 
 .status {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 30px;
   align-items: center;
   text-align: center;
   background-color: var(--black1);
-  padding: 20px 0;
+  padding: 20px 10px;
   width: 100%;
   border-radius: 15px;
   border: 0.1px solid #575757;
@@ -33,7 +33,7 @@
 .status > div {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 2px;
   font-weight: 300;
@@ -118,10 +118,9 @@
 .button-payment_home {
   width: 100%;
   display: flex;
-  gap: 60px;
+  gap: 30px;
   justify-content: space-between;
   align-items: center;
-  /* border: 1px solid #575757; */
   padding: 10px 20px;
   border-radius: 10px;
   background-color: var(--black1);
