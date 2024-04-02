@@ -127,67 +127,73 @@ export default function Market() {
           </div>
         </div>
       </div>
-      <div className="market_over">
-        <div className="category">
-          <div
-            onClick={() => setCate({ ...cate, active: "all", category: [] })}
-            className={`cate ${"all" === cate.active && "active"}`}
-          >
-            <BiCategory className="img" />
-            <p>Все</p>
-          </div>
-          {cate?.data?.map((el, index) => (
-            <div
-              onClick={() => setCate({ ...cate, category: el, active: el })}
-              key={index}
-              className={`cate ${el.name === cate.active.name && "active"}`}
-            >
-              <img className="img" src={el.icon} alt="" />
-              <p>{el.name}</p>
-            </div>
-          ))}
-        </div>
-      </div>
       {tab.tab1 && (
-        <div className="market_list">
-          {cate?.category.name ? (
-            <div className="line_boxs">
-              <h2
+        <>
+          <div className="market_over">
+            <div className="category">
+              <div
                 onClick={() =>
-                  setPage({ ...page, data: cate.category, pages: true })
+                  setCate({ ...cate, active: "all", category: [] })
                 }
+                className={`cate ${"all" === cate.active && "active"}`}
               >
-                {cate?.category.name}{" "}
-                <MdOutlineArrowForwardIos className="icone" />{" "}
-              </h2>
-              <div className="ovar_boxs">
-                {SearchFilterCate.map((el, index) => (
-                  <Card el={el} index={index} />
-                ))}
+                <BiCategory className="img" />
+                <p>Все</p>
               </div>
-            </div>
-          ) : (
-            SearchFilter.map((item, index) => (
-              <div key={index} className="line_boxs">
-                <h2
-                  onClick={() => setPage({ ...page, data: item, pages: true })}
+              {cate?.data?.map((el, index) => (
+                <div
+                  onClick={() => setCate({ ...cate, category: el, active: el })}
+                  key={index}
+                  className={`cate ${el.name === cate.active.name && "active"}`}
                 >
-                  {item.name} <MdOutlineArrowForwardIos className="icone" />
+                  <img className="img" src={el.icon} alt="" />
+                  <p>{el.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="market_list">
+            {cate?.category.name ? (
+              <div className="line_boxs">
+                <h2
+                  onClick={() =>
+                    setPage({ ...page, data: cate.category, pages: true })
+                  }
+                >
+                  {cate?.category.name}{" "}
+                  <MdOutlineArrowForwardIos className="icone" />{" "}
                 </h2>
                 <div className="ovar_boxs">
-                  {item.ads
-                    .filter((obj) => {
-                      const fullName = obj.title.toLowerCase();
-                      return fullName.includes(value.toLowerCase());
-                    })
-                    .map((el, index) => (
-                      <Card el={el} index={index} />
-                    ))}
+                  {SearchFilterCate.map((el, index) => (
+                    <Card el={el} index={index} />
+                  ))}
                 </div>
               </div>
-            ))
-          )}
-        </div>
+            ) : (
+              SearchFilter.map((item, index) => (
+                <div key={index} className="line_boxs">
+                  <h2
+                    onClick={() =>
+                      setPage({ ...page, data: item, pages: true })
+                    }
+                  >
+                    {item.name} <MdOutlineArrowForwardIos className="icone" />
+                  </h2>
+                  <div className="ovar_boxs">
+                    {item.ads
+                      .filter((obj) => {
+                        const fullName = obj.title.toLowerCase();
+                        return fullName.includes(value.toLowerCase());
+                      })
+                      .map((el, index) => (
+                        <Card el={el} index={index} />
+                      ))}
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </>
       )}
 
       {tab.tab2 && <AdsPost />}
