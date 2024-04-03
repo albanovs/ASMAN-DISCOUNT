@@ -69,6 +69,9 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-direction: column;
+  text-align: center;
+  font-size: 14px;
 }
 
 .contain-button_item_home {

@@ -5,6 +5,7 @@ import { TbClipboardCopy } from 'react-icons/tb'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserData } from '../../App/slice/user-info'
 import { api } from '../../Api'
+import Skeleton from "react-loading-skeleton";
 
 export default function ReferalPage() {
 
@@ -55,8 +56,8 @@ export default function ReferalPage() {
         <div className='referal_container'>
             <div>
                 <h1>ваша персональная ссылка</h1>
-                <p>{`https://discount.asman.io/auth/register/${userData.id}`}</p>
-                <CopyToClipboard text={`https://discount.asman.io/auth/register/${userData.id}`} onCopy={handleCopy}>
+                <p>{`https://discount.asman.io/#/auth/register/${userData.id}`}</p>
+                <CopyToClipboard text={`https://discount.asman.io/#/auth/register/${userData.id}`} onCopy={handleCopy}>
                     <TbClipboardCopy className='button-referal-home_page' size={30} />
                 </CopyToClipboard>
                 {copied && <p className='copyed-referal'>Скопирован</p>}
@@ -69,41 +70,42 @@ export default function ReferalPage() {
                         referalData.map(elem => {
                             return (
                                 <div>
-                                    <div>
-                                        <div className='item_referal_user'>
-                                            <h1>{`${elem.first_name} ${elem.last_name}`}</h1>
-                                            <p>{elem.email}</p>
-                                        </div>
-                                        {
-                                            elem.bonuses.length > 0 ? (
-                                                <div>
-                                                    <h2>Поступленные бонусы:</h2>
-                                                    <div className='contain_referal_bonus'>
-                                                        {
-                                                            elem.bonuses.map(item => {
-                                                                const datas = new Date(item.operation_time)
-                                                                const day = ("0" + datas.getDate()).slice(-2);
-                                                                const month = ("0" + (datas.getMonth() + 1)).slice(-2);
-                                                                const year = datas.getFullYear().toString().slice(-2);
+                                    {elem.email ?
+                                        < div >
+                                            <div className='item_referal_user'>
+                                                <h1>{`${elem.first_name} ${elem.last_name}`}</h1>
+                                                <p>{elem.email}</p>
+                                            </div>
+                                            {
+                                                elem.bonuses.length > 0 ? (
+                                                    <div>
+                                                        <h2>Поступленные бонусы:</h2>
+                                                        <div className='contain_referal_bonus'>
+                                                            {
+                                                                elem.bonuses.map(item => {
+                                                                    const datas = new Date(item.operation_time)
+                                                                    const day = ("0" + datas.getDate()).slice(-2);
+                                                                    const month = ("0" + (datas.getMonth() + 1)).slice(-2);
+                                                                    const year = datas.getFullYear().toString().slice(-2);
 
-                                                                const formatDate = `${day}.${month}.${year}`;
-                                                                return (
-                                                                    < div style={{
-                                                                        display: 'flex',
-                                                                        alignItems: 'center',
-                                                                        justifyContent: 'space-between',
-                                                                    }}>
-                                                                        <h1> <span> + {item.amount} asman</span></h1>
-                                                                        <p>дата: {formatDate}</p>
-                                                                    </div>
-                                                                )
-                                                            })
-                                                        }
+                                                                    const formatDate = `${day}.${month}.${year}`;
+                                                                    return (
+                                                                        < div style={{
+                                                                            display: 'flex',
+                                                                            alignItems: 'center',
+                                                                            justifyContent: 'space-between',
+                                                                        }}>
+                                                                            <h1> <span> + {item.amount} asman</span></h1>
+                                                                            <p>дата: {formatDate}</p>
+                                                                        </div>
+                                                                    )
+                                                                })
+                                                            }
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            ) : ""
-                                        }
-                                    </div>
+                                                ) : ""
+                                            }
+                                        </div> : "Пока пусто , пригласите друзьей по реферельной ссылке"}
                                 </div>
                             )
                         })

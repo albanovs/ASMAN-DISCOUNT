@@ -8,9 +8,9 @@ import { useNavigate } from 'react-router-dom'
 import { BsArrowDownLeftCircleFill } from "react-icons/bs";
 import { BsArrowDownRightCircleFill } from "react-icons/bs";
 import { FaPlayCircle } from "react-icons/fa";
-import { FaProductHunt } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchStatusData } from '../../App/slice/status';
+import { fetchUserData } from '../../App/slice/user-info';
 import standart from '../../views/disc/one.svg'
 import bronze from '../../views/disc/two.svg'
 import silver from '../../views/disc/three.svg'
@@ -33,6 +33,7 @@ export default function HomePage() {
 
     useEffect(() => {
         dispatch(fetchStatusData())
+        dispatch(fetchUserData())
     }, [dispatch])
 
     const statuses = [
@@ -59,7 +60,7 @@ export default function HomePage() {
             await navigator.share({
                 title: 'Приглашение в платформу ASMAN DISCOUNT',
                 text: `Вас пригласил ${userData.first_name} в платформу ASMAN DISCOUNT. Перейдите по ссылке и зарегистрируйтесь:`,
-                url: `https://orozmat.mirzabekov.fvds.ru/#/register/${userData.id}`
+                url: `https://discount.asman.io/#/register/${userData.id}`
             });
         } catch (error) {
             console.error('Ошибка обмена:', error.message);
@@ -128,8 +129,8 @@ export default function HomePage() {
                                 <img src={coin} alt="" className='asman-coin-referal' />
                                 <div>
                                     <h1>ваша персональная ссылка</h1>
-                                    <p>{`https://orozmat.mirzabekov.fvds.ru/#/register/${userData.id}`}</p>
-                                    <CopyToClipboard text={`https://orozmat.mirzabekov.fvds.ru/#/register/${userData.id}`} onCopy={handleCopy}>
+                                    <p>{`https://discount.asman.io/#/register/${userData.id}`}</p>
+                                    <CopyToClipboard text={`https://discount.asman.io/#/register/${userData.id}`} onCopy={handleCopy}>
                                         <TbClipboardCopy className='button-referal-home_page' size={30} />
                                     </CopyToClipboard>
                                     {copied && <p className='copyed-referal'>Скопирован</p>}

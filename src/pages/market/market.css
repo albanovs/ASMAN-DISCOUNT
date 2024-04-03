@@ -268,3 +268,9 @@
 .market_list .max {
   margin: 0 auto;
 }
+
+
+.market_banner_main img{
+  border-radius: 10px;
+  margin-bottom: 20px;
+}

@@ -6,11 +6,13 @@ import { api } from "../../Api";
 import "react-toastify/dist/ReactToastify.css";
 import Skeleton from "react-loading-skeleton";
 import { CountdownTimer } from "./timer";
+import { useSelector } from "react-redux";
 
 const DiscountDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
+  const datas_user = useSelector(state => state.user_info.user_info)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -61,7 +63,7 @@ const DiscountDetail = () => {
         className='btn'
         style={{ background: typeof data.minutes !== 'number' ? "#fdb602" : '#bba97a' }}
         disabled={typeof data.minutes === 'number'}>
-        {typeof data.minutes !== 'number' ? "Отсканировать QR" : <CountdownTimer minutes={data.minutes} />}
+        {datas_user.balance <= 0 ? 'Купите ASMAN чтобы пользоваться' : (typeof data.minutes !== 'number' ? "Отсканировать QR" : <CountdownTimer minutes={data.minutes} />)}
       </button>
     </div>
   );

@@ -9,6 +9,7 @@ import { MdOutlineArrowForwardIos } from "react-icons/md";
 import Card from "./components/card";
 import { IoMdArrowBack } from "react-icons/io";
 import LoadingAnimate from "../../UI-kit/loading";
+import banner from '../../views/market/banner.jpg'
 
 export default function Market() {
   const [tab, setTab] = useState({
@@ -93,6 +94,9 @@ export default function Market() {
   ) : (
     <>
       <div className="market">
+        <div className="market_banner_main">
+          <img src={banner} alt="" />
+        </div>
         <div className="search_block">
           <div className="relative_input">
             <input
@@ -152,47 +156,54 @@ export default function Market() {
               ))}
             </div>
           </div>
-          <div className="market_list">
-            {cate?.category.name ? (
-              <div className="line_boxs">
-                <h2
-                  onClick={() =>
-                    setPage({ ...page, data: cate.category, pages: true })
-                  }
-                >
-                  {cate?.category.name}{" "}
-                  <MdOutlineArrowForwardIos className="icone" />{" "}
-                </h2>
-                <div className="ovar_boxs">
-                  {SearchFilterCate.map((el, index) => (
-                    <Card el={el} index={index} />
-                  ))}
-                </div>
-              </div>
-            ) : (
-              SearchFilter.map((item, index) => (
-                <div key={index} className="line_boxs">
-                  <h2
-                    onClick={() =>
-                      setPage({ ...page, data: item, pages: true })
-                    }
-                  >
-                    {item.name} <MdOutlineArrowForwardIos className="icone" />
-                  </h2>
-                  <div className="ovar_boxs">
-                    {item.ads
-                      .filter((obj) => {
-                        const fullName = obj.title.toLowerCase();
-                        return fullName.includes(value.toLowerCase());
-                      })
-                      .map((el, index) => (
+          {
+            cate.data.length > 0 ? (
+              <div className="market_list">
+                {cate?.category.name ? (
+                  <div className="line_boxs">
+                    <h2
+                      onClick={() =>
+                        setPage({ ...page, data: cate.category, pages: true })
+                      }
+                    >
+                      {cate?.category.name}
+                      <MdOutlineArrowForwardIos className="icone" />
+                    </h2>
+                    <div className="ovar_boxs">
+                      {SearchFilterCate.map((el, index) => (
                         <Card el={el} index={index} />
                       ))}
+                    </div>
                   </div>
-                </div>
-              ))
-            )}
-          </div>
+                ) : (
+                  SearchFilter.map((item, index) => (
+                    <div key={index} className="line_boxs">
+                      <h2
+                        onClick={() =>
+                          setPage({ ...page, data: item, pages: true })
+                        }
+                      >
+                        {item.name} <MdOutlineArrowForwardIos className="icone" />
+                      </h2>
+                      <div className="ovar_boxs">
+                        {item.ads
+                          .filter((obj) => {
+                            const fullName = obj.title.toLowerCase();
+                            return fullName.includes(value.toLowerCase());
+                          })
+                          .map((el, index) => (
+                            <Card el={el} index={index} />
+                          ))}
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            ) :
+              <div
+                style={{ textAlign: ' center' }}
+              >Скоро появится товары !!!</div>
+          }
         </>
       )}
 
