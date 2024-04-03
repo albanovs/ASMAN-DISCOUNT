@@ -44,7 +44,7 @@ export default function ReferalPage() {
             await navigator.share({
                 title: 'Приглашение в платформу ASMAN DISCOUNT',
                 text: `Вас пригласил ${userData.first_name} в платформу ASMAN DISCOUNT. Перейдите по ссылке и зарегистрируйтесь:`,
-                url: `https://orozmat.mirzabekov.fvds.ru/api/auth/register/${userData.id}`
+                url: `https://discount.asman.io/auth/register/${userData.id}`
             });
         } catch (error) {
             console.error('Ошибка обмена:', error.message);
@@ -55,8 +55,8 @@ export default function ReferalPage() {
         <div className='referal_container'>
             <div>
                 <h1>ваша персональная ссылка</h1>
-                <p>{`https://orozmat.mirzabekov.fvds.ru/#/register/${userData.id}`}</p>
-                <CopyToClipboard text={`https://orozmat.mirzabekov.fvds.ru/#/register/${userData.id}`} onCopy={handleCopy}>
+                <p>{`https://discount.asman.io/auth/register/${userData.id}`}</p>
+                <CopyToClipboard text={`https://discount.asman.io/auth/register/${userData.id}`} onCopy={handleCopy}>
                     <TbClipboardCopy className='button-referal-home_page' size={30} />
                 </CopyToClipboard>
                 {copied && <p className='copyed-referal'>Скопирован</p>}
