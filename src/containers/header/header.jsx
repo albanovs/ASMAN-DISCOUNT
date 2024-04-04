@@ -25,9 +25,9 @@ export default function Header() {
           )}
           <h1>{names.first_name || <Skeleton width={70} height={10} />}</h1>
         </div>
-        <div style={{ display: "flex", gap: "10px" }}>
+        <div onClick={() => navigate('/notification')} style={{ margin: '5px', position: "relative" }}>
+          <div className="count_notification">1</div>
           <IoNotifications size={25} color="#E2A332" />
-          <BiDotsVerticalRounded size={25} color="white" />
         </div>
       </div>
     </div>

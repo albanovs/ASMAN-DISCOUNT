@@ -55,6 +55,7 @@
   border-radius: 20px;
   object-fit: cover;
   object-position: center;
+  border: 1px solid #707070;
 }
 
 .discount_detail .text_discount {

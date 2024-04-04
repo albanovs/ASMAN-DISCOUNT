@@ -86,8 +86,8 @@ export default function Payments() {
       data.status === 0
         ? "red"
         : data.status === 1
-        ? "#00FF7F"
-        : "var(--orange)";
+          ? "#00FF7F"
+          : "var(--orange)";
     const statusIcon =
       data.status === 0 ? (
         <MdCancel />
@@ -100,10 +100,10 @@ export default function Payments() {
       data.info === "Покупка Asman" && data.status === 2
         ? "В обработке"
         : data.info === "Покупка Asman" && data.status === 0
-        ? "Отклонено"
-        : data.type === 1
-        ? `+${data.total}`
-        : `-${data.total}`;
+          ? "Отклонено"
+          : data.type === 1
+            ? `+${data.total}`
+            : `-${data.total}`;
 
     return (
       <p className="detail_count_status" style={{ color: statusColor }}>
@@ -173,10 +173,14 @@ export default function Payments() {
               <h1>{data.date}</h1>
               {data.list.map((data, index) => (
                 <div key={index}>
-                  <h1>{data.info}</h1>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }}>
+                    <h1>{data.info}</h1>
+                    <p style={{ fontSize: '10px', color: '#999999' }}>{data.recipient} {data.operation_time}</p>
+                  </div>
                   {renderStatus(data)}
                 </div>
-              ))}
+              )
+              )}
             </div>
           ))
         ) : (

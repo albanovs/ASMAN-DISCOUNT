@@ -66,7 +66,7 @@ export default function Discount() {
           ))}
         </div>
         {!loading ? (data.map((el, key) => (
-          <div key={key}>
+          el.partners.length > 0 ? <div key={key}>
             <h2>{el.name}</h2>
             <div className="discount_block">
               {el.partners.map((item, idx) => (
@@ -86,7 +86,7 @@ export default function Discount() {
                 </div>
               ))}
             </div>
-          </div>
+          </div> : ""
         ))
         ) : <SkeletonDiscount />}
       </div>

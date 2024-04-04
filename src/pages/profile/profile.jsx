@@ -109,23 +109,6 @@ export default function Profile() {
               </form>
               <div className="profile_block">
                 <div className="save">
-                  <div className="box top1">
-                    <div>
-                      <p className="label">Номер телефона</p>
-                      <p className="text">{names?.phone}</p>
-                    </div>
-                    <IoIosArrowForward className="icon" />
-                  </div>
-                  <div className="line"></div>
-                  <div className="box down">
-                    <div>
-                      <p className="label">E-mail</p>
-                      <p className="text">{names?.email}</p>
-                    </div>
-                    <IoIosArrowForward className="icon" />
-                  </div>
-                </div>
-                <div className="save">
                   <div
                     onClick={() => navigate("/support")}
                     className="box top1"

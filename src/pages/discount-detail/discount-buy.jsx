@@ -47,7 +47,7 @@ const DiscountBuy = () => {
         try {
             const token = localStorage.getItem("token");
             const response = await api.post(
-                "/payment/scanner/?type=2",
+                "payment/scanner/?type=2",
                 {
                     partner: id,
                 },
@@ -60,26 +60,10 @@ const DiscountBuy = () => {
 
             notify();
             setLoading(false);
+            navigate('/payments')
         } catch (error) {
             console.log(error);
         }
-    };
-
-    const notCoin = (param) => {
-        toast.warning(
-            `Приходите через ${param.lendth > 1 ? param + " дней" : param + " день"
-            } `,
-            {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-            }
-        );
     };
 
     return (
@@ -113,7 +97,7 @@ const DiscountBuy = () => {
                 disabled={loading}
                 style={{ background: loading ? "#bba97a" : "#fdb602" }}
                 onClick={() => {
-                    data.days === true ? setCoin() : notCoin(data.days);
+                    data.minutes === true && setCoin();
                 }}
                 className="btn"
             >

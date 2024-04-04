@@ -33,3 +33,16 @@
   border-radius: 50%;
   border: 1px solid #c1c1c1;
 }
+
+.count_notification {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgb(230, 74, 74);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  position: absolute;
+  right: 0;
+}

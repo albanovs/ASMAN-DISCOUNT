@@ -22,6 +22,7 @@ import AdsDetail from "./pages/ads-detail/ads-detail";
 import { useDispatch } from "react-redux";
 import { fetchUserData } from "./App/slice/user-info";
 import DiscountBuy from "./pages/discount-detail/discount-buy";
+import NotificationPage from "./pages/notification/notification";
 
 function App() {
   const location = useLocation();
@@ -92,6 +93,10 @@ function App() {
           <Route
             path="/success-payments"
             element={<PrivateRoute element={<SuccessPayments />} />}
+          />
+          <Route
+            path="/notification"
+            element={<PrivateRoute element={<NotificationPage />} />}
           />
           <Route path="/*" element={<PrivateRoute element={<LayOut />} />} />
           <Route path="/login" element={<SignIn />} />

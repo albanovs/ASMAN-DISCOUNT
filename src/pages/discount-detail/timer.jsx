@@ -18,10 +18,11 @@ export function CountdownTimer({ minutes }) {
     }, [minutes]);
 
     const formatTime = (time) => {
-        const hours = Math.floor(time / 3600);
+        const days = Math.floor(time / 86400);
+        const hours = Math.floor((time % 86400) / 3600);
         const minutes = Math.floor((time % 3600) / 60);
         const seconds = time % 60;
-        return `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        return `${days > 0 ? days + ' день ' : ''}${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     };
 
     return (

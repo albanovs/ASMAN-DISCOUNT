@@ -45,7 +45,7 @@ const DiscountDetail = () => {
             __html: data.description,
           },
         }) : <div>
-          <Skeleton width={400} height={5} count={8} />
+          <Skeleton width={350} height={5} count={8} />
         </div>}
       </div>
       <p
@@ -58,14 +58,17 @@ const DiscountDetail = () => {
       >
         Скидка на {data.discount} %
       </p>
-      <button
-        onClick={() => navigate('/qr-scanner')}
-        className='btn'
-        style={{ background: typeof data.minutes !== 'number' ? "#fdb602" : '#bba97a' }}
-        disabled={typeof data.minutes === 'number'}>
-        {datas_user.balance <= 0 ? 'Купите ASMAN чтобы пользоваться' : (typeof data.minutes !== 'number' ? "Отсканировать QR" : <CountdownTimer minutes={data.minutes} />)}
-      </button>
-    </div>
+      {
+        datas_user.balance <= 0 ? <p style={{ color: 'white', textAlign: 'center' }}>Купите ASMAN чтобы пользоваться</p> :
+          < button
+            onClick={() => navigate('/qr-scanner')}
+            className='btn'
+            style={{ background: typeof data.minutes !== 'number' ? "#fdb602" : '#bba97a' }}
+            disabled={typeof data.minutes === 'number'}>
+            {typeof data.minutes !== 'number' ? "Отсканировать QR" : <CountdownTimer minutes={data.minutes} />}
+          </button>
+      }
+    </div >
   );
 };
 
