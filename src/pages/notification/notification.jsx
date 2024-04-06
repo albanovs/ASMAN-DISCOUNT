@@ -35,15 +35,16 @@ export default function NotificationPage() {
             </div>
             <div>
                 {
-                    notification.map(el => {
+                    notification.map((el, index) => {
                         return (
-                            <div className='item_notification'>
-                                <div>
+                            <div key={index} style={el.type === 1 ? { alignItems: "end" } : { alignItems: "start" }} className='item_notification'>
+                                <div style={el.type === 1 ? { flexDirection: "row-reverse" } : { flexDirection: "row" }}>
                                     <img src={el.img} alt="" />
                                     <div>
-                                        <h1>Покупкка: {el.amount}</h1>
-                                        <p>{el.info}</p>
-                                        <h2>Доступно: {el.balance} asman</h2>
+                                        <h1>{el.type === 1 ? "Перевод" : "Пополнение"}: <span>{el.amount}</span></h1>
+                                        <p>от: <span>{el.info}</span></p>
+                                        <h2>Доступно: <span>{el.balance} asman</span></h2>
+                                        <h2 className='notif_time'>Время: {el.operation_time}</h2>
                                     </div>
                                 </div>
                             </div>

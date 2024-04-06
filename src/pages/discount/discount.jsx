@@ -83,6 +83,7 @@ export default function Discount() {
                   {cate === "Серебро" && <p className="absolute">{item.d_silver} % скидки</p>}
                   {cate === "Золото" && <p className="absolute">{item.d_gold} % скидки</p>}
                   {cate === "VIP" && <p className="absolute">{item.d_vip} % скидки</p>}
+                  <h2 className="cost_of_visit">{item.cost_of_visit} asman</h2>
                 </div>
               ))}
             </div>

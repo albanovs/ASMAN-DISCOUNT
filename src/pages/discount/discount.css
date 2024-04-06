@@ -119,3 +119,14 @@
   border-bottom-right-radius: 20px;
   border-top-left-radius: 10px;
 }
+
+.discount_block div h2 {
+  position: absolute;
+  bottom: 20px;
+  right: 0px;
+  background-color: #ff9f0e61;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  padding: 3px;
+  font-size: 10px;
+}

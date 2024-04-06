@@ -120,7 +120,7 @@ export default function Payments() {
           Выбрать период <MdOutlineNavigateNext />
         </div>
         {modal && (
-          <Modal setIsModalOpen={setModal}>
+          <Modal color="white" setIsModalOpen={setModal}>
             <h1 className="text-modal-date">Выберите дату:</h1>
             <div className="contain-date-block">
               <div>
@@ -155,6 +155,7 @@ export default function Payments() {
                   alignItems: "center",
                   justifyContent: "center",
                   gap: "10px",
+                  color: "white"
                 }}
                 onClick={() => {
                   fetchDataHistory();

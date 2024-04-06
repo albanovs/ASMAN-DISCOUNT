@@ -4,7 +4,6 @@
   height: 100%;
   background-color: #000000;
   padding: 20px 30px 100px;
-  color: white;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -49,6 +48,7 @@
   cursor: pointer;
   border: 1px solid #474747;
   background-color: var(--black1);
+  color: white;
 }
 
 .button_period:active {
@@ -68,10 +68,10 @@
 }
 
 .contain-date-block > div input {
-  background: var(--orange);
   padding: 5px;
-  border-radius: 10px;
+  border-radius: 6px;
   cursor: pointer;
+  border: 1px solid #ccc;
 }
 
 .text-modal-date {

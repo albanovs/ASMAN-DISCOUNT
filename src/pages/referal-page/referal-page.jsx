@@ -5,7 +5,8 @@ import { TbClipboardCopy } from 'react-icons/tb'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserData } from '../../App/slice/user-info'
 import { api } from '../../Api'
-import Skeleton from "react-loading-skeleton";
+import { FiChevronLeft } from 'react-icons/fi'
+import { useNavigate } from 'react-router-dom'
 
 export default function ReferalPage() {
 
@@ -13,6 +14,7 @@ export default function ReferalPage() {
     const [copied, setCopied] = useState(false);
     const [referalData, setReferalData] = useState([])
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(fetchUserData())
@@ -54,6 +56,9 @@ export default function ReferalPage() {
 
     return (
         <div className='referal_container'>
+            <div>
+                <FiChevronLeft color='#fdb602' onClick={() => navigate('/profile')} size={40} />
+            </div>
             <div>
                 <h1>ваша персональная ссылка</h1>
                 <p>{`https://discount.asman.io/#/auth/register/${userData.id}`}</p>

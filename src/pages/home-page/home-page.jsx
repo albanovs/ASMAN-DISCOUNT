@@ -124,7 +124,7 @@ export default function HomePage() {
                     {modal &&
                         <Modal setIsModalOpen={setModal} color="white">
                             <h1 className='text-referal-home_page_main'>Приглашай друзей <br /> в ASMAN DISCOUNT</h1>
-                            <p className='text-referal-home_page'>За каждую покупку Asman Coin, совершенную приглашенным другом, вам будет начисляться 15%</p>
+                            <p className='text-referal-home_page'>За каждую покупку Asman Coin, совершенную приглашенным другом, вам будет начисляться 8%</p>
                             <div className='asman-coin-contain'>
                                 <img src={coin} alt="" className='asman-coin-referal' />
                                 <div>

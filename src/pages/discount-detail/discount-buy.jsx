@@ -14,17 +14,6 @@ const DiscountBuy = () => {
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const notify = () =>
-        toast.success("Вы успешно приобрели скидку!", {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-        });
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -46,7 +35,7 @@ const DiscountBuy = () => {
         setLoading(true);
         try {
             const token = localStorage.getItem("token");
-            const response = await api.post(
+            await api.post(
                 "payment/scanner/?type=2",
                 {
                     partner: id,
@@ -57,8 +46,6 @@ const DiscountBuy = () => {
                     },
                 }
             );
-
-            notify();
             setLoading(false);
             navigate('/payments')
         } catch (error) {
