@@ -28,17 +28,8 @@ export default function Market() {
     data: [],
   });
   const [loading, setLoading] = useState(true);
-  const [photos, setPhotos] = useState([]);
-  const [post, setPost] = useState({
-    cat: null,
-    title: "",
-    price: null,
-    city: "",
-    description: "",
-    images: [],
-  });
+
   const [categories, setCategories] = useState([]);
-  const [error, setError] = useState([]);
 
   useEffect(() => {
     api
@@ -229,16 +220,7 @@ export default function Market() {
       )}
 
       {tab.tab2 && (
-        <AdsPost
-          error={error}
-          setError={setError}
-          photos={photos}
-          setPhotos={setPhotos}
-          post={post}
-          setPost={setPost}
-          categories={categories}
-          setCategories={setCategories}
-        />
+        <AdsPost categories={categories} tab={tab} setTab={setTab} />
       )}
 
       <div style={{ width: "100%", height: 100 }}></div>
