@@ -25,5 +25,5 @@ input {
   --gray: #d1d1d2;
   --border: #dadada;
   --gray-color: #868790;
-  --yellow: #ff9f0e;
+  --yellow: linear-gradient(to left, #ff9f0e, #ffcd04);
 }

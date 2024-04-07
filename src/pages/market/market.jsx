@@ -9,7 +9,7 @@ import { MdOutlineArrowForwardIos } from "react-icons/md";
 import Card from "./components/card";
 import { IoMdArrowBack } from "react-icons/io";
 import LoadingAnimate from "../../UI-kit/loading";
-import banner from '../../views/market/banner.jpg'
+import banner from "../../views/market/banner.jpg";
 
 export default function Market() {
   const [tab, setTab] = useState({
@@ -28,6 +28,17 @@ export default function Market() {
     data: [],
   });
   const [loading, setLoading] = useState(true);
+  const [photos, setPhotos] = useState([]);
+  const [post, setPost] = useState({
+    cat: null,
+    title: "",
+    price: null,
+    city: "",
+    description: "",
+    images: [],
+  });
+  const [categories, setCategories] = useState([]);
+  const [error, setError] = useState([]);
 
   useEffect(() => {
     api
@@ -86,6 +97,17 @@ export default function Market() {
       });
     }
   }, [cate.data]);
+
+  useEffect(() => {
+    api
+      .get("/market/cat-choices/")
+      .then((response) => {
+        setCategories(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return loading ? (
     <div className="loading_div">
@@ -156,58 +178,68 @@ export default function Market() {
               ))}
             </div>
           </div>
-          {
-            cate.data.length > 0 ? (
-              <div className="market_list">
-                {cate?.category.name ? (
-                  <div className="line_boxs">
+          {cate.data.length > 0 ? (
+            <div className="market_list">
+              {cate?.category.name ? (
+                <div className="line_boxs">
+                  <h2
+                    onClick={() =>
+                      setPage({ ...page, data: cate.category, pages: true })
+                    }
+                  >
+                    {cate?.category.name}
+                    <MdOutlineArrowForwardIos className="icone" />
+                  </h2>
+                  <div className="ovar_boxs">
+                    {SearchFilterCate.map((el, index) => (
+                      <Card el={el} index={index} />
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                SearchFilter.map((item, index) => (
+                  <div key={index} className="line_boxs">
                     <h2
                       onClick={() =>
-                        setPage({ ...page, data: cate.category, pages: true })
+                        setPage({ ...page, data: item, pages: true })
                       }
                     >
-                      {cate?.category.name}
-                      <MdOutlineArrowForwardIos className="icone" />
+                      {item.name} <MdOutlineArrowForwardIos className="icone" />
                     </h2>
                     <div className="ovar_boxs">
-                      {SearchFilterCate.map((el, index) => (
-                        <Card el={el} index={index} />
-                      ))}
+                      {item.ads
+                        .filter((obj) => {
+                          const fullName = obj.title.toLowerCase();
+                          return fullName.includes(value.toLowerCase());
+                        })
+                        .map((el, index) => (
+                          <Card el={el} index={index} />
+                        ))}
                     </div>
                   </div>
-                ) : (
-                  SearchFilter.map((item, index) => (
-                    <div key={index} className="line_boxs">
-                      <h2
-                        onClick={() =>
-                          setPage({ ...page, data: item, pages: true })
-                        }
-                      >
-                        {item.name} <MdOutlineArrowForwardIos className="icone" />
-                      </h2>
-                      <div className="ovar_boxs">
-                        {item.ads
-                          .filter((obj) => {
-                            const fullName = obj.title.toLowerCase();
-                            return fullName.includes(value.toLowerCase());
-                          })
-                          .map((el, index) => (
-                            <Card el={el} index={index} />
-                          ))}
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
-            ) :
-              <div
-                style={{ textAlign: ' center' }}
-              >Скоро появится товары !!!</div>
-          }
+                ))
+              )}
+            </div>
+          ) : (
+            <div style={{ textAlign: " center" }}>
+              Скоро появится товары !!!
+            </div>
+          )}
         </>
       )}
 
-      {tab.tab2 && <AdsPost />}
+      {tab.tab2 && (
+        <AdsPost
+          error={error}
+          setError={setError}
+          photos={photos}
+          setPhotos={setPhotos}
+          post={post}
+          setPost={setPost}
+          categories={categories}
+          setCategories={setCategories}
+        />
+      )}
 
       <div style={{ width: "100%", height: 100 }}></div>
 
