@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./email-code.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import coin from "../covers/coin.png";
+import coin from "../../../views/coins/asmancoin.png";
 import { api } from "../../../Api";
 import LoadingAnimate from "../../../UI-kit/loading";
 
@@ -100,7 +100,7 @@ export default function EmailCode() {
                     />
                   ))}
                 </div>
-                <NavLink className="link3">Забыли пароль ?</NavLink>
+                <NavLink className="link3" to="/forgot-password">Забыли пароль ?</NavLink>
                 <button style={{ background: loading ? '#bba97a' : "#fdb602" }} type="submit" className="sign-in3">
                   {loading ? <LoadingAnimate color="#ccc" /> : "Войти"}
                 </button>
@@ -109,7 +109,7 @@ export default function EmailCode() {
           </form>
           <p className="footer-text3">
             Есть аккаунт ?
-            <NavLink to={"/"} className="register3">
+            <NavLink to={"/login"} className="register3">
               войдите
             </NavLink>
           </p>

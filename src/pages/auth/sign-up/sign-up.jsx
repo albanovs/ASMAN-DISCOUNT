@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./sign-up.css";
-import coin from "../covers/coin.png";
+import coin from "../../../views/coins/asmancoin.png";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { api } from "../../../Api";

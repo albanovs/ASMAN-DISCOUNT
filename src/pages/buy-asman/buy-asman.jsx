@@ -84,10 +84,10 @@ export default function BuyAsman() {
                             left: '150px',
                             fontSize: '12px'
                         }}>Скопирован</p>}
-                        <h1 className='balance-perevod'>Адресс кошелька USDT:</h1>
+                        <h1 className='balance-perevod'>Для пополения воспользуйтесь сетью tron TRC20, наш Адресс кошелька USDT:</h1>
                         <h2 style={{
                             width: '100px',
-                            fontSize: '12px '
+                            fontSize: '12px',
                         }}>{getStatus.usdt}</h2>
                         <div style={{
                             display: 'flex',

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./sign-in.css";
-import coin from "../covers/coin.png";
+import coin from "../../../views/coins/asmancoin.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { api } from "../../../Api";
@@ -82,7 +82,7 @@ export default function SignIn() {
             </div>
           </form>
           <p className="footer-text">
-            нет аккаунта ?{" "}
+            нет аккаунта ?
             <NavLink to={"/register"} className="register">
               зарегистрируйтесь
             </NavLink>

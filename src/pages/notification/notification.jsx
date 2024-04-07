@@ -32,6 +32,7 @@ export default function NotificationPage() {
         <div className='notifictaion_container'>
             <div>
                 <FiChevronLeft color='#fdb602' onClick={() => navigate('/')} size={40} />
+                <span>Уведомление</span>
             </div>
             <div>
                 {
@@ -42,7 +43,7 @@ export default function NotificationPage() {
                                     <img src={el.img} alt="" />
                                     <div>
                                         <h1>{el.type === 1 ? "Перевод" : "Пополнение"}: <span>{el.amount}</span></h1>
-                                        <p>от: <span>{el.info}</span></p>
+                                        <p>{el.type === 1 ? "для" : "от"} <span>{el.info}</span></p>
                                         <h2>Доступно: <span>{el.balance} asman</span></h2>
                                         <h2 className='notif_time'>Время: {el.operation_time}</h2>
                                     </div>

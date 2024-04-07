@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./forgot-password.css";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { api } from "../../../Api";
-import coin from "../covers/coin.png";
+import coin from "../../../views/coins/asmancoin.png";
 import LoadingAnimate from "../../../UI-kit/loading";
 
 const ForgotPassword = () => {
@@ -48,7 +48,7 @@ const ForgotPassword = () => {
               Мы отправим код на вашу электронную почту
             </p>
             <div className="inputs">
-              <label className="label_form">Почта</label>
+              <label className="label_form">Ввести почту:</label>
               <input
                 className="input_form"
                 value={email}
@@ -69,6 +69,12 @@ const ForgotPassword = () => {
             </div>
           </div>
         </form>
+        <p className="footer-text3">
+          Есть аккаунт ?
+          <NavLink to={"/login"} className="register3">
+            войдите
+          </NavLink>
+        </p>
       </div>
     </div>
   );

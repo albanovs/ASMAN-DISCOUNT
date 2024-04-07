@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./discount-detail.css";
 import arrow from "../../views/coins/arrow-left.svg";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { api } from "../../Api";
 import "react-toastify/dist/ReactToastify.css";
 import Skeleton from "react-loading-skeleton";
 import { CountdownTimer } from "./timer";
 import { useSelector } from "react-redux";
+import { FaPhoneAlt } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const DiscountDetail = () => {
   const { id } = useParams();
@@ -35,31 +38,23 @@ const DiscountDetail = () => {
   return (
     <div className="discount_detail">
       <div className="head">
-        <img onClick={() => navigate(-1)} src={arrow} alt="" />
-        <p>{data.title}</p>
+        <img onClick={() => navigate('/discount')} src={arrow} alt="" />
       </div>
       {data.img ? <img className="image" src={data.img} alt="" /> : <Skeleton className="image" />}
       <div className="text_discount">
-        {data.title ? React.createElement("p", {
-          dangerouslySetInnerHTML: {
-            __html: data.description,
-          },
-        }) : <div>
+        <h1>{data.title}</h1>
+        {data.title ? <p style={{ textAlign: 'justify' }}><span>Описание: </span>{data.description}</p> : <div>
           <Skeleton width={350} height={5} count={8} />
         </div>}
       </div>
-      <p
-        style={{
-          margin: "20px 0",
-          textAlign: "center",
-          fontSize: 16,
-          color: "rgb(0, 255, 0)",
-        }}
-      >
-        Скидка на {data.discount} %
-      </p>
+      <div className="discount_sale">{datas_user.balance >= 100 ? `Скидка на ${data.discount} %` : 'Купите ASMAN чтобы пользоваться'}</div>
+      <div className="details_partners">
+        <h1>Данные заведений:</h1>
+        <div className="details_partners_item"><span style={{ color: "#8f8f8f" }}>Телефон номер:</span> <NavLink to="tel:996500500500" style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '12px' }}><FaPhoneAlt />996500500500</NavLink></div>
+        <NavLink to="https://wa.me/996500500500" className="details_partners_item"><span style={{ color: "#8f8f8f" }}>Адресс:</span><span style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '12px' }}><FaMapMarkerAlt />Бишкек, Кыргызстан</span></NavLink>
+      </div>
       {
-        datas_user.balance <= 0 ? <p style={{ color: 'white', textAlign: 'center' }}>Купите ASMAN чтобы пользоваться</p> :
+        datas_user.balance <= 100 ? "" :
           < button
             onClick={() => navigate('/qr-scanner')}
             className='btn'

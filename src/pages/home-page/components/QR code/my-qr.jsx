@@ -34,7 +34,7 @@ export default function MyQRcode() {
     return (
         <div className="container-qr">
             <div>
-                <FiChevronLeft onClick={() => navigate(-1)} size={40} />
+                <FiChevronLeft onClick={() => navigate('/')} size={40} />
             </div>
             <div className="container-qr-block">
                 <h1>Мой QR код</h1>
