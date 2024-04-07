@@ -10,6 +10,7 @@ import telegram from "../../views/profile/telegram 1.svg";
 import call from "../../views/profile/phone-call.svg";
 import chat from "../../views/profile/bubble-chat.svg";
 import Modal from "../../containers/UI/Modal/Modal";
+import { PiTelegramLogo } from "react-icons/pi";
 
 const Support = () => {
   const [modal, setModal] = useState(false);
@@ -33,17 +34,20 @@ const Support = () => {
             </div>
           </a>
           <div className="line"></div>
-            <div onClick={() => setModal(true)} className="box down">
-              <div className="flex">
-                <img src={chat} alt="" />
-                <p className="text">Написать</p>
-              </div>
-              <IoIosArrowForward className="icon" />
+          <div onClick={() => setModal(true)} className="box down">
+            <div className="flex">
+              <img src={chat} alt="" />
+              <p className="text">Написать</p>
             </div>
+            <IoIosArrowForward className="icon" />
+          </div>
         </div>
         <h2>Мы в социальных сетях</h2>
         <div className="save">
-          <a href="/">
+          <a
+            target="blank"
+            href="https://www.instagram.com/asman.coin.kg?igsh=eDQ3M2k3b3NsMGY3"
+          >
             <div className="box top1">
               <div className="flex">
                 <img src={instagram} alt="" />
@@ -53,11 +57,11 @@ const Support = () => {
             </div>
           </a>
           <div className="line"></div>
-          <a href="/">
+          <a target="blank" href="https://t.me/Asmancoin">
             <div className="box down">
               <div className="flex">
-                <img src={facebook} alt="" />
-                <p className="text">facebook</p>
+                <PiTelegramLogo color="#fff" size={24} />
+                <p className="text">Telegram</p>
               </div>
               <IoIosArrowForward className="icon" />
             </div>
