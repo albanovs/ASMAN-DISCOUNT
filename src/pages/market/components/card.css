@@ -1,5 +1,4 @@
 .card_box {
-  padding-top: 8px;
   width: 150px;
   height: 200px;
   border-radius: 8px;
@@ -20,7 +19,6 @@
 
 .card_box .max {
   width: 150px;
-  height: 100%;
 }
 
 .card_box .box_slide {
@@ -32,7 +30,7 @@
   outline: none;
 }
 
-.card_box img {
+.card_box .card_image {
   border-radius: 8px 8px 0 0;
   width: 150px;
   height: 120px;

@@ -19,6 +19,8 @@ const Card = ({ index, el }) => {
     slidesToScroll: 1,
   };
 
+  console.log(el.images[0]);
+
   return (
     <div
       onClick={() => navigate(`/market-detail/${el.id}`)}
@@ -28,20 +30,26 @@ const Card = ({ index, el }) => {
       <img
         className="love"
         onClick={(e) => {
-          e.stopPropagation(); 
+          e.stopPropagation();
           setLove(!love);
         }}
         src={love ? heart_red : heart}
         alt=""
       />
       <div className="max">
-        <Slider {...settings} className="box_slide">
-          {el.images.map((elem, id) => (
-            <div key={id}>
-              <img src={elem.img} alt="" />
-            </div>
-          ))}
-        </Slider>
+        {el.images.length > 1 ? (
+          <Slider {...settings} className="box_slide">
+            {el.images.map((elem, id) => (
+              <div key={id}>
+                <img className="card_image" src={elem.img} alt="" />
+              </div>
+            ))}
+          </Slider>
+        ) : (
+          <div>
+            <img className="card_image" src={el.images[0].img} alt="" />
+          </div>
+        )}
       </div>
       <div className="contant">
         <h3>{el.title}</h3>

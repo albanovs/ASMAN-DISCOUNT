@@ -5,7 +5,7 @@
 
 .ads_detail .head_detail {
   width: 100%;
-  height: 50px;
+  height: 60px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--border);
@@ -14,6 +14,7 @@
 
 .ads_detail .contants {
   padding: 0 20px;
+  padding-top: 10px;
 }
 
 .ads_detail .box_slide div {
@@ -53,6 +54,7 @@
 }
 
 .ads_detail .prices {
+  text-align: end;
   font-size: 24px;
   font-weight: 600;
   color: #ff9900;
@@ -68,16 +70,19 @@
   gap: 10px;
 }
 
+.ads_detail .ads_detail_photo {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+}
+
 .ads_detail .user img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center;
-}
-
-.ads_detail .description {
-  margin-top: 30px;
 }
 
 .ads_detail .ovar_boxs {

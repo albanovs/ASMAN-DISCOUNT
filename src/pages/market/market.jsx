@@ -228,42 +228,40 @@ export default function Market() {
       {page.pages && <div className="page_fixet_not"></div>}
 
       {page.pages && (
-        <div className="fixet_mar">
-          <div className="page_fixet">
-            <div className="head_market">
-              <div className="head_page">
-                <IoMdArrowBack
-                  onClick={() => setPage({ ...page, data: [], pages: false })}
-                  size={24}
+        <div className="page_fixet">
+          <div className="head_market">
+            <div className="head_page">
+              <IoMdArrowBack
+                onClick={() => setPage({ ...page, data: [], pages: false })}
+                size={24}
+              />
+              <h4>{page.data.name}</h4>
+            </div>
+          </div>
+          <div className="market">
+            <div className="search_block">
+              <div className="relative_input">
+                <input
+                  value={valuePage}
+                  onChange={(e) => setValuePage(e.target.value)}
+                  className="search"
+                  type="text"
+                  placeholder="Search..."
                 />
-                <h4>{page.data.name}</h4>
+                <img className="icon absolute" src={search} alt="" />
+              </div>
+              <div className="filter">
+                <img className="icon" src={filter} alt="" />
               </div>
             </div>
-            <div className="market">
-              <div className="search_block">
-                <div className="relative_input">
-                  <input
-                    value={valuePage}
-                    onChange={(e) => setValuePage(e.target.value)}
-                    className="search"
-                    type="text"
-                    placeholder="Search..."
-                  />
-                  <img className="icon absolute" src={search} alt="" />
-                </div>
-                <div className="filter">
-                  <img className="icon" src={filter} alt="" />
-                </div>
+            <div className="market_list">
+              <div className="grid_col">
+                {SearchFilterPage.map((el, index) => (
+                  <Card el={el} index={index} />
+                ))}
               </div>
-              <div className="market_list">
-                <div className="grid_col">
-                  {SearchFilterPage.map((el, index) => (
-                    <Card el={el} index={index} />
-                  ))}
-                </div>
-              </div>
-              <div style={{ width: "100%", height: 100 }}></div>
             </div>
+            <div style={{ width: "100%", height: 100 }}></div>
           </div>
         </div>
       )}

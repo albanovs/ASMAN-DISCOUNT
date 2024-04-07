@@ -56,16 +56,23 @@ const AdsDetail = () => {
         </div>
       </div>
 
-      <Slider {...settings} className="box_slide">
-        {data.images?.map((elem, id) => (
-          <div key={id}>
-            <img src={elem.img} alt="" />
-          </div>
-        ))}
-      </Slider>
+      {data.images.length > 1 ? (
+        <Slider {...settings} className="box_slide">
+          {data?.images?.map((elem, id) => (
+            <div key={id}>
+              <img className="ads_detail_photo" src={elem.img} alt="" />
+            </div>
+          ))}
+        </Slider>
+      ) : (
+        <div>
+          <img className="ads_detail_photo" src={data?.images[0].img} alt="" />
+        </div>
+      )}
+
       <div className="contants">
         <div className="between">
-          <p className="id">102184541037</p>
+          <p className="title">{data.title}</p>
           <img
             className="loves"
             onClick={() => setLove(!love)}
@@ -73,7 +80,10 @@ const AdsDetail = () => {
             alt=""
           />
         </div>
-        <p className="title">{data.title}</p>
+        <p
+          className="description"
+          dangerouslySetInnerHTML={{ __html: data.description }}
+        />
         <p className="prices">{data.price} c</p>
         <div className="user">
           <img src={data.avatar} alt="" />
@@ -91,12 +101,6 @@ const AdsDetail = () => {
         {data?.similar_ads?.map((el, index) => (
           <Card el={el} index={index} />
         ))}
-      </div>
-      <div className="contants">
-        <p
-          className="description"
-          dangerouslySetInnerHTML={{ __html: data.description }}
-        />
       </div>
     </div>
   );

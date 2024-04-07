@@ -171,29 +171,17 @@
 
 /* page */
 
-.fixet_mar {
+.page_fixet {
   position: fixed;
   top: 0;
   right: 0;
-  left: 0;
-  bottom: 0;
-  margin: auto;
-  z-index: 4;
-}
-
-.page_fixet {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  margin: auto;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background: var(--white);
   animation: pageAn 1s ease;
   z-index: 5;
   overflow: auto;
+  padding-bottom: 100px;
 }
 
 .page_fixet_not {
@@ -235,7 +223,7 @@
 
 .page_fixet .head_page {
   width: 100%;
-  height: 50px;
+  height: 60px;
   display: grid;
   grid-template-columns: 24px 1fr 24px;
   align-items: center;
@@ -268,7 +256,6 @@
 .market_list .max {
   margin: 0 auto;
 }
-
 
 .market_banner_main img{
   border-radius: 10px;
