@@ -117,8 +117,6 @@ const AdsPost = () => {
     }));
   };
 
-  console.log(post);
-
   return (
     <div className="ads_post">
       {view.openModal && (
