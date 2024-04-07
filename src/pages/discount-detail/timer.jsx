@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-export function CountdownTimer({ minutes }) {
-    const [timeLeft, setTimeLeft] = useState(minutes * 60);
+export function CountdownTimer({ minute }) {
+    const [timeLeft, setTimeLeft] = useState(minute * 60);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -13,9 +13,8 @@ export function CountdownTimer({ minutes }) {
                 return prevTimeLeft - 1;
             });
         }, 1000);
-
         return () => clearInterval(intervalId);
-    }, [minutes]);
+    }, [minute]);
 
     const formatTime = (time) => {
         const days = Math.floor(time / 86400);
