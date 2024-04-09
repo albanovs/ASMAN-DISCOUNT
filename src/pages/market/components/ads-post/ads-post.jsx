@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./ads-post.css";
 import { api } from "../../../../Api";
 import { MdAddPhotoAlternate } from "react-icons/md";
 import LoadingAnimate from "../../../../UI-kit/loading";
 import AdsDetail from "./ads-detail";
 
-const AdsPost = () => {
+const AdsPost = ({ categories, tab, setTab }) => {
   const [photos, setPhotos] = useState([]);
   const [post, setPost] = useState({
     cat: null,
@@ -15,7 +15,6 @@ const AdsPost = () => {
     description: "",
     images: [],
   });
-  const [categories, setCategories] = useState([]);
   const [view, setView] = useState({
     openModal: false,
     value: "",
@@ -27,26 +26,33 @@ const AdsPost = () => {
     setLoading(true);
     if (post.images.length > 0) {
       const token = localStorage.getItem("token");
-      const newDatas = {
-        cat: post.cat,
-        title: post.title,
-        price: post.price,
-        city: post.city,
-        description: post.description,
-        images: post.images,
-      };
+
+      const formData = new FormData();
+
+      formData.append("cat", post.cat);
+      formData.append("title", post.title);
+      formData.append("price", post.price);
+      formData.append("city", post.city);
+      formData.append("description", post.description);
+
+      post.images.forEach((image) => {
+        formData.append("images", image.img);
+      });
+
       try {
-        const response = await api.post("/market/ad-create/", newDatas, {
+        const response = await api.post("/market/ad-create/", formData, {
           headers: {
             Authorization: `Token ${token}`,
+            "Content-Type": "multipart/form-data",
           },
         });
+
         setLoading(false);
         setError(response.data);
         console.log(response.data);
+
         if (response.data.response === true) {
           setPost({
-            ...post,
             cat: null,
             title: "",
             price: null,
@@ -55,6 +61,7 @@ const AdsPost = () => {
             images: [],
           });
           setPhotos([]);
+          setTab({ ...tab, tab1: true, tab2: false });
         }
       } catch (error) {
         setLoading(false);
@@ -67,27 +74,21 @@ const AdsPost = () => {
     }
   };
 
-  useEffect(() => {
-    api
-      .get("/market/cat-choices/")
-      .then((response) => {
-        setCategories(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   const handleAddPhoto = (event) => {
     const files = event.target.files;
+    const id = Date.now();
     const newPhotos = Array.from(files).map((file) => ({
-      id: Date.now(),
-      url: URL.createObjectURL(file),
+      id: id,
+      img: URL.createObjectURL(file),
+    }));
+    const newPhotosTwo = Array.from(files).map((file) => ({
+      id: id,
+      img: file,
     }));
     setPhotos((prevPhotos) => [...newPhotos, ...prevPhotos]);
     setPost((prevPost) => ({
       ...prevPost,
-      images: [...newPhotos, ...prevPost.images],
+      images: [...newPhotosTwo, ...prevPost.images],
     }));
   };
 
@@ -107,15 +108,19 @@ const AdsPost = () => {
 
     setPhotos((prevPhotos) =>
       prevPhotos.map((photo) =>
-        photo.id === id ? { ...photo, url: URL.createObjectURL(file) } : photo
+        photo.id === id ? { ...photo, img: URL.createObjectURL(file) } : photo
       )
     );
 
     setPost((prevPost) => ({
       ...prevPost,
-      images: prevPost.images.map((image) => (image.id === id ? file : image)),
+      images: prevPost.images.map((image) =>
+        image.id === id ? { ...image, img: file } : image
+      ),
     }));
   };
+
+  console.log(post);
 
   return (
     <div className="ads_post">

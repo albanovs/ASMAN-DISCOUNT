@@ -18,10 +18,10 @@ const AdsDetail = ({
             setView({
               ...view,
               openModal: true,
-              value: photo.url,
+              value: photo.img,
             })
           }
-          src={photo.url}
+          src={photo.img}
           alt=""
           className="photo"
         />
