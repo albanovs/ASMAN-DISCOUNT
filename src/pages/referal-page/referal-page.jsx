@@ -1,122 +1,117 @@
-import React, { useEffect, useState } from 'react'
-import './referal-page.css'
-import CopyToClipboard from 'react-copy-to-clipboard'
-import { TbClipboardCopy } from 'react-icons/tb'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchUserData } from '../../App/slice/user-info'
-import { api } from '../../Api'
-import { FiChevronLeft } from 'react-icons/fi'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import './referal-page.css';
+import { useDispatch } from 'react-redux';
+import { fetchUserData } from '../../App/slice/user-info';
+import { api } from '../../Api';
+import { FiChevronLeft } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import bronze from '../../views/disc/one.svg';
 
 export default function ReferalPage() {
-
-    const userData = useSelector(state => state.user_info.user_info)
-    const [copied, setCopied] = useState(false);
-    const [referalData, setReferalData] = useState([])
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const [referalData, setReferalData] = useState([]);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch(fetchUserData())
-        fetchReferalData()
-    }, [dispatch])
-
-    const handleCopy = () => {
-        setCopied(true);
-        setTimeout(() => {
-            setCopied(false);
-        }, 2000);
-    };
+        dispatch(fetchUserData());
+        fetchReferalData();
+    }, [dispatch]);
 
     const fetchReferalData = async () => {
         try {
-            const token = localStorage.getItem('token')
+            const token = localStorage.getItem('token');
             const response = await api.get('auth/ref-list/', {
                 headers: {
                     Authorization: `Token ${token}`
                 }
-            })
-            setReferalData(response.data)
+            });
+            setReferalData(response.data);
         } catch (error) {
             console.log(error);
         }
     }
 
-    const handleShareLink = async () => {
-        try {
-            await navigator.share({
-                title: 'Приглашение в платформу ASMAN DISCOUNT',
-                text: `Вас пригласил ${userData.first_name} в платформу ASMAN DISCOUNT. Перейдите по ссылке и зарегистрируйтесь:`,
-                url: `https://discount.asman.io/auth/register/${userData.id}`
-            });
-        } catch (error) {
-            console.error('Ошибка обмена:', error.message);
-        }
-    };
+    const percentage = 54;
+    const percentage2 = 29;
+    const percentage3 = 40;
+    const percentage4 = 70;
+    const percentage5 = 48;
+    
 
     return (
         <div className='referal_container'>
             <div>
                 <FiChevronLeft color='#fdb602' onClick={() => navigate('/profile')} size={40} />
             </div>
-            <div>
-                <h1>ваша персональная ссылка</h1>
-                <p>{`https://discount.asman.io/#/auth/register/${userData.id}`}</p>
-                <CopyToClipboard text={`https://discount.asman.io/#/auth/register/${userData.id}`} onCopy={handleCopy}>
-                    <TbClipboardCopy className='button-referal-home_page' size={30} />
-                </CopyToClipboard>
-                {copied && <p className='copyed-referal'>Скопирован</p>}
-            </div>
-            <button onClick={handleShareLink}>Пригласить</button>
-            <div className='referal_list'>
-                <h1>Список ваших приглашенных друзьей</h1>
-                <div className='referal_list_contain'>
-                    {
-                        referalData.map(elem => {
-                            return (
-                                <div>
-                                    {elem.email ?
-                                        < div >
-                                            <div className='item_referal_user'>
-                                                <h1>{`${elem.first_name} ${elem.last_name}`}</h1>
-                                                <p>{elem.email}</p>
-                                            </div>
-                                            {
-                                                elem.bonuses.length > 0 ? (
-                                                    <div>
-                                                        <h2>Поступленные бонусы:</h2>
-                                                        <div className='contain_referal_bonus'>
-                                                            {
-                                                                elem.bonuses.map(item => {
-                                                                    const datas = new Date(item.operation_time)
-                                                                    const day = ("0" + datas.getDate()).slice(-2);
-                                                                    const month = ("0" + (datas.getMonth() + 1)).slice(-2);
-                                                                    const year = datas.getFullYear().toString().slice(-2);
-
-                                                                    const formatDate = `${day}.${month}.${year}`;
-                                                                    return (
-                                                                        < div style={{
-                                                                            display: 'flex',
-                                                                            alignItems: 'center',
-                                                                            justifyContent: 'space-between',
-                                                                        }}>
-                                                                            <h1> <span> + {item.amount} asman</span></h1>
-                                                                            <p>дата: {formatDate}</p>
-                                                                        </div>
-                                                                    )
-                                                                })
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                ) : ""
-                                            }
-                                        </div> : "Пока пусто , пригласите друзьей по реферельной ссылке"}
-                                </div>
-                            )
-                        })
-                    }
-                </div>
+            <div className='container_radial'>
+                <CircularProgressbar
+                    className="custom-progress-bar"
+                    value={percentage}
+                    text={`стандарт ${percentage}%`}
+                    strokeWidth={20}
+                    styles={buildStyles({
+                        width: '200px',
+                        pathColor: '#52b202',
+                        textColor: '#fff',
+                        trailColor: 'rgba(0, 0, 0, 0.1)',
+                        textSize: '10px',
+                    })}
+                />
+                <CircularProgressbar
+                    className="custom-progress-bar"
+                    value={percentage2}
+                    strokeWidth={20}
+                    text={`стандарт ${percentage2}%`}
+                    styles={buildStyles({
+                        width: '200px',
+                        pathColor: '#52b202',
+                        textColor: '#fff',
+                        trailColor: 'rgba(0, 0, 0, 0.1)',
+                        textSize: '10px',
+                    })}
+                />
+                <CircularProgressbar
+                    className="custom-progress-bar"
+                    value={percentage3}
+                    strokeWidth={20}
+                    text={`стандарт ${percentage3}%`}
+                    styles={buildStyles({
+                        width: '200px',
+                        pathColor: '#52b202',
+                        textColor: '#fff',
+                        trailColor: 'rgba(0, 0, 0, 0.1)',
+                        textSize: '10px',
+                    })}
+                />
+                <CircularProgressbar
+                    className="custom-progress-bar"
+                    value={percentage4}
+                    strokeWidth={20}
+                    text={`стандарт ${percentage4}%`}
+                    styles={buildStyles({
+                        width: '200px',
+                        pathColor: '#e48a21',
+                        textColor: '#fff',
+                        trailColor: 'rgba(0, 0, 0, 0.1)',
+                        textSize: '10px',
+                    })}
+                />
+                <CircularProgressbar
+                    className="custom-progress-bar"
+                    value={percentage5}
+                    strokeWidth={20}
+                    text={`стандарт ${percentage5}%`}
+                    styles={buildStyles({
+                        width: '300px',
+                        pathColor: '#e48a21',
+                        textColor: '#fff',
+                        trailColor: 'rgba(0, 0, 0, 0.1)',
+                        textSize: '10px',
+                    })}
+                />
             </div>
         </div >
-    )
+    );
 }

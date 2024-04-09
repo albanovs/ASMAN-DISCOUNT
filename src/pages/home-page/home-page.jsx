@@ -136,6 +136,7 @@ export default function HomePage() {
                                     {copied && <p className='copyed-referal'>Скопирован</p>}
                                 </div>
                                 <button onClick={handleShareLink}>Пригласить</button>
+                                <button style={{ background: '#051937' }} onClick={() => navigate('/referal')}>Узнать больше</button>
                             </div>
                         </Modal>
                     }
