@@ -257,7 +257,46 @@
   margin: 0 auto;
 }
 
-.market_banner_main img{
+.market_banner_main img {
   border-radius: 10px;
   margin-bottom: 20px;
+}
+
+.marketing {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.marketing .btns {
+  margin-top: 12px;
+  width: 100%;
+  height: 50px;
+  border-radius: 15px;
+  outline: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--black1);
+  border: 1px solid var(--border);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 5px 25px rgb(0, 0, 0, 0.08);
+}
+
+.marketing .flex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.marketing .btns p {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black1);
+}
+
+.marketing .btns .icon {
+  font-size: 24px;
+  color: var(--orange);
 }

@@ -3,13 +3,17 @@ import "./market.css";
 import search from "../../views/market/search.svg";
 import filter from "../../views/market/filter.svg";
 import { api } from "../../Api";
-import AdsPost from "./components/ads-post/ads-post";
 import { BiCategory } from "react-icons/bi";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import Card from "./components/card";
 import { IoMdArrowBack } from "react-icons/io";
 import LoadingAnimate from "../../UI-kit/loading";
 import banner from "../../views/market/banner.jpg";
+import { IoIosCreate } from "react-icons/io";
+import { GoHeartFill } from "react-icons/go";
+import { ImYelp } from "react-icons/im";
+import { MdArrowForwardIos } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 export default function Market() {
   const [tab, setTab] = useState({
@@ -28,8 +32,7 @@ export default function Market() {
     data: [],
   });
   const [loading, setLoading] = useState(true);
-
-  const [categories, setCategories] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     api
@@ -88,17 +91,6 @@ export default function Market() {
       });
     }
   }, [cate.data]);
-
-  useEffect(() => {
-    api
-      .get("/market/cat-choices/")
-      .then((response) => {
-        setCategories(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
   return loading ? (
     <div className="loading_div">
@@ -220,7 +212,29 @@ export default function Market() {
       )}
 
       {tab.tab2 && (
-        <AdsPost categories={categories} tab={tab} setTab={setTab} />
+        <div className="marketing">
+          <div onClick={() => navigate("/ads-post")} className="btns">
+            <div className="flex">
+              <IoIosCreate className="icon" />
+              <p>Создать обьявления</p>
+            </div>
+            <MdArrowForwardIos size={22} />
+          </div>
+          <div className="btns">
+            <div className="flex">
+              <GoHeartFill className="icon" />
+              <p>Любимые</p>
+            </div>
+            <MdArrowForwardIos size={22} />
+          </div>
+          <div className="btns">
+            <div className="flex">
+              <ImYelp className="icon" />
+              <p>Мои обьявления</p>
+            </div>
+            <MdArrowForwardIos size={22} />
+          </div>
+        </div>
       )}
 
       <div style={{ width: "100%", height: 100 }}></div>

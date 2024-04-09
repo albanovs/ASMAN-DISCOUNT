@@ -1,7 +1,6 @@
 .ads_post {
   max-width: 990px;
   width: 100%;
-  padding: 20px 0;
 }
 
 .ads_post .ads_post_container {
@@ -10,6 +9,24 @@
 
 .ads_post .box_market {
   margin-top: 8px;
+}
+
+.ads_post .head_market {
+  padding: 0 20px;
+  height: 50px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ads_post .head_market h1 {
+  white-space: nowrap;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--black1);
 }
 
 .ads_post .select_market,
