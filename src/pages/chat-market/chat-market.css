@@ -1,0 +1,21 @@
+.chat_market {
+    width: 100%;
+}
+
+.chat_market .head_market {
+  padding: 0 20px;
+  height: 60px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.chat_market .head_market h1 {
+  white-space: nowrap;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--black1);
+}

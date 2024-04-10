@@ -32,7 +32,7 @@ const AdsDetail = () => {
   }, []);
 
   const settings = {
-    dots: false,
+    dots: true,
     arrows: false,
     infinite: true,
     speed: 500,

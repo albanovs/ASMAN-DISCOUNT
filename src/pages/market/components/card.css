@@ -26,6 +26,21 @@
   outline: none;
 }
 
+.card_box .slick-dots {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  margin-bottom: 35px;
+  width: 70%;
+  height: 20px;
+  overflow: hidden;
+}
+
+.card_box .slick-dots li {
+  display: inline-block;
+  margin: 0 auto;
+}
+
 .card_box .box_slide div {
   outline: none;
 }
@@ -46,7 +61,7 @@
 }
 
 .card_box .contant h3 {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 400;
   color: var(--black1);
   display: -webkit-box;
@@ -92,4 +107,35 @@
   width: 24px !important;
   height: 24px !important;
   z-index: 3;
+}
+
+.card_box .slider_dot-beck {
+  position: relative;
+}
+
+.card_box .slick-arrow.slick-next {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.card_box .slick-arrow.slick-next::before {
+  position: absolute;
+  top: 110px;
+  right: 10px;
+  content: url("../../../views/market/next.svg");
+}
+
+.card_box .slick-arrow.slick-prev {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 12;
+}
+
+.card_box .slick-arrow.slick-prev::before {
+  position: absolute;
+  top: 110px;
+  left: 10px;
+  content: url("../../../views/market/prev.svg");
 }

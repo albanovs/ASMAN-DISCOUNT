@@ -3,33 +3,31 @@ import "./market.css";
 import search from "../../views/market/search.svg";
 import filter from "../../views/market/filter.svg";
 import { api } from "../../Api";
-import AdsPost from "./components/ads-post/ads-post";
 import { BiCategory } from "react-icons/bi";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import Card from "./components/card";
-import { IoMdArrowBack } from "react-icons/io";
 import LoadingAnimate from "../../UI-kit/loading";
 import banner from "../../views/market/banner.jpg";
+import { IoIosCreate } from "react-icons/io";
+import { GoHeartFill } from "react-icons/go";
+import { ImYelp } from "react-icons/im";
+import { MdArrowForwardIos } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { changeTab } from "../../App/slice/tab";
+import { changeData, changeName } from "../../App/slice/category";
 
 export default function Market() {
-  const [tab, setTab] = useState({
-    tab1: true,
-    tab2: false,
-  });
   const [cate, setCate] = useState({
     active: [],
     data: [],
     category: [],
   });
   const [value, setValue] = useState("");
-  const [valuePage, setValuePage] = useState("");
-  const [page, setPage] = useState({
-    pages: false,
-    data: [],
-  });
   const [loading, setLoading] = useState(true);
-
-  const [categories, setCategories] = useState([]);
+  const { tab } = useSelector((state) => state.tab);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     api
@@ -71,15 +69,6 @@ export default function Market() {
     }
   }, [cate?.data, value]);
 
-  const SearchFilterPage = useMemo(() => {
-    if (page?.data?.ads) {
-      return page.data.ads.filter((obj) => {
-        const fullName = obj.title.toLowerCase();
-        return fullName.includes(valuePage.toLowerCase());
-      });
-    }
-  }, [page.data.ads, valuePage]);
-
   useEffect(() => {
     if (cate.data.length > 0) {
       setCate({
@@ -88,17 +77,6 @@ export default function Market() {
       });
     }
   }, [cate.data]);
-
-  useEffect(() => {
-    api
-      .get("/market/cat-choices/")
-      .then((response) => {
-        setCategories(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
   return loading ? (
     <div className="loading_div">
@@ -121,30 +99,30 @@ export default function Market() {
             />
             <img className="icon absolute" src={search} alt="" />
           </div>
-          <div className="filter">
+          <div onClick={() => navigate("/filter-market")} className="filter">
             <img className="icon" src={filter} alt="" />
           </div>
         </div>
         <div className="tabs">
           <div
             onClick={() => {
-              setTab({ ...tab, tab1: true, tab2: false });
+              dispatch(changeTab());
             }}
-            className={`tab first ${tab.tab1 && "active"}`}
+            className={`tab first ${tab === true && "active"}`}
           >
             Магазины
           </div>
           <div
             onClick={() => {
-              setTab({ ...tab, tab1: false, tab2: true });
+              dispatch(changeTab());
             }}
-            className={`tab end ${tab.tab2 && "active"}`}
+            className={`tab end ${tab === false && "active"}`}
           >
             Обьявления
           </div>
         </div>
       </div>
-      {tab.tab1 && (
+      {tab === true && (
         <>
           <div className="market_over">
             <div className="category">
@@ -174,9 +152,11 @@ export default function Market() {
               {cate?.category.name ? (
                 <div className="line_boxs">
                   <h2
-                    onClick={() =>
-                      setPage({ ...page, data: cate.category, pages: true })
-                    }
+                    onClick={() => {
+                      navigate("/category-market/false");
+                      dispatch(changeName(cate.category.name));
+                      dispatch(changeData(cate.category.ads));
+                    }}
                   >
                     {cate?.category.name}
                     <MdOutlineArrowForwardIos className="icone" />
@@ -191,9 +171,11 @@ export default function Market() {
                 SearchFilter.map((item, index) => (
                   <div key={index} className="line_boxs">
                     <h2
-                      onClick={() =>
-                        setPage({ ...page, data: item, pages: true })
-                      }
+                      onClick={() => {
+                        navigate("/category-market/false");
+                        dispatch(changeName(item.name));
+                        dispatch(changeData(item.ads));
+                      }}
                     >
                       {item.name} <MdOutlineArrowForwardIos className="icone" />
                     </h2>
@@ -219,52 +201,33 @@ export default function Market() {
         </>
       )}
 
-      {tab.tab2 && (
-        <AdsPost categories={categories} tab={tab} setTab={setTab} />
-      )}
-
-      <div style={{ width: "100%", height: 100 }}></div>
-
-      {page.pages && <div className="page_fixet_not"></div>}
-
-      {page.pages && (
-        <div className="page_fixet">
-          <div className="head_market">
-            <div className="head_page">
-              <IoMdArrowBack
-                onClick={() => setPage({ ...page, data: [], pages: false })}
-                size={24}
-              />
-              <h4>{page.data.name}</h4>
+      {tab === false && (
+        <div className="marketing">
+          <div onClick={() => navigate("/ads-post")} className="btns">
+            <div className="flex">
+              <IoIosCreate className="icon" />
+              <p>Создать обьявления</p>
             </div>
+            <MdArrowForwardIos size={22} />
           </div>
-          <div className="market">
-            <div className="search_block">
-              <div className="relative_input">
-                <input
-                  value={valuePage}
-                  onChange={(e) => setValuePage(e.target.value)}
-                  className="search"
-                  type="text"
-                  placeholder="Search..."
-                />
-                <img className="icon absolute" src={search} alt="" />
-              </div>
-              <div className="filter">
-                <img className="icon" src={filter} alt="" />
-              </div>
+          <div onClick={() => navigate("/favorite-market")} className="btns">
+            <div className="flex">
+              <GoHeartFill className="icon" />
+              <p>Любимые</p>
             </div>
-            <div className="market_list">
-              <div className="grid_col">
-                {SearchFilterPage.map((el, index) => (
-                  <Card el={el} index={index} />
-                ))}
-              </div>
+            <MdArrowForwardIos size={22} />
+          </div>
+          <div onClick={() => navigate("/my-posts")} className="btns">
+            <div className="flex">
+              <ImYelp className="icon" />
+              <p>Мои обьявления</p>
             </div>
-            <div style={{ width: "100%", height: 100 }}></div>
+            <MdArrowForwardIos size={22} />
           </div>
         </div>
       )}
+
+      <div style={{ width: "100%", height: 100 }}></div>
     </>
   );
 }

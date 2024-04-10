@@ -23,8 +23,6 @@ import { useDispatch } from "react-redux";
 import { fetchUserData } from "./App/slice/user-info";
 import DiscountBuy from "./pages/discount-detail/discount-buy";
 import NotificationPage from "./pages/notification/notification";
-import { fetchNotifData } from "./App/slice/notification";
-import { fetchStatusData } from "./App/slice/status";
 
 function App() {
   const location = useLocation();
@@ -81,6 +79,20 @@ function App() {
             path="/market-detail/:id"
             element={<PrivateRoute element={<AdsDetail />} />}
           />
+          <Route
+            path="ads-post"
+            element={<PrivateRoute element={<AdsPost />} />}
+          />
+          <Route
+            path="favorite-market"
+            element={<PrivateRoute element={<FavoriteMarket />} />}
+          />
+          <Route
+            path="my-posts"
+            element={<PrivateRoute element={<MyPosts />} />}
+          />
+          <Route path="filter-market/:page" element={<FilterMarket />} />
+          <Route path="category-market/:state" element={<CategoryPage />} />
           <Route
             path="/buy-asman"
             element={<PrivateRoute element={<BuyAsman />} />}

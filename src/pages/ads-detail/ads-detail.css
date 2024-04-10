@@ -12,6 +12,21 @@
   padding: 0 20px;
 }
 
+.ads_detail .slick-dots {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  margin-bottom: 35px;
+  width: 70%;
+  height: 20px;
+  overflow: hidden;
+}
+
+.ads_detail .slick-dots li {
+  display: inline-block;
+  margin: 0 auto;
+}
+
 .ads_detail .contants {
   padding: 0 20px;
   padding-top: 10px;

@@ -169,95 +169,50 @@
   z-index: 1;
 }
 
-/* page */
+.market_list .max {
+  margin: 0 auto;
+}
 
-.page_fixet {
-  position: fixed;
-  top: 0;
-  right: 0;
+.market_banner_main img {
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.marketing {
   width: 100%;
-  height: 100vh;
-  background: var(--white);
-  animation: pageAn 1s ease;
-  z-index: 5;
-  overflow: auto;
-  padding-bottom: 100px;
-}
-
-.page_fixet_not {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  margin: auto;
-  width: 100%;
-  min-height: 100vh;
-  background: rgb(0, 0, 0, 0.5);
-  backdrop-filter: blur(8px);
-  animation: pageAnNot 0.9s ease;
-  z-index: 4;
-}
-
-@keyframes pageAnNot {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes pageAn {
-  0% {
-    right: -100vh;
-  }
-  100% {
-    right: 0;
-  }
-}
-
-.page_fixet .head_market {
-  border-bottom: 1px solid var(--border);
-}
-
-.page_fixet .head_page {
-  width: 100%;
-  height: 60px;
-  display: grid;
-  grid-template-columns: 24px 1fr 24px;
-  align-items: center;
   padding: 0 20px;
 }
 
-.page_fixet .head_market h4 {
-  text-align: center;
+.marketing .btns {
+  margin-top: 12px;
+  width: 100%;
+  height: 50px;
+  border-radius: 15px;
+  outline: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--black1);
+  border: 1px solid var(--border);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 5px 25px rgb(0, 0, 0, 0.08);
+}
+
+.marketing .flex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.marketing .btns p {
   font-size: 16px;
   font-weight: 500;
   color: var(--black1);
 }
 
-.page_fixet .body_page {
-  padding: 0 20px;
-}
-
-.page_fixet .grid_col {
-  margin-top: 15px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.page_fixet .grid_col .card_box {
-  width: 100%;
-  margin: 0;
-}
-
-.market_list .max {
-  margin: 0 auto;
-}
-
-.market_banner_main img{
-  border-radius: 10px;
-  margin-bottom: 20px;
+.marketing .btns .icon {
+  font-size: 24px;
+  color: var(--orange);
 }

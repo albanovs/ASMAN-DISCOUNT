@@ -11,15 +11,13 @@ const Card = ({ index, el }) => {
   const navigate = useNavigate();
 
   const settings = {
-    dots: false,
+    dots: true,
     arrows: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-
-  console.log(el.images[0]);
 
   return (
     <div
@@ -40,7 +38,7 @@ const Card = ({ index, el }) => {
         {el.images.length > 1 ? (
           <Slider {...settings} className="box_slide">
             {el.images.map((elem, id) => (
-              <div key={id}>
+              <div className="slider_dot-beck" key={id}>
                 <img className="card_image" src={elem.img} alt="" />
               </div>
             ))}

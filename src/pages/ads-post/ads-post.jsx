@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ads-post.css";
-import { api } from "../../../../Api";
+import { api } from "../../Api";
 import { MdAddPhotoAlternate } from "react-icons/md";
-import LoadingAnimate from "../../../../UI-kit/loading";
+import LoadingAnimate from "../../UI-kit/loading";
 import AdsDetail from "./ads-detail";
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
-const AdsPost = ({ categories, tab, setTab }) => {
+const AdsPost = () => {
   const [photos, setPhotos] = useState([]);
   const [post, setPost] = useState({
     cat: null,
@@ -21,6 +23,19 @@ const AdsPost = ({ categories, tab, setTab }) => {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    api
+      .get("/market/cat-choices/")
+      .then((response) => {
+        setCategories(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const PostRequest = async () => {
     setLoading(true);
@@ -61,7 +76,7 @@ const AdsPost = ({ categories, tab, setTab }) => {
             images: [],
           });
           setPhotos([]);
-          setTab({ ...tab, tab1: true, tab2: false });
+          navigate("/market");
         }
       } catch (error) {
         setLoading(false);
@@ -120,10 +135,16 @@ const AdsPost = ({ categories, tab, setTab }) => {
     }));
   };
 
-  console.log(post);
-
   return (
     <div className="ads_post">
+      <div className="head_market">
+        <MdOutlineArrowBackIosNew
+          onClick={() => navigate(-1)}
+          color="var(--black)"
+          size={24}
+        />
+        <h1>Добавить обьявления</h1>
+      </div>
       {view.openModal && (
         <div className="modal_photo">
           <div
@@ -161,18 +182,20 @@ const AdsPost = ({ categories, tab, setTab }) => {
             </div>
           </form>
         </div>
-        <div className="photo-grid">
-          {photos.map((photo, index) => (
-            <AdsDetail
-              view={view}
-              setView={setView}
-              photo={photo}
-              index={index}
-              handleDeletePhoto={handleDeletePhoto}
-              handleChangePhoto={handleChangePhoto}
-            />
-          ))}
-        </div>
+        {photos.length > 0 && (
+          <div className="photo-grid">
+            {photos.map((photo, index) => (
+              <AdsDetail
+                view={view}
+                setView={setView}
+                photo={photo}
+                index={index}
+                handleDeletePhoto={handleDeletePhoto}
+                handleChangePhoto={handleChangePhoto}
+              />
+            ))}
+          </div>
+        )}
       </div>
       <div className="ads_post_container">
         {error.photo && <p className="red">{error.photo}</p>}
