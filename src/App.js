@@ -23,6 +23,12 @@ import { useDispatch } from "react-redux";
 import { fetchUserData } from "./App/slice/user-info";
 import DiscountBuy from "./pages/discount-detail/discount-buy";
 import NotificationPage from "./pages/notification/notification";
+import { fetchStatusData } from "./App/slice/status";
+import AdsPost from "./pages/ads-post/ads-post";
+import FavoriteMarket from "./pages/favorite-market/favorite-market";
+import MyPosts from "./pages/my-posts/my-posts";
+import CategoryPage from "./pages/category-page/category-page";
+import FilterMarket from "./pages/filter-market/filter-market";
 
 function App() {
   const location = useLocation();
