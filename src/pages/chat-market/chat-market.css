@@ -1,8 +1,8 @@
-.my_market {
-  width: 100%;
+.chat_market {
+    width: 100%;
 }
 
-.my_market .head_market {
+.chat_market .head_market {
   padding: 0 20px;
   height: 60px;
   display: grid;
@@ -12,7 +12,7 @@
   border-bottom: 1px solid var(--border);
 }
 
-.my_market .head_market h1 {
+.chat_market .head_market h1 {
   white-space: nowrap;
   text-align: center;
   font-size: 18px;

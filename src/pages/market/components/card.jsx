@@ -19,8 +19,6 @@ const Card = ({ index, el }) => {
     slidesToScroll: 1,
   };
 
-  console.log(el.images[0]);
-
   return (
     <div
       onClick={() => navigate(`/market-detail/${el.id}`)}

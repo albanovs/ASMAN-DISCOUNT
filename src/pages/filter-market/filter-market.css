@@ -1,0 +1,201 @@
+.filter_market {
+  width: 100%;
+}
+
+.filter_market .head_market {
+  padding: 0 20px;
+  height: 60px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.filter_market .head_market h1 {
+  white-space: nowrap;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--black1);
+}
+
+.filter_market h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black1);
+}
+
+.filter_market .value_div {
+  width: 100%;
+  height: 50px;
+  border-radius: 15px;
+  outline: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--black1);
+  border: 1px solid var(--border);
+  padding: 12px 15px;
+}
+
+.filter_market .select_market {
+  margin-top: 5px;
+  width: 100%;
+  height: 50px;
+  border-radius: 15px;
+  outline: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--black1);
+  border: 1px solid var(--border);
+  padding: 12px;
+}
+
+.filter_market .value_div span {
+  font-weight: 500;
+  color: rgb(168, 168, 168);
+}
+
+.filter_market .slider {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 95%;
+  height: 5px;
+  background: #d9ebff;
+  border-radius: 15px;
+}
+
+.filter_block_modal.range_slider {
+  overflow: inherit !important;
+}
+
+.filter_market .slider .thumb.thumb-0 {
+  margin-left: -15px;
+}
+
+.filter_market .slider .thumb.thumb-1 {
+  margin-left: 15px;
+}
+
+.filter_market .slider .thumb {
+  margin-top: -7px;
+  width: 20px;
+  height: 20px;
+  cursor: grab;
+  background: var(--yellow);
+  background-position: center;
+  border-radius: 50%;
+  outline: none;
+}
+
+.filter_market .slider .thumb::after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid var(--orange);
+  background: var(--yellow);
+}
+
+.filter_market .track-1 {
+  height: 5px;
+  background: var(--yellow);
+  border-radius: 100px;
+}
+
+.filter_market .values-container {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 25px 1fr;
+}
+
+.filter_market .filter_body {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filter_market .sort_block {
+  margin-top: 15px;
+  padding: 16px;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0px 5px 25px rgb(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.filter_market .toggle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter_market .true {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--yellow);
+}
+
+.filter_market .sort_box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.filter_market .sort_box:first-child {
+  padding-top: 0;
+}
+
+.filter_market .sort_box:last-child {
+  padding-bottom: 0;
+  border: 0;
+}
+
+.filter_market .sort_box p {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--black1);
+}
+
+.filter_market .btns {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter_market .btns .button_form {
+  cursor: pointer;
+  width: 100%;
+  height: 50px;
+  background: var(--yellow);
+  border-radius: 15px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter_market .btns .button_form.empty {
+  padding: 12px;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: 400;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #cdcdcd;
+}

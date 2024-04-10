@@ -26,6 +26,8 @@ import NotificationPage from "./pages/notification/notification";
 import AdsPost from "./pages/ads-post/ads-post";
 import FavoriteMarket from "./pages/favorite-market/favorite-market";
 import MyPosts from "./pages/my-posts/my-posts";
+import FilterMarket from "./pages/filter-market/filter-market";
+import CategoryPage from "./pages/category-page/category-page";
 
 function App() {
   const location = useLocation();
@@ -81,9 +83,20 @@ function App() {
             path="/market-detail/:id"
             element={<PrivateRoute element={<AdsDetail />} />}
           />
-          <Route path="ads-post" element={<AdsPost />} />
-          <Route path="favorite-market" element={<FavoriteMarket />} />
-          <Route path="my-posts" element={<MyPosts />} />
+          <Route
+            path="ads-post"
+            element={<PrivateRoute element={<AdsPost />} />}
+          />
+          <Route
+            path="favorite-market"
+            element={<PrivateRoute element={<FavoriteMarket />} />}
+          />
+          <Route
+            path="my-posts"
+            element={<PrivateRoute element={<MyPosts />} />}
+          />
+          <Route path="filter-market/:page" element={<FilterMarket />} />
+          <Route path="category-market/:state" element={<CategoryPage />} />
           <Route
             path="/buy-asman"
             element={<PrivateRoute element={<BuyAsman />} />}

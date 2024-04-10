@@ -33,7 +33,13 @@ const FavoriteMarket = () => {
         />
         <h1>Любимые обьявления</h1>
       </div>
-      {loading ? <LoadingAnimate /> : <div className="favorite_block"></div>}
+      {loading ? (
+        <div className="loading_div">
+          <LoadingAnimate />
+        </div>
+      ) : (
+        <div className="favorite_block"></div>
+      )}
     </div>
   );
 };

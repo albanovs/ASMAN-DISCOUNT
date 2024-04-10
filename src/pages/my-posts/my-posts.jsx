@@ -33,7 +33,13 @@ const MyPosts = () => {
         />
         <h1>Мои обьявления</h1>
       </div>
-      {loading ? <LoadingAnimate /> : <div className="my_block"></div>}
+      {loading ? (
+        <div className="loading_div">
+          <LoadingAnimate />
+        </div>
+      ) : (
+        <div className="my_block"></div>
+      )}
     </div>
   );
 };

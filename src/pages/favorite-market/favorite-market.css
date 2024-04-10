@@ -1,6 +1,10 @@
+.favorite_market {
+  width: 100%;
+}
+
 .favorite_market .head_market {
   padding: 0 20px;
-  height: 50px;
+  height: 60px;
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr;

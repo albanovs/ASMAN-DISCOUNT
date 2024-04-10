@@ -1,0 +1,36 @@
+.category_page .head_market {
+  border-bottom: 1px solid var(--border);
+}
+
+.category_page .head_page {
+  width: 100%;
+  height: 60px;
+  display: grid;
+  grid-template-columns: 24px 1fr 24px;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.category_page .head_market h4 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black1);
+}
+
+.category_page .market {
+  margin-top: 15px;
+  padding: 0 20px;
+}
+
+.category_page .grid_col {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.category_page .grid_col .card_box {
+  width: 100%;
+  margin: 0;
+}
