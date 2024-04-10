@@ -1,47 +1,34 @@
 import React, { useEffect, useState } from "react";
 import "./discount.css";
 import Header from "../../containers/header/header";
-import { api } from "../../Api";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import cate1 from "../../views/disc/one.svg";
 import cate2 from "../../views/disc/two.svg";
 import cate3 from "../../views/disc/three.svg";
 import cate4 from "../../views/disc/four.svg";
 import cate5 from "../../views/disc/five.svg";
 import SkeletonDiscount from "./Skeleton";
+import { fetchdiscountData } from "../../App/slice/discount";
 
 const categoryImages = [cate1, cate2, cate3, cate4, cate5];
 
 export default function Discount() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const names = useSelector((state) => state.user_info.user_info);
+  const data = useSelector(state => state.discount.discount)
   const [cate, setCate] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchdiscountData())
+  }, [])
 
   useEffect(() => {
     if (names) {
       setCate(names.status);
     }
   }, [names]);
-
-  useEffect(() => {
-    api
-      .get("/discount/list/")
-      .then((response) => {
-        setData(response.data);
-        setTimeout(() => {
-          setLoading(false);
-        }, 300);
-      })
-      .catch((error) => {
-        console.log(error);
-        setTimeout(() => {
-          setLoading(false);
-        }, 300);
-      });
-  }, []);
 
   return (
     <div className="discount">
@@ -65,7 +52,7 @@ export default function Discount() {
             </div>
           ))}
         </div>
-        {!loading ? (data.map((el, key) => (
+        {data.length ? (data.map((el, key) => (
           el.partners.length > 0 ? <div key={key}>
             <h2>{el.name}</h2>
             <div className="discount_block">

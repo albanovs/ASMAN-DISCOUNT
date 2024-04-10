@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./profile.css";
 import { api } from "../../Api";
 import { IoIosArrowForward } from "react-icons/io";
-import agreement from "../../views/profile/agreement.svg";
-import support from "../../views/profile/customer-support.svg";
-import marketing from "../../views/profile/marketing.svg";
-import logoutImage from "../../views/profile/logout.svg";
-import settings from "../../views/profile/settings.svg";
 import Modal from "../../containers/UI/Modal/Modal";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserData } from "../../App/slice/user-info";
+import { MdOutlineSupportAgent } from "react-icons/md";
+import { GoChecklist } from "react-icons/go";
+import { AiOutlineApartment } from "react-icons/ai";
+import { IoSettingsSharp } from "react-icons/io5";
+import { ImExit } from "react-icons/im";
 
 export default function Profile() {
   const [modal, setModal] = useState(false);
@@ -114,7 +114,7 @@ export default function Profile() {
                     className="box top1"
                   >
                     <div className="flex">
-                      <img src={support} alt="" />
+                      <MdOutlineSupportAgent size={25} color="white" />
                       <p className="text">Служба поддрежки</p>
                     </div>
                     <IoIosArrowForward className="icon" />
@@ -122,7 +122,7 @@ export default function Profile() {
                   <div className="line"></div>
                   <div className="box down">
                     <div className="flex">
-                      <img src={agreement} alt="" />
+                      <GoChecklist size={25} color="white" />
                       <p className="text">Договоры и правила </p>
                     </div>
                     <IoIosArrowForward className="icon" />
@@ -130,21 +130,21 @@ export default function Profile() {
                 </div>
                 <div className="box" onClick={() => navigate("/referal")}>
                   <div className="flex">
-                    <img src={marketing} alt="" />
+                    <AiOutlineApartment size={25} color="white" />
                     <p className="text">Рефералы</p>
                   </div>
                   <IoIosArrowForward className="icon" />
                 </div>
                 <div onClick={() => navigate("/settings")} className="box">
                   <div className="flex">
-                    <img src={settings} alt="" />
+                    <IoSettingsSharp size={25} color="white" />
                     <p className="text">Настройки</p>
                   </div>
                   <IoIosArrowForward className="icon" />
                 </div>
                 <div onClick={() => setModal(true)} className="box top">
                   <div className="flex">
-                    <img src={logoutImage} alt="" />
+                    <ImExit size={25} color="white" />
                     <p className="text">Выйти</p>
                   </div>
                   <IoIosArrowForward className="icon" />

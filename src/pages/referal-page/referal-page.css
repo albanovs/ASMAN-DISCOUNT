@@ -16,3 +16,11 @@
   display: flex;
   gap: 20px;
 }
+
+.container_radial > div {
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

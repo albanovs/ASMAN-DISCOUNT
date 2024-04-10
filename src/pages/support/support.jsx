@@ -3,14 +3,12 @@ import "./support.css";
 import arrow from "../../views/coins/arrow-left.svg";
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
-import instagram from "../../views/profile/instagram.svg";
-import facebook from "../../views/profile/facebook.svg";
-import whatsapp from "../../views/profile/whatsapp.svg";
-import telegram from "../../views/profile/telegram 1.svg";
-import call from "../../views/profile/phone-call.svg";
-import chat from "../../views/profile/bubble-chat.svg";
 import Modal from "../../containers/UI/Modal/Modal";
-import { PiTelegramLogo } from "react-icons/pi";
+import { MdOutlinePhoneInTalk } from "react-icons/md";
+import { AiFillWechat } from "react-icons/ai";
+import { AiFillInstagram } from "react-icons/ai";
+import { FaTelegramPlane } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
 
 const Support = () => {
   const [modal, setModal] = useState(false);
@@ -27,7 +25,7 @@ const Support = () => {
           <a href="/">
             <div onClick={() => navigate("/support")} className="box top1">
               <div className="flex">
-                <img src={call} alt="" />
+                <MdOutlinePhoneInTalk size={25} color="white" />
                 <p className="text">Позвонить</p>
               </div>
               <IoIosArrowForward className="icon" />
@@ -36,7 +34,7 @@ const Support = () => {
           <div className="line"></div>
           <div onClick={() => setModal(true)} className="box down">
             <div className="flex">
-              <img src={chat} alt="" />
+              <AiFillWechat size={25} color="white" />
               <p className="text">Написать</p>
             </div>
             <IoIosArrowForward className="icon" />
@@ -50,7 +48,7 @@ const Support = () => {
           >
             <div className="box top1">
               <div className="flex">
-                <img src={instagram} alt="" />
+                <AiFillInstagram size={25} color="white" />
                 <p className="text">Instagram</p>
               </div>
               <IoIosArrowForward className="icon" />
@@ -60,7 +58,7 @@ const Support = () => {
           <a target="blank" href="https://t.me/Asmancoin">
             <div className="box down">
               <div className="flex">
-                <PiTelegramLogo color="#fff" size={24} />
+                <FaTelegramPlane size={25} color="white" />
                 <p className="text">Telegram</p>
               </div>
               <IoIosArrowForward className="icon" />
@@ -95,7 +93,7 @@ const Support = () => {
             <a href="/">
               <div className="box">
                 <div className="flex">
-                  <img src={whatsapp} alt="" />
+                  <IoLogoWhatsapp size={25} color="white" />
                   <p className="text">Whatsapp</p>
                 </div>
                 <IoIosArrowForward className="icon" />
@@ -104,7 +102,7 @@ const Support = () => {
             <a href="/">
               <div className="box">
                 <div className="flex">
-                  <img src={telegram} alt="" />
+                  <FaTelegramPlane size={25} color="white" />
                   <p className="text">Telegrem</p>
                 </div>
                 <IoIosArrowForward className="icon" />

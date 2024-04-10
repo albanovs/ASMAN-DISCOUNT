@@ -24,6 +24,7 @@ import coin from '../../views/coins/coin.png'
 import { TbClipboardCopy } from "react-icons/tb";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import asmanLogo from '../../views/coins/asmancoin.png'
+import { fetchNotifData } from '../../App/slice/notification';
 
 export default function HomePage() {
 
@@ -32,8 +33,9 @@ export default function HomePage() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchStatusData())
+        dispatch(fetchNotifData())
         dispatch(fetchUserData())
+        dispatch(fetchStatusData())
     }, [dispatch])
 
     const statuses = [

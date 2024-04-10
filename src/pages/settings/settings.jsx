@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import Modal from "../../containers/UI/Modal/Modal";
 import { FaCheck } from "react-icons/fa6";
-import flag1 from "../../views/profile/flag1.svg";
+import flag1 from '../../views/profile/flag1.svg';
 import flag2 from "../../views/profile/flag2.svg";
 import flag3 from "../../views/profile/flag3.svg";
 import { Switch } from "antd";

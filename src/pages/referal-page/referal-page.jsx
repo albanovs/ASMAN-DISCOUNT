@@ -7,7 +7,7 @@ import { FiChevronLeft } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import bronze from '../../views/disc/one.svg';
+import { FaStar } from "react-icons/fa";
 
 export default function ReferalPage() {
     const [referalData, setReferalData] = useState([]);
@@ -38,79 +38,100 @@ export default function ReferalPage() {
     const percentage3 = 40;
     const percentage4 = 70;
     const percentage5 = 48;
-    
+
 
     return (
         <div className='referal_container'>
             <div>
                 <FiChevronLeft color='#fdb602' onClick={() => navigate('/profile')} size={40} />
             </div>
+            <div>
+                <div style={{ textAlign: 'center', margin: '10px 0', color: '#474747' }}>
+                    <h1>Зарабротано всего:</h1>
+                    <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', color: 'white', marginTop: '10px' }}>100 asman <FaStar color='#e48a21' /></p>
+                </div>
+            </div>
             <div className='container_radial'>
-                <CircularProgressbar
-                    className="custom-progress-bar"
-                    value={percentage}
-                    text={`стандарт ${percentage}%`}
-                    strokeWidth={20}
-                    styles={buildStyles({
-                        width: '200px',
-                        pathColor: '#52b202',
-                        textColor: '#fff',
-                        trailColor: 'rgba(0, 0, 0, 0.1)',
-                        textSize: '10px',
-                    })}
-                />
-                <CircularProgressbar
-                    className="custom-progress-bar"
-                    value={percentage2}
-                    strokeWidth={20}
-                    text={`стандарт ${percentage2}%`}
-                    styles={buildStyles({
-                        width: '200px',
-                        pathColor: '#52b202',
-                        textColor: '#fff',
-                        trailColor: 'rgba(0, 0, 0, 0.1)',
-                        textSize: '10px',
-                    })}
-                />
-                <CircularProgressbar
-                    className="custom-progress-bar"
-                    value={percentage3}
-                    strokeWidth={20}
-                    text={`стандарт ${percentage3}%`}
-                    styles={buildStyles({
-                        width: '200px',
-                        pathColor: '#52b202',
-                        textColor: '#fff',
-                        trailColor: 'rgba(0, 0, 0, 0.1)',
-                        textSize: '10px',
-                    })}
-                />
-                <CircularProgressbar
-                    className="custom-progress-bar"
-                    value={percentage4}
-                    strokeWidth={20}
-                    text={`стандарт ${percentage4}%`}
-                    styles={buildStyles({
-                        width: '200px',
-                        pathColor: '#e48a21',
-                        textColor: '#fff',
-                        trailColor: 'rgba(0, 0, 0, 0.1)',
-                        textSize: '10px',
-                    })}
-                />
-                <CircularProgressbar
-                    className="custom-progress-bar"
-                    value={percentage5}
-                    strokeWidth={20}
-                    text={`стандарт ${percentage5}%`}
-                    styles={buildStyles({
-                        width: '300px',
-                        pathColor: '#e48a21',
-                        textColor: '#fff',
-                        trailColor: 'rgba(0, 0, 0, 0.1)',
-                        textSize: '10px',
-                    })}
-                />
+                <div>
+                    <CircularProgressbar
+                        className="custom-progress-bar"
+                        value={percentage}
+                        text={`${percentage}%`}
+                        strokeWidth={20}
+                        styles={buildStyles({
+                            width: '200px',
+                            pathColor: '#52b202',
+                            textColor: '#fff',
+                            trailColor: '#282828de',
+                            textSize: '20px',
+                        })}
+                    />
+                    <p>стандарт</p>
+                </div>
+                <div>
+                    <CircularProgressbar
+                        className="custom-progress-bar"
+                        value={percentage2}
+                        text={`${percentage2}%`}
+                        strokeWidth={20}
+                        styles={buildStyles({
+                            width: '200px',
+                            pathColor: '#52b202',
+                            textColor: '#fff',
+                            trailColor: '#282828de',
+                            textSize: '20px',
+                        })}
+                    />
+                    <p>бронза</p>
+                </div>
+                <div>
+                    <CircularProgressbar
+                        className="custom-progress-bar"
+                        value={percentage3}
+                        text={`${percentage3}%`}
+                        strokeWidth={20}
+                        styles={buildStyles({
+                            width: '200px',
+                            pathColor: '#e48a21',
+                            textColor: '#fff',
+                            trailColor: '#282828de',
+                            textSize: '20px',
+                        })}
+                    />
+                    <p>серебро</p>
+                </div>
+                <div>
+                    <CircularProgressbar
+                        className="custom-progress-bar"
+                        value={percentage4}
+                        text={`${percentage4}%`}
+                        strokeWidth={20}
+                        styles={buildStyles({
+                            width: '200px',
+                            pathColor: '#e48a21',
+                            textColor: '#fff',
+                            trailColor: '#282828de',
+                            textSize: '20px',
+                        })}
+                    />
+                    <p>золото</p>
+                </div>
+                <div>
+                    <CircularProgressbar
+                        className="custom-progress-bar"
+                        value={percentage5}
+                        text={`${percentage5}%`}
+                        strokeWidth={20}
+                        styles={buildStyles({
+                            width: '200px',
+                            pathColor: '#e48a21',
+                            textColor: '#fff',
+                            trailColor: '#282828de',
+                            textSize: '20px',
+                        })}
+                    />
+                    <p>VIP</p>
+                </div>
             </div>
         </div >
     );

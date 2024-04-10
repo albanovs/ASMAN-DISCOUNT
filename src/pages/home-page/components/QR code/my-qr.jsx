@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './my-qr.css';
 import { FiChevronLeft } from 'react-icons/fi';
 import { CiShare2 } from 'react-icons/ci';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserData } from '../../../../App/slice/user-info';
+import { useSelector } from 'react-redux';
 
 export default function MyQRcode() {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const user_qr = useSelector((state) => state.user_info.user_info);
-
-    useEffect(() => {
-        dispatch(fetchUserData());
-    }, [dispatch]);
 
     const handleShare = async () => {
         try {
@@ -28,7 +22,7 @@ export default function MyQRcode() {
     };
 
     const handleFallbackShare = () => {
-        console.log('Вызван альтернативный метод обмена QR-кодом');
+        alert('Вызван альтернативный метод обмена QR-кодом');
     };
 
     return (

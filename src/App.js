@@ -23,6 +23,8 @@ import { useDispatch } from "react-redux";
 import { fetchUserData } from "./App/slice/user-info";
 import DiscountBuy from "./pages/discount-detail/discount-buy";
 import NotificationPage from "./pages/notification/notification";
+import { fetchNotifData } from "./App/slice/notification";
+import { fetchStatusData } from "./App/slice/status";
 
 function App() {
   const location = useLocation();
@@ -30,6 +32,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchUserData());
+    dispatch(fetchStatusData())
   }, [dispatch]);
 
   const handleScroll = () => {

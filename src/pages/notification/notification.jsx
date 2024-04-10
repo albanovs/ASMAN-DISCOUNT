@@ -1,32 +1,13 @@
 import React from 'react'
 import './notification.css'
-import { api } from '../../Api'
-import { useState, useEffect } from 'react'
 import { FiChevronLeft } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export default function NotificationPage() {
 
-    const [notification, setNotification] = useState([])
     const navigate = useNavigate()
-
-    useEffect(() => {
-        const getNotif = async () => {
-            try {
-                const token = localStorage.getItem('token')
-                const response = await api.get('payment/notifications/', {
-                    headers: {
-                        Authorization: `Token ${token}`,
-                    },
-                })
-                setNotification(response.data)
-            } catch (error) {
-                console.log(error);
-            }
-        }
-
-        getNotif()
-    }, [])
+    const notification = useSelector(state => state.notification.notification)
 
     return (
         <div className='notifictaion_container'>

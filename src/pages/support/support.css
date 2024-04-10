@@ -98,9 +98,9 @@
 }
 
 .support .box .label {
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 500;
-  color: var(--gray);
+  color: #6a6a6a;
 }
 
 .support .box .text {

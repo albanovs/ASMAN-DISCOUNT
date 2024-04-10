@@ -8,13 +8,11 @@ import Skeleton from "react-loading-skeleton";
 import { CountdownTimer } from "./timer";
 import { useSelector } from "react-redux";
 import { FaPhoneAlt } from "react-icons/fa";
-import { IoLogoWhatsapp } from "react-icons/io";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const DiscountDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
-  const [loading, setLoading] = useState(false);
   const datas_user = useSelector(state => state.user_info.user_info)
   const navigate = useNavigate();
 
@@ -32,8 +30,7 @@ const DiscountDetail = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [loading]);
-
+  }, []);
 
   return (
     <div className="discount_detail">
@@ -50,8 +47,8 @@ const DiscountDetail = () => {
       <div className="discount_sale">{datas_user.balance >= 100 ? `Скидка на ${data.discount} %` : 'Купите ASMAN чтобы пользоваться'}</div>
       <div className="details_partners">
         <h1>Данные заведений:</h1>
-        <div className="details_partners_item"><span style={{ color: "#8f8f8f" }}>Телефон номер:</span> <NavLink to="tel:996500500500" style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '12px' }}><FaPhoneAlt />996500500500</NavLink></div>
-        <NavLink to="https://wa.me/996500500500" className="details_partners_item"><span style={{ color: "#8f8f8f" }}>Адресс:</span><span style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '12px' }}><FaMapMarkerAlt />Бишкек, Кыргызстан</span></NavLink>
+        <div className="details_partners_item"><span style={{ color: "#8f8f8f" }}>Телефон номер:</span> <NavLink to={`tel:${data.phone}`} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '12px' }}><FaPhoneAlt />{data.phone}</NavLink></div>
+        <NavLink className="details_partners_item"><span style={{ color: "#8f8f8f" }}>Адрес:</span><span style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '12px' }}><FaMapMarkerAlt />{data.address}</span></NavLink>
       </div>
       {
         datas_user.balance <= 100 ? "" :
