@@ -15,7 +15,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeTab } from "../../App/slice/tab";
-import { changeData, changeName } from "../../App/slice/category";
+import { changeData, changeId, changeName } from "../../App/slice/category";
 
 export default function Market() {
   const [cate, setCate] = useState({
@@ -155,6 +155,7 @@ export default function Market() {
                     onClick={() => {
                       navigate("/category-market/false");
                       dispatch(changeName(cate.category.name));
+                      dispatch(changeId(cate.category.id));
                       dispatch(changeData(cate.category.ads));
                     }}
                   >
@@ -174,6 +175,7 @@ export default function Market() {
                       onClick={() => {
                         navigate("/category-market/false");
                         dispatch(changeName(item.name));
+                        dispatch(changeId(item.id));
                         dispatch(changeData(item.ads));
                       }}
                     >

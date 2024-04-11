@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Slider from "react-slider";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  changeCat,
   changeCity,
   changePricefrom,
   changePriceto,
@@ -36,15 +37,19 @@ const cities = [
 const sorts = [
   {
     name: "Самые новые",
+    code: "newest",
   },
   {
     name: "Самые старые",
+    code: "oldest",
   },
   {
     name: "Самые дешевые",
+    code: "cheapest",
   },
   {
     name: "Самые дорогие",
+    code: "expensive",
   },
 ];
 
@@ -148,12 +153,12 @@ const FilterMarket = () => {
           <div className="sort_block">
             {sorts.map((el, index) => (
               <div
-                onClick={() => dispatch(changeSort(el.name))}
+                onClick={() => dispatch(changeSort(el.code))}
                 key={index}
                 className="sort_box"
               >
                 <div className="toggle">
-                  {sort === el.name && <div className="true"></div>}
+                  {sort === el.code && <div className="true"></div>}
                 </div>
                 <p> {el.name} </p>
               </div>

@@ -16,10 +16,12 @@ const CategoryPage = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [valuePage, setValuePage] = useState("");
-  const { data, name } = useSelector((state) => state.category);
-  const { cat, pricefrom, priceto, city, sort } = useSelector(
+  const { data, name, id } = useSelector((state) => state.category);
+  const { pricefrom, priceto, city, sort } = useSelector(
     (state) => state.filter
   );
+
+  console.log(id);
 
   useEffect(() => {
     if (state === "true") {
@@ -27,10 +29,10 @@ const CategoryPage = () => {
       setLoading(true);
       api
         .get(
-          `/market/ad-list/?${cat && `cat=${cat}`}${
+          `/market/ad-list/?${id && `cat=${id}`}${
             pricefrom && `&pricefrom=${pricefrom}`
           }${priceto && `&priceto=${priceto}`}${city && `&city=${city}`}${
-            sort && `&search=${sort}`
+            sort && `&ordering=${sort}`
           }`
         )
         .then((response) => {
