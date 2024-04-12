@@ -121,7 +121,7 @@ export default function Profile() {
                   </div>
                   <div className="line"></div>
                   <div className="box down">
-                    <div className="flex">
+                    <div className="flex" onClick={() => navigate('/rules')}>
                       <GoChecklist size={25} color="white" />
                       <p className="text">Договоры и правила </p>
                     </div>

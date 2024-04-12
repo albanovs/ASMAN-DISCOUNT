@@ -4,7 +4,6 @@ import arrow from "../../views/coins/arrow-left.svg";
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import Modal from "../../containers/UI/Modal/Modal";
-import { MdOutlinePhoneInTalk } from "react-icons/md";
 import { AiFillWechat } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaTelegramPlane } from "react-icons/fa";
@@ -21,17 +20,8 @@ const Support = () => {
         <h1>Служба поддержки</h1>
       </div>
       <div className="support_block">
-        <div className="save">
-          <a href="/">
-            <div onClick={() => navigate("/support")} className="box top1">
-              <div className="flex">
-                <MdOutlinePhoneInTalk size={25} color="white" />
-                <p className="text">Позвонить</p>
-              </div>
-              <IoIosArrowForward className="icon" />
-            </div>
-          </a>
-          <div className="line"></div>
+        <div className="ave">
+          <div className=""></div>
           <div onClick={() => setModal(true)} className="box down">
             <div className="flex">
               <AiFillWechat size={25} color="white" />

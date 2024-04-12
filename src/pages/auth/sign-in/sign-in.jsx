@@ -73,7 +73,7 @@ export default function SignIn() {
                   </span>
                 </div>
                 <NavLink to="/forgot-password" className="link">
-                  Забыли пароль ?
+                  Забыли пароль?
                 </NavLink>
                 <button style={{ background: loading ? '#bba97a' : "#fdb602", display: 'flex', justifyContent: 'center', alignItems: 'center' }} disabled={loading} onSubmit={handleSubmit} className="sign-in">
                   {loading ? <LoadingAnimate /> : "Войти"}
@@ -82,7 +82,7 @@ export default function SignIn() {
             </div>
           </form>
           <p className="footer-text">
-            нет аккаунта ?
+            Нет аккаунта?
             <NavLink to={"/register"} className="register">
               зарегистрируйтесь
             </NavLink>

@@ -29,6 +29,7 @@ import FavoriteMarket from "./pages/favorite-market/favorite-market";
 import MyPosts from "./pages/my-posts/my-posts";
 import CategoryPage from "./pages/category-page/category-page";
 import FilterMarket from "./pages/filter-market/filter-market";
+import Rules from "./pages/settings/rules";
 
 function App() {
   const location = useLocation();
@@ -121,6 +122,7 @@ function App() {
           />
           <Route path="/*" element={<PrivateRoute element={<LayOut />} />} />
           <Route path="/login" element={<SignIn />} />
+          <Route path="/rules" element={<Rules />} />
           <Route path="/register/:id" element={<SignUp />} />
           <Route path="/register" element={<SignUp />} />
           <Route path="/send-code" element={<EmailCode />} />

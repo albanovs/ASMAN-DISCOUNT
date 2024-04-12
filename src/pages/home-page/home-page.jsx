@@ -81,7 +81,7 @@ export default function HomePage() {
             <Header />
             <Storis />
             <div className='section1'>
-                <h1>Ваш статус !</h1>
+                <h1>Ваш статус!</h1>
                 <h2 className='status-user'>{userData.status || "загрузка"} <GiLaurelsTrophy /> </h2>
                 <div className='status'>
                     {loading ? (

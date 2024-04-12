@@ -12,6 +12,7 @@ export default function SignUp() {
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [rule, setRule] = useState(false)
   const [error, setError] = useState(false);
   const [inputData, setInputData] = useState({
     email: "",
@@ -73,6 +74,7 @@ export default function SignUp() {
                 type="email"
                 placeholder="email"
                 required
+                autoComplete="off"
               />
               <input
                 value={inputData.first_name}
@@ -82,6 +84,7 @@ export default function SignUp() {
                     first_name: e.target.value,
                   })
                 }
+                autoComplete="off"
                 type="text"
                 placeholder="ваше имя"
                 required
@@ -94,6 +97,7 @@ export default function SignUp() {
                     last_name: e.target.value,
                   })
                 }
+                autoComplete="off"
                 type="text"
                 placeholder="фамилия"
                 required
@@ -107,6 +111,7 @@ export default function SignUp() {
                       password: e.target.value,
                     })
                   }
+                  autoComplete="off"
                   maxLength="20"
                   type={visible ? "text" : "password"}
                   placeholder="Пароль"
@@ -128,6 +133,7 @@ export default function SignUp() {
                       confirm_password: e.target.value,
                     })
                   }
+                  autoComplete="off"
                   maxLength="20"
                   type={visible2 ? "text" : "password"}
                   placeholder="Повторите пароль"
@@ -141,16 +147,19 @@ export default function SignUp() {
                 </span>
                 {error && <p className="error-text2">* пароли не совпадают</p>}
               </div>
-              <NavLink to="/forgot-password" className="link2">
-                Забыли пароль ?
-              </NavLink>
+              <div className="rules_register">
+                <input type="checkbox" required onChange={() => setRule(!rule)} />
+                <NavLink to="/rules" className="link2">
+                  пользовательское согашение
+                </NavLink>
+              </div>
               <button style={{ background: loading ? '#bba97a' : "#fdb602" }} disable={loading} type="submit" className="sign-up2">
                 {loading ? <LoadingAnimate /> : "Далее"}
               </button>
             </div>
           </form>
           <p className="footer-text2">
-            Есть аккаунт ?
+            Есть аккаунт?
             <NavLink to={"/login"} className="register2">
               войдите
             </NavLink>
