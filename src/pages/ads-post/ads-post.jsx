@@ -93,11 +93,11 @@ const AdsPost = () => {
     const files = event.target.files;
     const id = Date.now();
     const newPhotos = Array.from(files).map((file) => ({
-      id: id,
+      id: file.lastModified + id,
       img: URL.createObjectURL(file),
     }));
     const newPhotosTwo = Array.from(files).map((file) => ({
-      id: id,
+      id: file.lastModified + id,
       img: file,
     }));
     setPhotos((prevPhotos) => [...newPhotos, ...prevPhotos]);

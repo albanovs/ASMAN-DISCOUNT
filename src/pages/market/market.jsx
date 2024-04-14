@@ -28,10 +28,17 @@ export default function Market() {
   const { tab } = useSelector((state) => state.tab);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { pricefrom, priceto, city, sort } = useSelector(
+    (state) => state.filter
+  );
 
   useEffect(() => {
     api
-      .get("/market/cat-list/")
+      .get(
+        `/market/cat-list/?pricefrom=${pricefrom}${
+          priceto !== 0 ? `&priceto=${priceto}` : ""
+        }${city && `&city=${city}`}${sort && `&ordering=${sort}`}`
+      )
       .then((response) => {
         setCate({
           ...cate,

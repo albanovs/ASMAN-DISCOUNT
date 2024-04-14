@@ -21,19 +21,15 @@ const CategoryPage = () => {
     (state) => state.filter
   );
 
-  console.log(id);
-
   useEffect(() => {
     if (state === "true") {
       dispatch(changeData([]));
       setLoading(true);
       api
         .get(
-          `/market/ad-list/?${id && `cat=${id}`}${
-            pricefrom && `&pricefrom=${pricefrom}`
-          }${priceto && `&priceto=${priceto}`}${city && `&city=${city}`}${
-            sort && `&ordering=${sort}`
-          }`
+          `/market/ad-list/?${id && `cat=${id}`}&pricefrom=${pricefrom}${
+            priceto !== 0 ? `&priceto=${priceto}` : ""
+          }${city && `&city=${city}`}${sort && `&ordering=${sort}`}`
         )
         .then((response) => {
           dispatch(changeData(response.data));
@@ -45,6 +41,12 @@ const CategoryPage = () => {
         });
     }
   }, []);
+
+  useEffect(() => {
+    if (id === "") {
+      navigate("/market");
+    }
+  }, [id]);
 
   const SearchFilterPage = useMemo(() => {
     if (data.length > 0) {

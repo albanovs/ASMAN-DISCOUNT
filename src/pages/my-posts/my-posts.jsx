@@ -11,8 +11,13 @@ const MyPosts = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
     api
-      .get("/market/favorite/")
+      .get("/market/my-ads", {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      })
       .then((response) => {
         setMyPosts(response.data);
         setLoading(false);
@@ -22,6 +27,8 @@ const MyPosts = () => {
         setLoading(false);
       });
   }, []);
+
+  console.log(myPosts);
 
   return (
     <div className="my_market">

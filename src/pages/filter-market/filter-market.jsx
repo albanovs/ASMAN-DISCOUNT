@@ -5,7 +5,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import Slider from "react-slider";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  changeCat,
   changeCity,
   changePricefrom,
   changePriceto,

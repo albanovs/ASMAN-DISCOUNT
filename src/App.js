@@ -99,6 +99,7 @@ function App() {
             element={<PrivateRoute element={<MyPosts />} />}
           />
           <Route path="filter-market/:page" element={<FilterMarket />} />
+          <Route path="filter-market" element={<FilterMarket />} />
           <Route path="category-market/:state" element={<CategoryPage />} />
           <Route
             path="/buy-asman"
