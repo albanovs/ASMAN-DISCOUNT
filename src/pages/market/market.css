@@ -167,6 +167,10 @@
   gap: 8px;
 }
 
+.market_list ::-webkit-scrollbar {
+  display: none;
+}
+
 .market_list .ovar_boxs .box_markets {
   width: 150px !important;
 }

@@ -10,6 +10,7 @@ import heart from "../../views/market/heart.svg";
 import heart_red from "../../views/market/heart_red.svg";
 import Card from "../market/components/card";
 import LoadingAnimate from "../../UI-kit/loading";
+import { toast } from "react-toastify";
 
 const AdsDetail = () => {
   const { id } = useParams();
@@ -19,8 +20,20 @@ const AdsDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (data.isfavorite) {
+      setLove(true);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    setLoading(true);
+    const token = localStorage.getItem("token");
     api
-      .get(`/market/ad-detail/${id}`)
+      .get(`/market/ad-detail/${id}`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      })
       .then((response) => {
         setData(response.data);
         setLoading(false);
@@ -29,7 +42,7 @@ const AdsDetail = () => {
         console.log("/market/ad-detail/:", error);
         setLoading(false);
       });
-  }, []);
+  }, [love]);
 
   const settings = {
     dots: true,
@@ -56,7 +69,7 @@ const AdsDetail = () => {
       )
       .then((response) => {
         console.log(response);
-        alert(response.data.message);
+        toast.success(response.data.message);
       })
       .then((error) => {
         console.log(error);

@@ -6,15 +6,17 @@ import { api } from "../../Api";
 import LoadingAnimate from "../../UI-kit/loading";
 import Card from "../market/components/card";
 import search from "../../views/market/search.svg";
-import filter from "../../views/market/filter.svg";
 
 const FavoriteMarket = () => {
   const [loading, setLoading] = useState(true);
   const [favorite, setFavorite] = useState([]);
   const [valuePage, setValuePage] = useState("");
+  const [render, setRender] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
+    setFavorite([]);
+    setLoading(true)
     const token = localStorage.getItem("token");
     api
       .get("/market/favourite/list/", {
@@ -30,12 +32,14 @@ const FavoriteMarket = () => {
         console.log(error);
         setLoading(false);
       });
-  }, []);
+  }, [render]);
+
+  console.log(render);
 
   const SearchFilterPage = useMemo(() => {
     if (favorite.length > 0) {
       return favorite.filter((obj) => {
-        const fullName = obj.title.toLowerCase();
+        const fullName = obj.ad.title.toLowerCase();
         return fullName.includes(valuePage.toLowerCase());
       });
     }
@@ -71,7 +75,12 @@ const FavoriteMarket = () => {
             <div className="market_list">
               <div className="grid_col">
                 {SearchFilterPage?.map((el, index) => (
-                  <Card el={el} index={index} />
+                  <Card
+                    el={el.ad}
+                    index={index}
+                    render={render}
+                    setRender={setRender}
+                  />
                 ))}
               </div>
             </div>

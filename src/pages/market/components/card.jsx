@@ -1,28 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./card.css";
 import { FiShoppingCart } from "react-icons/fi";
 import heart from "../../../views/market/heart.svg";
 import heart_red from "../../../views/market/heart_red.svg";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../../Api";
+import { toast } from "react-toastify";
 
-const Card = ({ index, el }) => {
+const Card = ({ render, setRender, index, el }) => {
   const [love, setLove] = useState(false);
   const navigate = useNavigate();
 
-  const settings = {
-    dots: true,
-    arrows: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+  useEffect(() => {
+    if (el.isfavorite) {
+      setLove(el.isfavorite);
+    }
+  }, [el.isfavorite]);
 
   const sendFavoriteId = (e) => {
     e.stopPropagation();
     const token = localStorage.getItem("token");
     setLove(!love);
+    if (setRender) {
+      setRender(!render);
+    }
     api
       .post(
         `/market/favourite/${el.id}/`,
@@ -34,8 +35,8 @@ const Card = ({ index, el }) => {
         }
       )
       .then((response) => {
-        console.log(response);
-        alert(response.data.message);
+        console.log(response.data.message);
+        toast.success(response.data.message);
       })
       .catch((error) => {
         console.log(error);

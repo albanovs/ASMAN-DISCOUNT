@@ -130,3 +130,7 @@
   font-weight: 400;
   color: var(--black1);
 }
+
+.ads_detail ::-webkit-scrollbar {
+  display: none;
+}

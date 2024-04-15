@@ -23,3 +23,15 @@
 .favorite_market .market {
   padding-top: 0;
 }
+
+.favorite_market .grid_col {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.favorite_market .grid_col .card_box {
+  width: 100%;
+  margin: 0;
+}

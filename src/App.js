@@ -18,18 +18,13 @@ import "react-loading-skeleton/dist/skeleton.css";
 import VvodAsman from "./pages/vvod-asman/vvod-asman";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import AdsDetail from "./pages/ads-detail/ads-detail";
 import { useDispatch } from "react-redux";
 import { fetchUserData } from "./App/slice/user-info";
 import DiscountBuy from "./pages/discount-detail/discount-buy";
 import NotificationPage from "./pages/notification/notification";
 import { fetchStatusData } from "./App/slice/status";
-import AdsPost from "./pages/ads-post/ads-post";
-import FavoriteMarket from "./pages/favorite-market/favorite-market";
-import MyPosts from "./pages/my-posts/my-posts";
-import CategoryPage from "./pages/category-page/category-page";
-import FilterMarket from "./pages/filter-market/filter-market";
 import Rules from "./pages/settings/rules";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const location = useLocation();
@@ -56,6 +51,7 @@ function App() {
 
   return (
     <div className="App">
+      <ToastContainer></ToastContainer>
       <SkeletonTheme baseColor="#313131" highlightColor="#525252">
         <Routes location={location}>
           <Route

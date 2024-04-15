@@ -31,13 +31,20 @@ export default function Market() {
   const { pricefrom, priceto, city, sort } = useSelector(
     (state) => state.filter
   );
+  const [render, setRender] = useState(false);
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
     api
       .get(
         `/market/cat-list/?pricefrom=${pricefrom}${
           priceto !== 0 ? `&priceto=${priceto}` : ""
-        }${city && `&city=${city}`}${sort && `&ordering=${sort}`}`
+        }${city && `&city=${city}`}${sort && `&ordering=${sort}`}`,
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
       )
       .then((response) => {
         setCate({
@@ -50,7 +57,7 @@ export default function Market() {
         console.log("/market/cat-list/:", error);
         setLoading(false);
       });
-  }, []);
+  }, [render]);
 
   const SearchFilterCate = useMemo(() => {
     if (cate?.category?.ads) {
@@ -172,7 +179,12 @@ export default function Market() {
                   <div className="ovar_boxs">
                     {SearchFilterCate.map((el, index) => (
                       <div className="box_markets">
-                        <Card el={el} index={index} />
+                        <Card
+                          el={el}
+                          index={index}
+                          render={render}
+                          setRender={setRender}
+                        />
                       </div>
                     ))}
                   </div>
@@ -198,7 +210,12 @@ export default function Market() {
                         })
                         .map((el, index) => (
                           <div className="box_markets">
-                            <Card el={el} index={index} />
+                            <Card
+                              el={el}
+                              index={index}
+                              render={render}
+                              setRender={setRender}
+                            />
                           </div>
                         ))}
                     </div>
@@ -213,7 +230,6 @@ export default function Market() {
           )}
         </>
       )}
-
       {tab === false && (
         <div className="marketing">
           <div onClick={() => navigate("/ads-post")} className="btns">
@@ -239,7 +255,6 @@ export default function Market() {
           </div>
         </div>
       )}
-
       <div style={{ width: "100%", height: 100 }}></div>
     </>
   );
