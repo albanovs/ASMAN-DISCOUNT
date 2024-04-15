@@ -1,29 +1,23 @@
 .card_box {
-  width: 150px;
-  height: 200px;
+  width: 100%;
+  height: auto;
   border-radius: 8px;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 2;
-}
-
-.card_box:first-child {
-  margin-left: 20px;
-}
-
-.card_box:last-child {
-  margin-right: 20px;
+  overflow: hidden;
 }
 
 .card_box .max {
-  width: 150px;
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid var(--border);
 }
 
 .card_box .box_slide {
-  width: 150px;
+  width: 100%;
   outline: none;
+  position: relative;
 }
 
 .card_box .slick-dots {
@@ -47,8 +41,8 @@
 
 .card_box .card_image {
   border-radius: 8px 8px 0 0;
-  width: 150px;
-  height: 120px;
+  width: 100%;
+  height: 150px;
   object-fit: cover;
   object-position: center;
 }
@@ -64,12 +58,12 @@
   font-size: 16px;
   font-weight: 400;
   color: var(--black1);
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
   overflow: hidden;
   -webkit-line-clamp: 2;
-  max-height: 2.4em;
-  line-height: 1.2em;
+  line-height: 18px;
+  height: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card_box .contant .flex {
@@ -79,7 +73,7 @@
 }
 
 .card_box .price {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--yellow);
 }
@@ -93,6 +87,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .card_box .cart .icond {
@@ -138,4 +133,11 @@
   top: 110px;
   left: 10px;
   content: url("../../../views/market/prev.svg");
+}
+
+.skeleton {
+  width: 150px;
+  height: 200px;
+  background: #cdcdcd;
+  border-radius: 10px;
 }

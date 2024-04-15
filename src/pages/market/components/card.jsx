@@ -5,6 +5,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import heart from "../../../views/market/heart.svg";
 import heart_red from "../../../views/market/heart_red.svg";
 import { useNavigate } from "react-router-dom";
+import { api } from "../../../Api";
 
 const Card = ({ index, el }) => {
   const [love, setLove] = useState(false);
@@ -19,6 +20,33 @@ const Card = ({ index, el }) => {
     slidesToScroll: 1,
   };
 
+  const sendFavoriteId = (e) => {
+    e.stopPropagation();
+    const token = localStorage.getItem("token");
+    setLove(!love);
+    api
+      .post(
+        `/market/favourite/${el.id}/`,
+        {},
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        alert(response.data.message);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  if (!el) {
+    return <div className="skeleton"></div>;
+  }
+
   return (
     <div
       onClick={() => navigate(`/market-detail/${el.id}`)}
@@ -27,27 +55,14 @@ const Card = ({ index, el }) => {
     >
       <img
         className="love"
-        onClick={(e) => {
-          e.stopPropagation();
-          setLove(!love);
-        }}
+        onClick={sendFavoriteId}
         src={love ? heart_red : heart}
         alt=""
       />
       <div className="max">
-        {el.images.length > 1 ? (
-          <Slider {...settings} className="box_slide">
-            {el.images.map((elem, id) => (
-              <div className="slider_dot-beck" key={id}>
-                <img className="card_image" src={elem.img} alt="" />
-              </div>
-            ))}
-          </Slider>
-        ) : (
-          <div>
-            <img className="card_image" src={el.images[0].img} alt="" />
-          </div>
-        )}
+        <div className="max-widht-box">
+          <img className="card_image" src={el.images[0]?.img} alt="" />
+        </div>
       </div>
       <div className="contant">
         <h3>{el.title}</h3>

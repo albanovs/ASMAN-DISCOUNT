@@ -19,3 +19,20 @@
   font-weight: 500;
   color: var(--black1);
 }
+
+.my_market .market {
+  margin-top: 15px;
+  padding: 0 20px;
+}
+
+.my_market .grid_col {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.my_market .grid_col .card_box {
+  width: 100%;
+  margin: 0;
+}

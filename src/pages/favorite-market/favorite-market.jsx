@@ -1,18 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./favorite-market.css";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../Api";
 import LoadingAnimate from "../../UI-kit/loading";
+import Card from "../market/components/card";
+import search from "../../views/market/search.svg";
+import filter from "../../views/market/filter.svg";
 
 const FavoriteMarket = () => {
   const [loading, setLoading] = useState(true);
   const [favorite, setFavorite] = useState([]);
+  const [valuePage, setValuePage] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
     api
-      .get("/market/favorite/")
+      .get("/market/favourite/list/", {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      })
       .then((response) => {
         setFavorite(response.data);
         setLoading(false);
@@ -22,6 +31,15 @@ const FavoriteMarket = () => {
         setLoading(false);
       });
   }, []);
+
+  const SearchFilterPage = useMemo(() => {
+    if (favorite.length > 0) {
+      return favorite.filter((obj) => {
+        const fullName = obj.title.toLowerCase();
+        return fullName.includes(valuePage.toLowerCase());
+      });
+    }
+  }, [favorite, valuePage]);
 
   return (
     <div className="favorite_market">
@@ -38,7 +56,28 @@ const FavoriteMarket = () => {
           <LoadingAnimate />
         </div>
       ) : (
-        <div className="favorite_block"></div>
+        <div className="favorite_block">
+          <div className="market">
+            <div className="relative_input">
+              <input
+                value={valuePage}
+                onChange={(e) => setValuePage(e.target.value)}
+                className="search"
+                type="text"
+                placeholder="Search..."
+              />
+              <img className="icon absolute" src={search} alt="" />
+            </div>
+            <div className="market_list">
+              <div className="grid_col">
+                {SearchFilterPage?.map((el, index) => (
+                  <Card el={el} index={index} />
+                ))}
+              </div>
+            </div>
+            <div style={{ width: "100%", height: 100 }}></div>
+          </div>
+        </div>
       )}
     </div>
   );

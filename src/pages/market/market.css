@@ -165,12 +165,23 @@
   overflow-y: hidden;
   background: transparent;
   gap: 8px;
-  position: relative;
-  z-index: 1;
 }
 
-.market_list .max {
-  margin: 0 auto;
+.market_list .ovar_boxs .box_markets {
+  width: 150px !important;
+}
+
+.market_list .ovar_boxs .box_markets:first-child {
+  margin-left: 20px;
+}
+
+.market_list .ovar_boxs .box_markets:last-child {
+  margin-right: 20px;
+}
+
+.market_list .ovar_boxs .max-widht-box {
+  width: 150px !important;
+  height: 150px;
 }
 
 .market_banner_main img {

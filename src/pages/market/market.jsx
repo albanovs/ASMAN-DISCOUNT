@@ -171,7 +171,9 @@ export default function Market() {
                   </h2>
                   <div className="ovar_boxs">
                     {SearchFilterCate.map((el, index) => (
-                      <Card el={el} index={index} />
+                      <div className="box_markets">
+                        <Card el={el} index={index} />
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -195,7 +197,9 @@ export default function Market() {
                           return fullName.includes(value.toLowerCase());
                         })
                         .map((el, index) => (
-                          <Card el={el} index={index} />
+                          <div className="box_markets">
+                            <Card el={el} index={index} />
+                          </div>
                         ))}
                     </div>
                   </div>

@@ -19,3 +19,7 @@
   font-weight: 500;
   color: var(--black1);
 }
+
+.favorite_market .market {
+  padding-top: 0;
+}

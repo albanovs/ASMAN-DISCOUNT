@@ -40,6 +40,25 @@ const AdsDetail = () => {
     slidesToScroll: 1,
   };
 
+  const sendFavoriteId = (e) => {
+    e.stopPropagation();
+    const token = localStorage.getItem("token");
+    setLove(!love);
+    api
+      .post(`/market/favourite/${data.id}`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        alert("Успешно!");
+      })
+      .then((error) => {
+        console.log(error);
+      });
+  };
+
   return loading ? (
     <div className="loading_div">
       <LoadingAnimate />
@@ -60,13 +79,13 @@ const AdsDetail = () => {
         <Slider {...settings} className="box_slide">
           {data?.images?.map((elem, id) => (
             <div key={id}>
-              <img className="ads_detail_photo" src={elem.img} alt="" />
+              <img className="ads_detail_photo" src={elem?.img} alt="" />
             </div>
           ))}
         </Slider>
       ) : (
         <div>
-          <img className="ads_detail_photo" src={data?.images[0].img} alt="" />
+          <img className="ads_detail_photo" src={data?.images[0]?.img} alt="" />
         </div>
       )}
 
@@ -75,7 +94,7 @@ const AdsDetail = () => {
           <p className="title">{data.title}</p>
           <img
             className="loves"
-            onClick={() => setLove(!love)}
+            onClick={sendFavoriteId}
             src={love ? heart_red : heart}
             alt=""
           />
@@ -99,7 +118,9 @@ const AdsDetail = () => {
       </div>
       <div className="ovar_boxs">
         {data?.similar_ads?.map((el, index) => (
-          <Card el={el} index={index} />
+          <div className="box_markets">
+            <Card el={el} index={index} />
+          </div>
         ))}
       </div>
     </div>

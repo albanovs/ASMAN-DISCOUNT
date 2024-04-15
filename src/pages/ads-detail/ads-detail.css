@@ -106,8 +106,23 @@
   overflow-y: hidden;
   background: transparent;
   gap: 8px;
-  position: relative;
-  z-index: 1;
+}
+
+.ads_detail .ovar_boxs .box_markets {
+  width: 150px !important;
+}
+
+.ads_detail .ovar_boxs .box_markets:first-child {
+  margin-left: 20px;
+}
+
+.ads_detail .ovar_boxs .box_markets:last-child {
+  margin-right: 20px;
+}
+
+.ads_detail .ovar_boxs .max-widht-box {
+  width: 150px !important;
+  height: 150px;
 }
 
 .ads_detail .user_title {
