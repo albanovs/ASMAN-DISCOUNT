@@ -8,8 +8,14 @@ import Profile from "../pages/profile/profile";
 import Settings from "../pages/settings/settings";
 import Support from "../pages/support/support";
 import ChangePassword from "../pages/change-password/change-password";
-import WithDrawal from '../pages/with-drawal/with-drawal'
+import WithDrawal from "../pages/with-drawal/with-drawal";
 import ReferalPage from "../pages/referal-page/referal-page";
+import AdsDetail from "../pages/ads-detail/ads-detail";
+import AdsPost from "../pages/ads-post/ads-post";
+import FavoriteMarket from "../pages/favorite-market/favorite-market";
+import MyPosts from "../pages/my-posts/my-posts";
+import FilterMarket from "../pages/filter-market/filter-market";
+import CategoryPage from "../pages/category-page/category-page";
 
 export default function PageContent() {
   return (
@@ -30,6 +36,13 @@ export default function PageContent() {
           path="/change-password"
           element={<ChangePassword />}
         />
+        <Route path="/market-detail/:id" element={<AdsDetail />} />
+        <Route path="ads-post" element={<AdsPost />} />
+        <Route path="favorite-market" element={<FavoriteMarket />} />
+        <Route path="my-posts" element={<MyPosts />} />
+        <Route path="filter-market/:page" element={<FilterMarket />} />
+        <Route path="filter-market" element={<FilterMarket />} />
+        <Route path="category-market/:state" element={<CategoryPage />} />
       </Routes>
     </div>
   );

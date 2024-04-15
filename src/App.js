@@ -37,7 +37,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchUserData());
-    dispatch(fetchStatusData())
+    dispatch(fetchStatusData());
   }, [dispatch]);
 
   const handleScroll = () => {
@@ -82,25 +82,6 @@ function App() {
             path="/discount-detail-forsale/:id"
             element={<PrivateRoute element={<DiscountBuy />} />}
           />
-          <Route
-            path="/market-detail/:id"
-            element={<PrivateRoute element={<AdsDetail />} />}
-          />
-          <Route
-            path="ads-post"
-            element={<PrivateRoute element={<AdsPost />} />}
-          />
-          <Route
-            path="favorite-market"
-            element={<PrivateRoute element={<FavoriteMarket />} />}
-          />
-          <Route
-            path="my-posts"
-            element={<PrivateRoute element={<MyPosts />} />}
-          />
-          <Route path="filter-market/:page" element={<FilterMarket />} />
-          <Route path="filter-market" element={<FilterMarket />} />
-          <Route path="category-market/:state" element={<CategoryPage />} />
           <Route
             path="/buy-asman"
             element={<PrivateRoute element={<BuyAsman />} />}

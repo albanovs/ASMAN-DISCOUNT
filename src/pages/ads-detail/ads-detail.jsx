@@ -45,14 +45,18 @@ const AdsDetail = () => {
     const token = localStorage.getItem("token");
     setLove(!love);
     api
-      .post(`/market/favourite/${data.id}`, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      })
+      .post(
+        `/market/favourite/${data.id}/`,
+        {},
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      )
       .then((response) => {
         console.log(response);
-        alert("Успешно!");
+        alert(response.data.message);
       })
       .then((error) => {
         console.log(error);

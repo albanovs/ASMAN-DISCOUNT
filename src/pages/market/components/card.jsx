@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./card.css";
-import Slider from "react-slick";
 import { FiShoppingCart } from "react-icons/fi";
 import heart from "../../../views/market/heart.svg";
 import heart_red from "../../../views/market/heart_red.svg";
