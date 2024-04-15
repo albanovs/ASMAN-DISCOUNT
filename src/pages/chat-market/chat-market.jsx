@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const ChatMarket = () => {
   const navigate = useNavigate();
-  
+
   return (
     <div className="chat_market">
       <div className="head_market">

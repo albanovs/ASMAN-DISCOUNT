@@ -4,7 +4,7 @@
   height: 100%;
   background-color: var(--black);
   color: white;
-  padding: 10px 20px;
+  padding: 10px 20px 100px;
 }
 
 .custom-progress-bar {
@@ -23,4 +23,51 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.referal_container .referal_friends > h1 {
+  text-align: center;
+  margin: 20px;
+}
+
+.ref_friends_contain h2 {
+  color: #757575;
+}
+
+.ref_friends_contain span {
+  color: var(--orange);
+  padding: 0 5px;
+}
+
+.ref_friends_contain .friend_block {
+  margin: 5px;
+  border: 1px solid #757575;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.ref_friends_contain .friend_block p {
+  color: #757575;
+  font-size: 10px;
+}
+
+.ref_friends_contain .friend_block > div > div:nth-child(1) {
+  border-bottom: 1px solid #757575;
+  margin-bottom: 5px;
+}
+
+.ref_friends_contain .bonuses_contain {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.ref_friends_contain .bonuses_contain h3 {
+  color: #757575;
+  font-size: 10px;
+}
+
+.ref_friends_contain .bonuses_contain span {
+  color: rgb(80, 214, 80);
 }

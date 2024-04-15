@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import './notification.css'
 import { FiChevronLeft } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchNotifData } from '../../App/slice/notification'
 
 export default function NotificationPage() {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const notification = useSelector(state => state.notification.notification)
+    const endRef = useRef(null);
+
+    useEffect(() => {
+        endRef.current.scrollIntoView({ behavior: "smooth" });
+    }, [notification]);
+
+    useEffect(() => {
+        dispatch(fetchNotifData())
+    }, [dispatch])
 
     return (
         <div className='notifictaion_container'>
@@ -33,6 +44,7 @@ export default function NotificationPage() {
                         )
                     })
                 }
+                <div ref={endRef}></div>
             </div>
         </div >
     )

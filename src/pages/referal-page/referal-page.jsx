@@ -8,9 +8,12 @@ import { useNavigate } from 'react-router-dom';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { FaStar } from "react-icons/fa";
+import UserList from './components/user-list';
+import LoadingAnimate from '../../UI-kit/loading';
 
 export default function ReferalPage() {
     const [referalData, setReferalData] = useState([]);
+    const [referalData2, setReferalData2] = useState([]);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -18,6 +21,7 @@ export default function ReferalPage() {
         dispatch(fetchUserData());
         fetchReferalData();
     }, [dispatch]);
+
 
     const fetchReferalData = async () => {
         try {
@@ -27,18 +31,30 @@ export default function ReferalPage() {
                     Authorization: `Token ${token}`
                 }
             });
+            const response2 = await api.get('auth/ref-program/', {
+                headers: {
+                    Authorization: `Token ${token}`
+                }
+            })
             setReferalData(response.data);
+            setReferalData2(response2.data)
         } catch (error) {
             console.log(error);
         }
     }
 
-    const percentage = 54;
-    const percentage2 = 29;
-    const percentage3 = 40;
-    const percentage4 = 70;
-    const percentage5 = 48;
+    const groupedUsers = referalData.reduce((acc, user) => {
+        const status = user.status;
+        if (!acc[status]) {
+            acc[status] = [];
+        }
+        acc[status].push(user);
+        return acc;
+    }, {});
 
+    const totalAmount = referalData.reduce((sum, user) => {
+        return sum + user.bonuses.reduce((acc, bonus) => acc + bonus.amount, 0);
+    }, 0);
 
     return (
         <div className='referal_container'>
@@ -48,90 +64,44 @@ export default function ReferalPage() {
             <div>
                 <div style={{ textAlign: 'center', margin: '10px 0', color: '#474747' }}>
                     <h1>Зарабротано всего:</h1>
-                    <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', color: 'white', marginTop: '10px' }}>100 asman <FaStar color='#e48a21' /></p>
+                    <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', color: 'white', marginTop: '10px' }}> {totalAmount || 0} asman <FaStar color='#e48a21' /></p>
                 </div>
             </div>
             <div className='container_radial'>
-                <div>
-                    <CircularProgressbar
-                        className="custom-progress-bar"
-                        value={percentage}
-                        text={`${percentage}%`}
-                        strokeWidth={20}
-                        styles={buildStyles({
-                            width: '200px',
-                            pathColor: '#52b202',
-                            textColor: '#fff',
-                            trailColor: '#282828de',
-                            textSize: '20px',
-                        })}
-                    />
-                    <p>стандарт</p>
-                </div>
-                <div>
-                    <CircularProgressbar
-                        className="custom-progress-bar"
-                        value={percentage2}
-                        text={`${percentage2}%`}
-                        strokeWidth={20}
-                        styles={buildStyles({
-                            width: '200px',
-                            pathColor: '#52b202',
-                            textColor: '#fff',
-                            trailColor: '#282828de',
-                            textSize: '20px',
-                        })}
-                    />
-                    <p>бронза</p>
-                </div>
-                <div>
-                    <CircularProgressbar
-                        className="custom-progress-bar"
-                        value={percentage3}
-                        text={`${percentage3}%`}
-                        strokeWidth={20}
-                        styles={buildStyles({
-                            width: '200px',
-                            pathColor: '#e48a21',
-                            textColor: '#fff',
-                            trailColor: '#282828de',
-                            textSize: '20px',
-                        })}
-                    />
-                    <p>серебро</p>
-                </div>
-                <div>
-                    <CircularProgressbar
-                        className="custom-progress-bar"
-                        value={percentage4}
-                        text={`${percentage4}%`}
-                        strokeWidth={20}
-                        styles={buildStyles({
-                            width: '200px',
-                            pathColor: '#e48a21',
-                            textColor: '#fff',
-                            trailColor: '#282828de',
-                            textSize: '20px',
-                        })}
-                    />
-                    <p>золото</p>
-                </div>
-                <div>
-                    <CircularProgressbar
-                        className="custom-progress-bar"
-                        value={percentage5}
-                        text={`${percentage5}%`}
-                        strokeWidth={20}
-                        styles={buildStyles({
-                            width: '200px',
-                            pathColor: '#e48a21',
-                            textColor: '#fff',
-                            trailColor: '#282828de',
-                            textSize: '20px',
-                        })}
-                    />
-                    <p>VIP</p>
-                </div>
+                {referalData2.count && Object.entries(referalData2.count).map(([item, data]) => (
+                    <div key={item}>
+                        <CircularProgressbar
+                            className="custom-progress-bar"
+                            value={data}
+                            text={`${data}/${referalData2.program[item]}`}
+                            strokeWidth={20}
+                            styles={buildStyles({
+                                width: '200px',
+                                pathColor: '#52b202',
+                                textColor: '#fff',
+                                trailColor: '#282828de',
+                                textSize: '20px',
+                            })}
+                        />
+                        <p>{item === 'standard' ? 'стандарт'
+                            : item === 'bronze' ? 'бронза'
+                                : item === 'silver' ? 'серебро'
+                                    : item === 'gold' ? 'золото' : 'VIP'}</p>
+                    </div>
+                ))}
+            </div>
+            <div className='referal_friends'>
+                <h1>Приглашенные друзья:</h1>
+                {
+                    referalData.length ? <UserList users={groupedUsers} />
+                        : <div style={{
+                            width: '100%',
+                            height: '30vh',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}><LoadingAnimate /></div>
+                }
             </div>
         </div >
     );

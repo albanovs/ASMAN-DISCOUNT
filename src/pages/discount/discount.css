@@ -33,7 +33,7 @@
   object-fit: cover;
   object-position: center;
   border-radius: 10px;
-  border: 1px solid #707070;
+  border: 1px solid #a5a5a568;
 }
 
 .discount .title {
@@ -92,7 +92,7 @@
   align-items: center;
   width: 80px;
   font-size: 12px;
-  border: 1px solid #ffffff68;
+  border: 1px solid #a5a5a568;
 }
 
 .discount .cateing .cate.active {
@@ -124,7 +124,7 @@
   position: absolute;
   bottom: 20px;
   right: 0px;
-  background-color: #ff9f0e61;
+  background-color: #ff9f0e4c;
   border-bottom-right-radius: 10px;
   border-top-left-radius: 10px;
   padding: 3px;

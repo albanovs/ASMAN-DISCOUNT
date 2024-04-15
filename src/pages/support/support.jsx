@@ -34,7 +34,7 @@ const Support = () => {
         <div className="save">
           <a
             target="blank"
-            href="https://www.instagram.com/asman.coin.kg?igsh=eDQ3M2k3b3NsMGY3"
+            href="https://www.instagram.com/asman.coin"
           >
             <div className="box top1">
               <div className="flex">
