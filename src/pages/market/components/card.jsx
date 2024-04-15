@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./card.css";
-import { FiShoppingCart } from "react-icons/fi";
 import heart from "../../../views/market/heart.svg";
 import heart_red from "../../../views/market/heart_red.svg";
 import { useNavigate } from "react-router-dom";
@@ -70,9 +69,6 @@ const Card = ({ render, setRender, index, el }) => {
           <p className="price">
             {el.price} {el.currency ? el.currency : "c"}
           </p>
-          <div className="cart">
-            <FiShoppingCart className="icond" />
-          </div>
         </div>
       </div>
     </div>
