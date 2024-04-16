@@ -32,6 +32,8 @@ const DiscountDetail = () => {
       });
   }, []);
 
+  console.log(data.minutes);
+
   return (
     <div className="discount_detail">
       <div className="head">
@@ -40,10 +42,18 @@ const DiscountDetail = () => {
       {data.img ? <img className="image" src={data.img} alt="" /> : <Skeleton className="image" />}
       <div className="text_discount">
         <h1>{data.title}</h1>
-        {data.title ? <p style={{ textAlign: 'justify' }}><span>Описание: </span>{data.description}</p> : <div>
-          <Skeleton width={350} height={5} count={8} />
-        </div>}
+        {data.title ? (
+          <div style={{ textAlign: 'justify' }}>
+            <span>Описание: </span>
+            <p dangerouslySetInnerHTML={{ __html: data.description }} />
+          </div>
+        ) : (
+          <div>
+            <Skeleton width={350} height={5} count={8} />
+          </div>
+        )}
       </div>
+
       <div className="discount_sale">{datas_user.balance >= 100 ? `Скидка на ${data.discount} %` : 'Купите ASMAN чтобы пользоваться'}</div>
       <div className="details_partners">
         <h1>Данные заведений:</h1>
@@ -57,7 +67,7 @@ const DiscountDetail = () => {
             className='btn'
             style={{ background: typeof data.minutes !== 'number' ? "#fdb602" : '#bba97a' }}
             disabled={typeof data.minutes === 'number'}>
-            {typeof data.minutes !== 'number' ? "Отсканировать QR" : <CountdownTimer minutes={data.minutes} />}
+            {typeof data.minutes !== 'number' ? "Отсканировать QR" : <CountdownTimer minute={data.minutes} />}
           </button>
       }
     </div >

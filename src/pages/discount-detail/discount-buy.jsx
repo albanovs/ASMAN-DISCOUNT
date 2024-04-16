@@ -3,7 +3,6 @@ import "./discount-detail.css";
 import arrow from "../../views/coins/arrow-left.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../Api";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingAnimate from "../../UI-kit/loading";
 import SuccessAlert from "../../UI-kit/success";
