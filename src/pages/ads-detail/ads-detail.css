@@ -77,9 +77,20 @@
 
 .ads_detail .user {
   border-top: 1px solid var(--border);
+  margin-top: 15px;
+  padding-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ads_detail .user.r {
+  border-top: 0;
+  margin-top: 10px;
+  padding-top: 10px;
   border-bottom: 1px solid var(--border);
-  padding: 15px 0;
-  margin: 15px 0;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -133,4 +144,11 @@
 
 .ads_detail ::-webkit-scrollbar {
   display: none;
+}
+
+.ads_detail .texting {
+  font-size: 13px;
+  font-weight: 400;
+  color: #888;
+  line-height: 1;
 }

@@ -13,6 +13,7 @@ const AdsPost = () => {
     cat: null,
     title: "",
     price: null,
+    number: "",
     city: "",
     description: "",
     images: [],
@@ -48,6 +49,7 @@ const AdsPost = () => {
       formData.append("title", post.title);
       formData.append("price", post.price);
       formData.append("city", post.city);
+      formData.append("number", post.number);
       formData.append("description", post.description);
 
       post.images.forEach((image) => {
@@ -266,6 +268,17 @@ const AdsPost = () => {
             />
           </div>
           {error.price && <p className="red">{error.price}</p>}
+          <div className="box_market">
+            <label className="label_market">Номер телефона</label>
+            <input
+              value={post.number}
+              onChange={(e) => setPost({ ...post, number: e.target.value })}
+              className="input_market"
+              placeholder="Цена"
+              type="number"
+            />
+          </div>
+          {error.number && <p className="red">{error.number}</p>}
           <button
             disabled={loading}
             onClick={PostRequest}
