@@ -4,7 +4,6 @@ import heart from "../../../views/market/heart.svg";
 import heart_red from "../../../views/market/heart_red.svg";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../../Api";
-import { toast } from "react-toastify";
 
 const Card = ({ render, setRender, index, el }) => {
   const [love, setLove] = useState(false);
@@ -35,7 +34,6 @@ const Card = ({ render, setRender, index, el }) => {
       )
       .then((response) => {
         console.log(response.data.message);
-        toast.success(response.data.message);
       })
       .catch((error) => {
         console.log(error);
@@ -64,7 +62,7 @@ const Card = ({ render, setRender, index, el }) => {
         </div>
       </div>
       <div className="contant">
-        <h3>{el.title}</h3>
+        <h3>{el.title.split(' ').slice(0, 1).join(' ')}...</h3>
         <div className="flex">
           <p className="price">
             {el.price} {el.currency ? el.currency : "c"}

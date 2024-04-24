@@ -22,14 +22,14 @@
 }
 
 .storis .storis_content {
-  width: 90px;
-  height: 90px;
+  width: 320px;
+  height: 120px;
   border-radius: 20px;
 }
 
 .storis .storis_content img {
-  width: 90px;
-  height: 90px;
+  width: 320px;
+  height: 120px;
   object-fit: cover;
   object-position: center;
   border-radius: 20px;

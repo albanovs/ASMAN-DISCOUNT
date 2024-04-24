@@ -10,6 +10,7 @@ import cate4 from "../../views/disc/four.svg";
 import cate5 from "../../views/disc/five.svg";
 import SkeletonDiscount from "./Skeleton";
 import { fetchdiscountData } from "../../App/slice/discount";
+import { IoEyeSharp } from "react-icons/io5";
 
 const categoryImages = [cate1, cate2, cate3, cate4, cate5];
 
@@ -62,7 +63,7 @@ export default function Discount() {
                     onClick={() => navigate(`/discount-detail/${item.id}`)}
                     className="discount_box"
                   >
-                    <img src={item.img} alt="" />
+                    <img src={`https://discount.asman.io${item.img}`} alt="" />
                   </div>
                   <p className="text_discount">{item.title}</p>
                   {cate === "Стандарт" && <p className="absolute">{item.d_standard} % скидки</p>}
@@ -71,6 +72,7 @@ export default function Discount() {
                   {cate === "Золото" && <p className="absolute">{item.d_gold} % скидки</p>}
                   {cate === "VIP" && <p className="absolute">{item.d_vip} % скидки</p>}
                   <h2 className="cost_of_visit">{item.cost_of_visit} asman</h2>
+                  <h5><IoEyeSharp /> <span> {item.views}</span></h5>
                 </div>
               ))}
             </div>

@@ -1,5 +1,5 @@
 .market {
-  max-width: 990px;
+  /* max-width: 990px; */
   width: 100%;
   padding: 0 20px;
   padding-top: 12px;
@@ -103,6 +103,10 @@
   gap: 8px;
   position: relative;
   z-index: 1;
+}
+
+.market_over .category::-webkit-scrollbar {
+  display: none;
 }
 
 .market_over .cate {
@@ -230,4 +234,12 @@
 .marketing .btns .icon {
   font-size: 24px;
   color: var(--orange);
+}
+
+.all_category_items {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 20px;
 }

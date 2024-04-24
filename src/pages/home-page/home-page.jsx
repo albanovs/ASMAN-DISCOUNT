@@ -7,7 +7,7 @@ import { BiScan } from "react-icons/bi";
 import { useNavigate } from 'react-router-dom'
 import { BsArrowDownLeftCircleFill } from "react-icons/bs";
 import { BsArrowDownRightCircleFill } from "react-icons/bs";
-import { FaPlayCircle } from "react-icons/fa";
+import { FaPlayCircle, FaStar } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchStatusData } from '../../App/slice/status';
 import { fetchUserData } from '../../App/slice/user-info';
@@ -25,6 +25,7 @@ import { TbClipboardCopy } from "react-icons/tb";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import asmanLogo from '../../views/coins/asmancoin.png'
 import { fetchNotifData } from '../../App/slice/notification';
+import { api } from '../../Api';
 
 export default function HomePage() {
 
@@ -46,9 +47,11 @@ export default function HomePage() {
         { name: 'VIP', image: vip, value: getStatus.vip || 0 }
     ];
 
+
     const [loading, setLoading] = useState(true);
     const [modal, setModal] = useState(false)
     const [copied, setCopied] = useState(false);
+    const [count_user, setCount_user] = useState({})
 
     const handleCopy = () => {
         setCopied(true);
@@ -56,6 +59,7 @@ export default function HomePage() {
             setCopied(false);
         }, 2000);
     };
+
 
     const handleShareLink = async () => {
         try {
@@ -68,6 +72,19 @@ export default function HomePage() {
             console.error('Ошибка обмена:', error.message);
         }
     };
+
+    useEffect(() => {
+        const getCountUsers = async () => {
+            try {
+                const response = await api.get('/count-users')
+                setCount_user(response.data)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        getCountUsers()
+    }, [])
 
     useEffect(() => {
         if (userData && Object.keys(userData).length > 0 && getStatus && Object.keys(getStatus).length > 0) {
@@ -106,7 +123,7 @@ export default function HomePage() {
                         ))
                     )}
                 </div>
-                <Balance balance={userData.balance} curs={getStatus.rate} />
+                <Balance info={getStatus.main_info} balance={userData.balance} curs={getStatus.rate} />
                 <div className='button-payment_home'>
                     <button onClick={() => navigate('/vvod-asman')}><BsArrowDownLeftCircleFill size={40} /><span>Ввод</span></button>
                     <button onClick={() => navigate('/drawal-with')}><BsArrowDownRightCircleFill size={40} /><span>Вывод</span></button>
@@ -143,6 +160,30 @@ export default function HomePage() {
                         </Modal>
                     }
                 </div>
+                <footer className='footer_home_page'>
+                    <div>
+                        <p>Количество зарегистрированных <br /> пользователей:
+                            <h2>{count_user.count} <FaStar color='#e48a21' size={10} /></h2>
+                        </p>
+                    </div>
+                    <div>
+                        <p> Последние зарегистрированные пользователи:</p>
+                        <ul className='list_count_user'>
+                            {
+                                count_user.users ? count_user.users.map((el, index) => {
+                                    return (
+                                        <li key={index}>
+                                            <img src={`https://discount.asman.io${el.profile_photo}`} alt="" />
+                                            <div>
+                                                <span>{el.first_name} </span><span> {el.last_name.split('')[0]} ** ***</span>
+                                            </div>
+                                        </li>
+                                    )
+                                }) : ""
+                            }
+                        </ul>
+                    </div>
+                </footer>
             </div>
         </div >
     )

@@ -263,3 +263,45 @@
   position: absolute;
   top: 5px;
 }
+
+.footer_home_page {
+  border-bottom: 1px solid #3a3a3a;
+  width: 100%;
+  margin-top: 40px;
+  padding-bottom: 20px;
+}
+
+.footer_home_page span {
+  color: #9e9e9e;
+}
+
+.footer_home_page p {
+  font-size: 10px;
+  color: #8d8d8d;
+  text-align: center;
+  font-weight: 500;
+  padding: 10px;
+}
+
+.list_count_user img {
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+}
+
+.list_count_user li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 8px;
+  margin-top: 2px;
+}
+
+.footer_home_page h2 {
+  color: var(--orange);
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}

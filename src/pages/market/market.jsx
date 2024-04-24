@@ -15,6 +15,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeTab } from "../../App/slice/tab";
+import axios from "axios";
 import { changeData, changeId, changeName } from "../../App/slice/category";
 
 export default function Market() {
@@ -22,6 +23,8 @@ export default function Market() {
     active: [],
     data: [],
     category: [],
+    result: [],
+    nextPage: null
   });
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(true);
@@ -31,14 +34,38 @@ export default function Market() {
   const { pricefrom, priceto, city, sort } = useSelector(
     (state) => state.filter
   );
-  const [render, setRender] = useState(false);
+
+  const nextloadData = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get(cate.nextPage, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+
+      console.log(response);
+
+      if (Array.isArray(response.data.results)) {
+        setCate((prevState) => ({
+          ...prevState,
+          nextPage: response.data.next,
+          data: response.data,
+          result: prevState.result.concat(response.data.results),
+        }));
+      } else {
+        console.log("Ошибка: response.data.results не является массивом.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     api
       .get(
-        `/market/cat-list/?pricefrom=${pricefrom}${
-          priceto !== 0 ? `&priceto=${priceto}` : ""
+        `/market/ad-list/?pricefrom=${pricefrom}${priceto !== 0 ? `&priceto=${priceto}` : ""
         }${city && `&city=${city}`}${sort && `&ordering=${sort}`}`,
         {
           headers: {
@@ -50,6 +77,8 @@ export default function Market() {
         setCate({
           ...cate,
           data: response.data,
+          result: response.data.results,
+          nextPage: response.data.next
         });
         setLoading(false);
       })
@@ -57,40 +86,7 @@ export default function Market() {
         console.log("/market/cat-list/:", error);
         setLoading(false);
       });
-  }, [render]);
-
-  const SearchFilterCate = useMemo(() => {
-    if (cate?.category?.ads) {
-      return cate.category.ads.filter((obj) => {
-        const fullName = obj.title.toLowerCase();
-        return fullName.includes(value.toLowerCase());
-      });
-    } else {
-      return [];
-    }
-  }, [cate?.category, value]);
-
-  const SearchFilter = useMemo(() => {
-    if (cate?.data) {
-      return cate.data.filter((obj) => {
-        return obj.ads.some((adding) => {
-          const fullName = adding.title.toLowerCase();
-          return fullName.includes(value.toLowerCase());
-        });
-      });
-    } else {
-      return [];
-    }
-  }, [cate?.data, value]);
-
-  useEffect(() => {
-    if (cate.data.length > 0) {
-      setCate({
-        ...cate,
-        active: "all",
-      });
-    }
-  }, [cate.data]);
+  }, []);
 
   return loading ? (
     <div className="loading_div">
@@ -149,87 +145,24 @@ export default function Market() {
                 <BiCategory className="img" />
                 <p>Все</p>
               </div>
-              {cate?.data?.map((el, index) => (
-                <div
-                  onClick={() => setCate({ ...cate, category: el, active: el })}
-                  key={index}
-                  className={`cate ${el.name === cate.active.name && "active"}`}
-                >
-                  <img className="img" src={el.icon} alt="" />
-                  <p>{el.name}</p>
-                </div>
-              ))}
+
             </div>
           </div>
-          {cate.data.length > 0 ? (
-            <div className="market_list">
-              {cate?.category.name ? (
-                <div className="line_boxs">
-                  <h2
-                    onClick={() => {
-                      navigate("/category-market/false");
-                      dispatch(changeName(cate.category.name));
-                      dispatch(changeId(cate.category.id));
-                      dispatch(changeData(cate.category.ads));
-                    }}
-                  >
-                    {cate?.category.name}
-                    <MdOutlineArrowForwardIos className="icone" />
-                  </h2>
-                  <div className="ovar_boxs">
-                    {SearchFilterCate.map((el, index) => (
-                      <div className="box_markets">
-                        <Card
-                          el={el}
-                          index={index}
-                          render={render}
-                          setRender={setRender}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                SearchFilter.map((item, index) => (
-                  <div key={index} className="line_boxs">
-                    <h2
-                      onClick={() => {
-                        navigate("/category-market/false");
-                        dispatch(changeName(item.name));
-                        dispatch(changeId(item.id));
-                        dispatch(changeData(item.ads));
-                      }}
-                    >
-                      {item.name} <MdOutlineArrowForwardIos className="icone" />
-                    </h2>
-                    <div className="ovar_boxs">
-                      {item.ads
-                        .filter((obj) => {
-                          const fullName = obj.title.toLowerCase();
-                          return fullName.includes(value.toLowerCase());
-                        })
-                        .map((el, index) => (
-                          <div className="box_markets">
-                            <Card
-                              el={el}
-                              index={index}
-                              render={render}
-                              setRender={setRender}
-                            />
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-          ) : (
-            <div style={{ textAlign: " center" }}>
-              Скоро появится товары !!!
-            </div>
-          )}
         </>
       )}
+      {
+        tab === true && <div className="all_category_items">
+          {
+            Array.isArray(cate.result) && cate.result.map(item => {
+              return (
+                <div>
+                  <Card el={item} />
+                </div>
+              )
+            })
+          }
+        </div>
+      }
       {tab === false && (
         <div className="marketing">
           <div onClick={() => navigate("/ads-post")} className="btns">
